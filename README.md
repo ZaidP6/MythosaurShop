@@ -10,12 +10,12 @@
 </h4>
 
 ## Índice
-- [Funcionalidades del proyecto](#funciones)
+- [Funcionalidades del proyecto](#funcionalidades)
 - [Tecnologías utilizadas](#tecnologias)
 - [Insignias](#insignias)
 - [Descripción del proyecto](#descripcion)
 
-## [🔨Funcionalidades del proyecto](#funciones)
+## 🔨Funcionalidades del proyecto
 
 - `Funcionalidad 1`: descripción de la funcionalidad 1
 - `Funcionalidad 2`: descripción de la funcionalidad 2
