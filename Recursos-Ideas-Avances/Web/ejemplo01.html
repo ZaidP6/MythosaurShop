@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./Recursos/Fotos Peugeot 405/favicon.ico" type="image/x-icon"> <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Iconos -->
+
+    <link rel="stylesheet" href="./Recursos/css/bootstrap.min.css">
+    <!-- Tema -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- CDN Bootstrap -->
+    <title>Club Peugeot 405</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- CDN Bootstrap -->
+
+</head>
+
+<body id="inicio" class="p-3 m-0 border-0 bd-example m-0 border-0 bg-dark-subtle">
+
+    <!-- Menu -->
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3 navbar-shrink bg-dark" data-bs-theme="dark">
+        <div class="container-fluid px-4 px-lg-5">
+            <a class="navbar-brand" href="#inicio"><img src="./Recursos/Fotos Peugeot 405/logoclub2[1].jpg"
+                    alt="Bootstrap" width="15%"> Club Peugeot 405</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav ms-auto my-2 mb-2 my-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historia">Historia</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Modelos
+                        </a>
+                        <ul class="dropdown-menu" style="background-color: #3a3d3f">
+                            <li><a class="dropdown-item" href="#modelos">Todos los modelos</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#gamaGL">Gama
+                                    GL</a></li>
+                            <li><a class="dropdown-item" href="#gamaGR">Gama
+                                    GR</a></li>
+                            <li><a class="dropdown-item" href="#gamaSR">Gama
+                                    SR</a></li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item" href="#Mi16">Gama
+                                    Mi16</a></li>
+                            <li><a class="dropdown-item" href="#modeloCompeticion">Competición</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#datosTecnicos">Datos Técnicos</a></li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#modalinicio"><i
+                                class="bi bi-person-fill"></i>
+                            Inicio
+                            Sesión</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#modalregistro"><i
+                                class="bi bi-person-fill"></i>
+                            Registro</a>
+                    </li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Start Modal -->
+    <div class="modal fade" id="modalinicio" tabindex="-1" aria-labelledby="modaliniciolabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modaliniciolabel">Inicia
+                        Sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="ClubPeugeot405.html">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" required />
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                            <label class="form-check-label" for="exampleCheck1">Recordar</label>
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Entrar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- End Menu -->
+
+    <header id="cabecera" class="mx-3">
+        <!-- Start Portada -->
+        <div id="carouselHeader" class="container-fluid px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-10 text-center">
+                    <div id="inicio">
+
+                        <div id="carousel" class="carousel slide carousel-fade">
+                            <div class="carousel-inner rounded-4">
+                                <div class="carousel-item active">
+                                    <img src="Recursos/Fotos Peugeot 405/sainz-loeb-dakar-2015-peugeot.jpg"
+                                        class="d-block w-100" alt="sainz dakar">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Recursos/Fotos Peugeot 405/renault-pikes-peak[1].jpg"
+                                        class="d-block w-100" alt="pikes peak">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Recursos/Fotos Peugeot 405/Fotos oficiales/unnamed.jpg"
+                                        class="d-block w-100" alt="peugeot 405">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Recursos/Fotos Peugeot 405/Fotos oficiales/4giluuf[1].jpg"
+                                        class="d-block w-100" alt="peugeot 405">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Recursos/Fotos Peugeot 405/Fotos oficiales/43nkae0[1].jpg"
+                                        class="d-block w-100" alt="peugeot 405">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Recursos/Fotos Peugeot 405/Fotos oficiales/405_8.jpg"
+                                        class="d-block w-100" alt="peugeot 405">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="Recursos/Fotos Peugeot 405/Fotos oficiales/34qn2ux[1].jpg"
+                                        class="d-block w-100" alt="peugeot 405">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carousel"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Button trigger modal -->
+        <div class="d-grid gap-2 col-6 mx-auto my-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalregistro">
+                ¡Únete a nuestro Club!
+            </button>
+        </div>
+        <!-- End Button trigger modal -->
+
+        <!-- Modal Registro Completo -->
+        <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="true" id="modalregistro" tabindex="-1"
+            aria-labelledby="modalregistro" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title justify-content-center fs-5" id="modalLabelregistro">Registro</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="registro" class="bg-body-secondary">
+                            <form>
+                                <fieldset>
+                                    <legend>Datos</legend>
+                                    <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <label for="nombre" class="form-label">Nombre</label>
+                                            <input type="text" class="form-control" id="nombre" placeholder="Nombre"
+                                                required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="apellido1" class="form-label">Apellido 1</label>
+                                            <input type="text" class="form-control" id="apellido1"
+                                                placeholder="Apellido1" required>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="apellido2" class="form-label">Apellido 2</label>
+                                            <input type="text" class="form-control" id="apellido2"
+                                                placeholder="Apellido2" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-sm-1 col-md-6 col-lg-6">
+                                            <label for="fechaNacimiento" class="form-label">Fecha de
+                                                Nacimiento</label>
+                                            <input type="date" class="form-control" id="fechaNacimiento"
+                                                min="1900-01-01" required>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Género</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="genero"
+                                                    id="generoHombre" value="hombre" required>
+                                                <label class="form-check-label" for="generoHombre">Hombre</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="genero"
+                                                    id="generoMujer" value="mujer">
+                                                <label class="form-check-label" for="generoMujer">Mujer</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>Dirección</legend>
+                                    <div class="row mb-3">
+                                        <div class="col-md-3">
+                                            <label for="selectTipoDireccion" class="form-label">Tipo de
+                                                Dirección</label>
+                                            <select class="form-select" id="selectTipoDireccion" required>
+                                                <option value>Seleccione</option>
+                                                <option value="calle">Calle</option>
+                                                <option value="avenida">Avenida</option>
+                                                <option value="plaza">Plaza</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <label for="direccion" class="form-label">Dirección</label>
+                                            <input type="text" class="form-control" id="direccion"
+                                                placeholder="Dirección" required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-2">
+                                            <label for="numero" class="form-label">Número</label>
+                                            <input type="text" class="form-control" id="numero" placeholder="Número"
+                                                required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="bloque" class="form-label">Bloque</label>
+                                            <input type="text" class="form-control" id="bloque" placeholder="Bloque">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="piso" class="form-label">Piso</label>
+                                            <input type="text" class="form-control" id="piso" placeholder="Piso">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="letra" class="form-label">Letra</label>
+                                            <input type="text" class="form-control" id="letra" placeholder="Letra">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label for="codigoPostal" class="form-label">Código
+                                                Postal</label>
+                                            <input type="text" class="form-control" id="codigoPostal" placeholder="CP"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-md-7">
+                                            <label for="localidad" class="form-label">Localidad</label>
+                                            <input type="text" class="form-control" id="localidad"
+                                                placeholder="Localidad" required>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <label for="provincia" class="form-label">Provincia</label>
+                                            <input type="text" class="form-control" id="provincia"
+                                                placeholder="Provincia" required>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                                <fieldset>
+                                    <legend>Selecciona tu modelo</legend>
+                                    <div class="row mb-3">
+                                        <div class="col-lg-2 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="gl"
+                                                    id="aficiones1">
+                                                <label class="form-check-label" for="gl">GL</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="gld"
+                                                    id="aficiones2">
+                                                <label class="form-check-label" for="gld">GLD</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="gr"
+                                                    id="aficiones3">
+                                                <label class="form-check-label" for="gr">GR</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="gri"
+                                                    id="aficiones4">
+                                                <label class="form-check-label" for="gri">GRI</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="grx4"
+                                                    id="aficiones5">
+                                                <label class="form-check-label" for="grx4">GRx4</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="sr"
+                                                    id="aficiones6">
+                                                <label class="form-check-label" for="sr">SR</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="sri"
+                                                    id="aficiones7">
+                                                <label class="form-check-label" for="sri">SRI</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="srx4"
+                                                    id="aficiones8">
+                                                <label class="form-check-label" for="srx4">SRx4</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="st"
+                                                    id="aficiones9">
+                                                <label class="form-check-label" for="st">ST</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="sti"
+                                                    id="aficiones10">
+                                                <label class="form-check-label" for="sti">STI</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="stdt"
+                                                    id="aficiones11">
+                                                <label class="form-check-label" for="stdt">STDT</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="mi16"
+                                                    id="aficiones12">
+                                                <label class="form-check-label" for="mi16">405
+                                                    Mi16</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="mi16x4"
+                                                    id="aficiones13">
+                                                <label class="form-check-label" for="mi16x4">405
+                                                    Mi16x4</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="t16"
+                                                    id="aficiones14">
+                                                <label class="form-check-label" for="t16">405
+                                                    T16</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary" data-bs-target="#modalverificacion"
+                            data-bs-toggle="modal">Registrarse</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Registro Completo -->
+
+        <!--Start 2do Modal Registro Completo -->
+
+        <div class="modal fade" id="modalverificacion" aria-hidden="true" aria-labelledby="modalverificacion"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalverificaciontitulo">Registro
+                            Completado</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End 2do Modal Registro Completo -->
+
+    </header>
+    <!-- End Portada -->
+
+    <main class="page-item">
+        <div class="row justify-content-center">
+            <div class="col-12 m-1">
+
+                <!-- Start Historia -->
+                <section id="historia"
+                    class="page-item my-5 py-5 mx-3 bg-body border border-2 border-primary rounded-2">
+                    <div class="m-auto container px-4 px-lg-5 py-5 justify-content-center">
+                        <h1 class="text-center">La Historia</h1>
+                        <div class="row gx-4 gx-lg-5">
+                            <div class="col-md-12 col-lg-12">
+                                <h6 class="text-center">
+                                    El <span class="fw-bold">Peugeot
+                                        405</span> es un automóvil
+                                    del
+                                    segmento
+                                    D producido
+                                    por el fabricante francés
+                                    Peugeot.
+                                </h6>
+                                <p>
+                                    Diseñado por el estudio
+                                    Pininfarina, se
+                                    construyó en
+                                    Europa entre 1987 y 1997, cuando
+                                    fue
+                                    sustituido por el
+                                    Peugeot 406. En sus diez años de
+                                    vida
+                                    contó
+                                    con
+                                    numerosas versiones según los
+                                    niveles de
+                                    equipamiento
+                                    disponibles sobre 4 bases
+                                    principales
+                                    denominadas <span class="fw-bold">GL,GR,
+                                        SR y ST</span>
+                                    , además de las 2 versiones
+                                    deportivas, <span class="fw-bold">Mi16
+                                        y T16</span>, y el modelo
+                                    familiar
+                                    "Break".
+                                </p>
+                                <p>
+                                    Las siglas GL ("Grand Large")
+                                    correspondían
+                                    al modelo
+                                    más básico. Le seguían las
+                                    siglas GR
+                                    ("Grand Registre")
+                                    en el referencia a la gran
+                                    cantidad de
+                                    opciones y extras
+                                    que podía equipar, y SR
+                                    ("Signe de Reconnaissance") para
+                                    el modelo más equipado, junto
+                                    con una
+                                    variación de este
+                                    último, el ST, con acabados
+                                    interiores
+                                    en
+                                    madera y
+                                    cuero. Junto a estas siglas se
+                                    añadían
+                                    otras
+                                    para
+                                    indicar la motorización montada
+                                    en cada
+                                    caso, incluyendo
+                                    una "I" si se trataba de un
+                                    motor de
+                                    inyección, una "D"
+                                    para los motores diésel,
+                                    "Dturbo" o "DT"
+                                    para los turbo
+                                    diésel, y "x4" para aquellos con
+                                    tracción a
+                                    las 4
+                                    ruedas. En caso de no incluir
+                                    ninguna
+                                    letra,
+                                    se entendía
+                                    que equipaba un motor de
+                                    carburación.
+                                </p>
+                                <p>
+                                    De esta forma podíamos encontrar
+                                    por
+                                    regla
+                                    general los
+                                    modelos GL y GLD; GR, GRI, GRx4,
+                                    GRD y
+                                    GRDturbo; SR,
+                                    SRI, SRx4, SRIx4, SRD y
+                                    SRDturbo; ST,
+                                    STI,
+                                    STDT; Mi16,
+                                    Mi16x4 y T16 (el más alto de la
+                                    gama),
+                                    si
+                                    bien no todas
+                                    ellas fueron comercializadas en
+                                    todos
+                                    los
+                                    países,
+                                    pudiendo encontrar variaciones u
+                                    otro
+                                    tipo
+                                    de
+                                    combinaciones.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- End Historia -->
+
+                <!-- Start Models -->
+
+                <section id="modelos" class="mx-3 bg-body border border-2 border-primary rounded-2">
+                    <div class="row row-cols-1 row-cols-md-3 g-4 m-2">
+                        <div class="col">
+                            <div class="card bg-dark-subtle mb-3 border-3 rounded-2">
+                                <a href="#gamaGL"><img
+                                        src="./Recursos/Fotos Peugeot 405/Fotos oficiales/peugeot-405.jpg"
+                                        class="card-img-top" alt="peugeot">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gama GL</h5>
+                                    <p class="card-text">Las siglas
+                                        GL
+                                        ("Grand Large")
+                                        correspondían al modelo más
+                                        básico.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card bg-dark-subtle mb-3 border-3 rounded-2">
+                                <a href="#gamaGR"><img
+                                        src="./Recursos/Fotos Peugeot 405/Fotos oficiales/Peugeot_405_Break_1_bcd[1]16.9.jpg"
+                                        class="card-img-top" alt="peugeot 405"></a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gama GR</h5>
+                                    <p class="card-text">Las siglas
+                                        GR
+                                        ("Grand Registre") en
+                                        el referencia a la gran
+                                        cantidad de
+                                        opciones y
+                                        extras que podía
+                                        equipar.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card bg-dark-subtle mb-3 border-3 rounded-2">
+                                <a href="#gamaSR"><img
+                                        src="./Recursos/Fotos Peugeot 405/Fotos oficiales/Peugeot_405_SRI_1992.16.9.jpg"
+                                        class="card-img-top" alt="peugeot 405 sri">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gama SR</h5>
+                                    <p class="card-text">Las siglas
+                                        SR
+                                        ("Signe de Reconnaissance")
+                                        para el
+                                        modelo más
+                                        equipado, junto con una
+                                        variación de
+                                        este último, el
+                                        ST, con acabados interiores
+                                        en
+                                        madera y
+                                        cuero.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <hr class="divider ">
+                    </div>
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-2">
+                        <div class="col">
+                            <div class="card bg-dark-subtle mb-3 border-3 rounded-2 mx-3">
+                                <a href="#Mi16"><img
+                                        src="./Recursos/Fotos Peugeot 405/Fotos oficiales/Mi16 Le Mans 2.jpg"
+                                        class="card-img-top" alt="peugeot 405 le mans">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gama Mi16</h5>
+                                    <p class="card-text">Las siglas
+                                        Mi16
+                                        hace
+                                        refrencia al
+                                        motor, siendo éste
+                                        "Multi-Inyección de 16 válvulas",
+                                        siendo la gama
+                                        deportiva.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="card bg-dark-subtle mb-3 border-3 rounded-2 mx-3">
+                                <a href="#modeloCompeticion"><img src="./Recursos/Fotos Peugeot 405/pikespeak01.jpg"
+                                        class="card-img-top" alt="peugeot 405 pikes pike">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Gama Competición</h5>
+                                    <p class="card-text">En la
+                                        década de los
+                                        80
+                                        el equipo
+                                        Peugeot Talbot Sport
+                                        dominaba en el
+                                        antiguo Grupo B
+                                        del Campeonato Mundial de
+                                        Rally
+                                        gracias
+                                        al Peugeot
+                                        205 Turbo 16.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- End Models -->
+
+                <!-- Start GL-->
+
+                <section id="gamaGL" class="mx-3 my-3">
+                    <div class="bg-body border border-2 border-primary rounded-2 py-3 px-4">
+                        <div class="col-12 p-3 text-center fw-bold">
+                            <h3>Peugeot 405 GL</h3>
+                        </div>
+                        <div class="row row-cols-sm-12 row-cols-md-2 row-cols-lg-2">
+                            <div class=" col-sm-12 col-md-6 col-lg-6">
+                                <p>
+                                    La <span class="fw-bold">gama GL</span>
+                                    constituía la gama básica de
+                                    precio más económico de todo el
+                                    catálogo.
+                                    Tenían un equipamiento mínimo y
+                                    se ofrecía con dos
+                                    motorizaciones, una
+                                    de
+                                    gasolina y una diésel denominada
+                                    <span class="fw-bold">GLD</span>.
+                                </p>
+                                <p>
+                                    Estéticamente no contaban con
+                                    detalles y
+                                    eran muy sencillos. Las molduras
+                                    de las
+                                    puertas eran muy finas y sin
+                                    cromados,
+                                    algunos elementos como los
+                                    retrovisores
+                                    o
+                                    las manetas de las puertas eran
+                                    de
+                                    plástico
+                                    sin pintar, y las llantas eran
+                                    de acero
+                                    <span class="fw-bold">con
+                                        tapacubos</span>.
+                                </p>
+                                <p>
+                                    En el <span class="fw-bold">interior</span>
+                                    encontrábamos las comodidades
+                                    básicas, teniendo como únicos
+                                    extras
+                                    la posibilidad de incorporar
+                                    elevalunas
+                                    eléctricos delanteros y aire
+                                    acondicionado.
+                                    La tapicería se ofrecía con
+                                    varios
+                                    acabados,
+                                    todos ellos de tela sencilla,
+                                    pero que
+                                    con el paso de los años terminó
+                                    demostrando
+                                    ser sorprendentemente <span class="fw-bold">resistente
+                                        al
+                                        desgaste</span>.
+                                </p>
+                            </div>
+                            <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12">
+                                <img class="col-12 col-md-8 col-lg-8"
+                                    src="./Recursos/Fotos Peugeot 405/405_GL_lateral.jpeg" width="100%"
+                                    alt="405 GL lateral">
+                                <img class="col-12 col-md-4 col-lg-4"
+                                    src="./Recursos/Fotos Peugeot 405/405-GL-Revista.jpg" width="100%"
+                                    alt="405 GL portada revista">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- End GL-->
+
+                <!-- Start GR-->
+
+                <section id="gamaGR" class="mx-3 my-3">
+                    <div class="bg-body border border-2 border-primary rounded-2 py-3 px-4">
+                        <div class="col-12 p-3 text-center fw-bold">
+                            <h3>Peugeot 405 GR</h3>
+                        </div>
+                        <div class="row row-cols-sm-12 row-cols-md-2 row-cols-lg-2">
+                            <div class=" col-sm-12 col-md-6 col-lg-6">
+                                <p>
+                                    La <span class="fw-bold">gama GR</span>
+                                    representaba la gama media.
+                                    Partiendo de las misma base que
+                                    el
+                                    modelo
+                                    GL, tenía como opción una gran
+                                    cantidad
+                                    de
+                                    extras que permitía conseguir
+                                    una
+                                    relación
+                                    calidad precio muy interesante.
+                                    En las
+                                    motorizaciones podíamos
+                                    encontrar más
+                                    opciones, como otro motor de
+                                    gasolina
+                                    pero
+                                    de inyección y un motor
+                                    turbodiésel
+                                    denominado <span class="fw-bold">GRDT.</span>
+                                </p>
+                                <p>
+                                    En el exterior observávamos
+                                    <span class="fw-bold">cromados</span>
+                                    en
+                                    las
+                                    molduras de las puertas, lo que
+                                    nos
+                                    permitía
+                                    diferenciarlo de la gama GL.
+                                    Además, como opción se podían
+                                    instalar
+                                    faros
+                                    antinieblas y llantas de
+                                    aleación de
+                                    alumnio.
+                                </p>
+                                <p>
+                                    En el equipamiento <span class="fw-bold">interior</span>
+                                    se
+                                    podían
+                                    observar detalles como un
+                                    marcador de
+                                    revoluciones, un reloj digital y
+                                    tapicería
+                                    de <span class="fw-bold">mayor
+                                        calidad.</span>
+                                </p>
+                            </div>
+                            <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12">
+                                <img class="col-12 col-md-12 col-lg-8"
+                                    src="./Recursos/Fotos Peugeot 405/405-gr-lateral.png" width="100%" alt="405 GR">
+                                <img class="col-12 col-md-12 col-lg-4" src="./Recursos/Fotos Peugeot 405/405-grd.jpg"
+                                    width="100%" alt="405 GR">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- End GR-->
+
+                <!-- Start SR-->
+
+                <section id="gamaSR" class="mx-3 my-3">
+                    <div class="bg-body border border-2 border-primary rounded-2 py-3 px-4">
+                        <div class="col-12 p-3 text-center fw-bold">
+                            <h3>Peugeot 405 SR</h3>
+                        </div>
+                        <div class="row row-cols-sm-12 row-cols-md-2 row-cols-lg-2">
+                            <div class=" col-sm-12 col-md-6 col-lg-6">
+                                <p>
+                                    La <span class="fw-bold">gama
+                                        SR</span>
+                                    se vendía como la <span class="fw-bold">gama
+                                        alta</span>, su
+                                    mayor coste nos permitía obtener
+                                    muchos
+                                    de
+                                    los extras anteriores equipados
+                                    de serie
+                                    y
+                                    optar a otras opciones más
+                                    exclusivas.
+                                    En
+                                    las motorizaciones se mantenía
+                                    el motor
+                                    de
+                                    inyección de gasolina que se
+                                    denominaba
+                                    <span class="fw-bold">SRI</span>
+                                    y el turbodiésel <span class="fw-bold">SRDT.</span>
+                                </p>
+                                <p>
+                                    Su aperiencia <span class="fw-bold">exterior</span>
+                                    era
+                                    más cuidada, con
+                                    cromados en las puertas y en las
+                                    ventanas,
+                                    retrovisores y manetas del mismo
+                                    color
+                                    que
+                                    la carrocería y <span class="fw-bold">alerón</span>
+                                    en el
+                                    maletero, todo
+                                    ello de serie.
+                                    También contaba con las llantas
+                                    de
+                                    aleación
+                                    aunque no todos los modelos las
+                                    incluían.
+                                </p>
+                                <p>
+                                    En el <span class="fw-bold">interior</span>
+                                    encontrábamos un acabado
+                                    superior, como <span class="fw-bold">tapicería de
+                                        cuero</span> o de
+                                    terciopelo con reposacabezas y
+                                    reposabrazos
+                                    en los asientos traseros, y
+                                    <span class="fw-bold">maletero
+                                        enmoquetado.</span> Como
+                                    opciones de
+                                    equipamiento
+                                    teníamos radiocassette con
+                                    altavoces
+                                    traseros, retrovisores
+                                    eléctricos,
+                                    elevalunas eléctricos en todas
+                                    las
+                                    ventanas,
+                                    techo solar o trampilla
+                                    portaesquís.
+                                </p>
+                                <p>
+                                    Una variante del SR se
+                                    comercializó como
+                                    <span class="fw-bold">ST</span>,
+                                    un modelo que equipaba <span class="fw-bold">todos los
+                                        extras</span> ya
+                                    mencionados y además
+                                    incrustaciones de
+                                    madera en el salpicadero y en
+                                    las
+                                    puertas,
+                                    lo que le daba un aspecto <span class="fw-bold">más
+                                        lujoso.</span>
+                                </p>
+                            </div>
+                            <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12">
+                                <img class="col-12 col-md-6 col-lg-6" src="./Recursos/Fotos Peugeot 405/sr-interior.JPG"
+                                    width="100%" alt="405 SR">
+                                <img class="col-12 col-md-6 col-lg-6"
+                                    src="./Recursos/Fotos Peugeot 405/Peugeot_405_SRI_1992.jpg" width="100%"
+                                    alt="405 SR">
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- End SR-->
+
+                <!-- Start Mi16-->
+
+                <section id="Mi16" class="mx-3 my-3">
+                    <div class="bg-body border border-2 border-primary rounded-2 py-3 px-4">
+                        <div class="col-12 p-3 text-center fw-bold">
+                            <h3>Peugeot 405 Mi16</h3>
+                        </div>
+                        <div class="row row-cols-sm-12 row-cols-md-2 row-cols-lg-2">
+                            <div class=" col-sm-12 col-md-6 col-lg-6">
+                                <p>
+                                    Como tope de gama del 405
+                                    encontrábamos
+                                    una
+                                    versión deportiva llamada Mi16.
+                                    Equipado
+                                    con
+                                    un motor de 16
+                                    válvulas e inyección electrónica
+                                    llegaba
+                                    a
+                                    desarrollar 160cv sin necesidad
+                                    de
+                                    turbo.
+                                </p>
+                                <p>
+                                    Su equipamiento era superior en
+                                    todos
+                                    los
+                                    aspectos, en el exterior
+                                    encontrábamos
+                                    paragolpes, taloneras laterales
+                                    y
+                                    llantas de
+                                    aleación de mayor tamaño que en
+                                    los
+                                    modelos
+                                    anteriores. La parte interior
+                                    contaba
+                                    con una tapicería exclusiva,
+                                    asientos
+                                    deportivos y
+                                    volante tapizado en cuero.
+                                </p>
+                            </div>
+                            <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12">
+                                <img class="col-12 col-md-12 col-lg-8"
+                                    src="./Recursos/Fotos Peugeot 405/Fotos oficiales/Mi16 Le Mans 3.jpg" width="100%"
+                                    alt="405 SR">
+                                <img class="col-12 col-md-12 col-lg-4"
+                                    src="./Recursos/Fotos Peugeot 405/salpicadero 405 mi16.jpg" width="100%"
+                                    alt="interior01">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- End Mi16-->
+
+                <!-- Start competicion-->
+
+                <section id="modeloCompeticion" class="mx-3 my-3">
+                    <div class="bg-body border border-2 border-primary rounded-2 py-3 px-4">
+                        <div class="col-12 p-3 text-center fw-bold">
+                            <h3>Competición: 405 Turbo 16</h3>
+                        </div>
+                        <div class="row row-cols-sm-12 row-cols-md-2 row-cols-lg-2">
+                            <div class=" col-sm-12 col-md-6 col-lg-6">
+                                <p>Para el <span class="fw-bold">Dakar</span>
+                                    de 1988
+                                    el equipo presentó el <span class="fw-bold">Peugeot 405
+                                        T16
+                                        Grand Raid</span>, de nuevo
+                                    con Ari
+                                    Vatanen a los mandos, junto al
+                                    205 del
+                                    año anterior que también
+                                    competiría. Una
+                                    vez más
+                                    la ventaja frente a los
+                                    competidores fue
+                                    patente, sin embargo, a falta de
+                                    5
+                                    etapas el
+                                    405 T16 fue robado del parque
+                                    cerrado
+                                    durante la noche, y aunque
+                                    apareció
+                                    horas después
+                                    fue imposible que tomara la
+                                    salida a
+                                    tiempo, privando a Vatanen de su
+                                    segunda
+                                    victoria,
+                                    que al menos se quedaría en el
+                                    equipo
+                                    Peugeot al ganar el 205 T16.
+                                </p>
+                                <p>De vuelta en el <span class="fw-bold">Pikes
+                                        Peak</span>,
+                                    el nuevo coche marcó la
+                                    diferencia
+                                    esperada, y Vatanen pudo
+                                    alzarse con la <span class="fw-bold">victoria</span>,
+                                    estableciendo un récord que
+                                    permanecería
+                                    imbatible varios años.
+                                    Durante la carrera se instalaron
+                                    varias
+                                    cámaras tanto en el coche como
+                                    en el
+                                    circuito,
+                                    que se emplearían para producir
+                                    el
+                                    cortometraje <span class="fst-italic">Climb
+                                        Dance</span>, mostrando el
+                                    ascenso
+                                    de
+                                    Vatanen por la peligrosa pista
+                                    de
+                                    montaña, y que ganaría varios
+                                    premios en
+                                    festivales de
+                                    cine.
+                                </p>
+                                <p>Para el año 1989 el equipo
+                                    Peugeot y el
+                                    405 T16 volvieron a revalidar
+                                    ambos
+                                    títulos, con
+                                    Bobby Unser en el Pikes Peak, y
+                                    esta vez
+                                    sí con Vatanen en el Dakar, que
+                                    repetiría de
+                                    nuevo en 1990, en la que sería
+                                    la última
+                                    participación de Peugeot en el
+                                    raid
+                                    hasta el
+                                    año 2015. Vatanen aun
+                                    conseguiría otra
+                                    victoria más en el 91, ya que el
+                                    405 T16
+                                    fue
+                                    rediseñado bajo la apariencia
+                                    del
+                                    Citroën ZX, para seguir
+                                    compitiendo en
+                                    el equipo
+                                    Citroën Sport.
+                                </p>
+                            </div>
+                            <div class="row row-cols-12 row-cols-md-12 row-cols-lg-12">
+                                <img class="col-12 col-md-12 col-lg-7"
+                                    src="./Recursos/Fotos Peugeot 405/pikespeak01.jpg" width="100%" alt="pikes peak">
+                                <img class="col-12 col-md-12 col-lg-5"
+                                    src="./Recursos/Fotos Peugeot 405/405-t16-rally.jpg" width="100%" alt="405 T16">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- End Competicion-->
+
+                <!-- Start Info -->
+
+                <div class="accordion" id="datosTecnicos">
+                    <div class="col-12 p-3 text-center fw-bold">
+                        <h3>Datos Técnicos</h3>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#acordeonfijo" aria-expanded="true"
+                                aria-controls="panelsStayOpen-collapseOne">
+                                Motorizaciones Fase I
+                            </button>
+                        </h2>
+                        <div id="acordeonfijo" class="accordion-collapse collapse show">
+                            <div class="accordion-body">
+                                <div class="container"></div>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Modelo</th>
+                                                <th scope="col">Año</th>
+                                                <th scope="col">Motor</th>
+                                                <th scope="col">Características</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>GL</td>
+                                                <td>1987</td>
+                                                <td>TU3<br />XU5
+                                                    2C</td>
+                                                <td>1.4 65
+                                                    CV<br />1.6 92
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GLD</td>
+                                                <td>1988<br />1992</td>
+                                                <td>XUD9<br />XUD9A</td>
+                                                <td>1.9 D 69
+                                                    CV<br />1.9 D
+                                                    71 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GR</td>
+                                                <td>1987</td>
+                                                <td>XU52C<br />XU92C</td>
+                                                <td>1.6 92
+                                                    CV<br />1.9 110
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GR×4</td>
+                                                <td>1989</td>
+                                                <td>XU92C</td>
+                                                <td>1.9 110 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GRI</td>
+                                                <td>1991</td>
+                                                <td>XU9J2</td>
+                                                <td>1.9 I 125
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GRD</td>
+                                                <td>1988<br />1992</td>
+                                                <td>XUD9<br />XUD9A</td>
+                                                <td>1.9 D 69
+                                                    CV<br />1.9 D
+                                                    71 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GRDturbo</td>
+                                                <td>1988</td>
+                                                <td>XUD7TE</td>
+                                                <td>1.7 TD 90
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SR</td>
+                                                <td>1987</td>
+                                                <td>XU52C<br />XU92C</td>
+                                                <td>1.6 92
+                                                    CV<br />1.9 110
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SR×4</td>
+                                                <td>1989</td>
+                                                <td>XU52C</td>
+                                                <td>1.9 110 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SRI</td>
+                                                <td>1987</td>
+                                                <td>XU9J2</td>
+                                                <td>1.9 I 125
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SRDturbo</td>
+                                                <td>1988</td>
+                                                <td>XUD7TE</td>
+                                                <td>1.7 TD 90
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>STI</td>
+                                                <td>1992</td>
+                                                <td>XU9J2</td>
+                                                <td>1.9 I 125
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>STDturbo</td>
+                                                <td>1992</td>
+                                                <td>XUD7TE</td>
+                                                <td>1.7 TD 90
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mi16<br />Mi16
+                                                    (CAT)</td>
+                                                <td>1987<br />1990</td>
+                                                <td>XU9J4<br />XU9J4Z</td>
+                                                <td>1.9 I 16v 160
+                                                    CV<br />1.9 I
+                                                    16v 145
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mi16×4</td>
+                                                <td>1990</td>
+                                                <td>XU9J4</td>
+                                                <td>1.9 I 16v 160
+                                                    CV</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseTwo">
+                                Motorizaciones Fase II
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Modelo</th>
+                                                <th scope="col">Año</th>
+                                                <th scope="col">Motor</th>
+                                                <th scope="col">Características</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>GL</td>
+                                                <td>1992</td>
+                                                <td>TU3A<br />XU5M</td>
+                                                <td>1.4 75
+                                                    CV<br />1.6 I 89
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GLD</td>
+                                                <td>1992</td>
+                                                <td>XUD9A</td>
+                                                <td>1.9 D 71 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GR</td>
+                                                <td>1992</td>
+                                                <td>XU5M</td>
+                                                <td>1.6 I 89 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GRI</td>
+                                                <td>1992</td>
+                                                <td>XU7JP<br />XU10J2</td>
+                                                <td>1.8 I 103
+                                                    CV<br />2.0 I
+                                                    123 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GRD</td>
+                                                <td>1992</td>
+                                                <td>XUD9A</td>
+                                                <td>1.9 D 71 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>GRDT</td>
+                                                <td>1992</td>
+                                                <td>XUD9TE</td>
+                                                <td>1.9 D 92 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SRI<br />STI</td>
+                                                <td>1992</td>
+                                                <td>XU10J2</td>
+                                                <td>2.0 I 123
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>SRDT<br />STDT</td>
+                                                <td>1992</td>
+                                                <td>XUD9TE</td>
+                                                <td>1.9 D 92 CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Mi16</td>
+                                                <td>1992</td>
+                                                <td>XU10J4</td>
+                                                <td>2.0 I 16v 155
+                                                    CV</td>
+                                            </tr>
+                                            <tr>
+                                                <td>T16</td>
+                                                <td>1993</td>
+                                                <td>XU10J4TE</td>
+                                                <td>2.0 T 16v 200
+                                                    CV</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                aria-controls="panelsStayOpen-collapseThree">
+                                Equivalencia Motores
+                            </button>
+                        </h2>
+                        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                            <div class="accordion-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Motores
+                                                    Fase
+                                                    1</th>
+                                                <th scope="col">Motores
+                                                    Fase
+                                                    2</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>TU3 (1.4 65
+                                                    CV)</td>
+                                                <td>TU3A (1.4 75
+                                                    CV)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>XU52C (1.6 92
+                                                    CV)</td>
+                                                <td>XU5M (1.6 89
+                                                    CV)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>XU92C (1.9 110
+                                                    CV)</td>
+                                                <td>XU7JP (1.8 103
+                                                    CV)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>XU9J2 (1.9 I 125
+                                                    CV)</td>
+                                                <td>XU10J2 (2.0 I
+                                                    123
+                                                    CV)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>XU9J4 (1.9 I 16v
+                                                    160
+                                                    CV)</td>
+                                                <td>XU10J4 (2.0 I
+                                                    16v 155
+                                                    CV)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>XUD7TE (1.7 TD
+                                                    90
+                                                    CV)</td>
+                                                <td>XUD9TE (1.9 TD
+                                                    92
+                                                    CV)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Info-->
+            </div>
+        </div>
+    </main>
+    <!-- Botón ir hacia arriba-->
+
+    <div class="d-grid gap-2 d-md-flex justify-content-sm-end justify-content-md-end justify-content-lg-end">
+        <a href="#cabecera"><button class="btn btn-primary" type="button"><i
+                    class="bi bi-chevron-double-up"></i></button></a>
+    </div>
+
+    <!-- Start Footer -->
+
+    <footer class="container-fluid w-100 flex-wrap justify-content-between align-items-center py-3 my-3 border-top">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-0">
+                <img src="./Recursos/Fotos Peugeot 405/Logo Peugeot.png" width="90%" alt="Logo Club Peugeot 405">
+            </div>
+            <div
+                class="col-sm-12 col-md-4 col-lg-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto">
+                <p>Copyright © 2024 - Club Peugeot 405 <img src="./Recursos/img/117078911.png" width="15%"
+                        alt="logoCreador"></p>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4 mb-md-0 justify-content-end">
+                <h6 class="text-uppercase fw-bold mb-3 text-center">Contacto</h6>
+                <p class="text-center"><a href="http://foro.clubpeugeot405.es/"><i
+                            class="bi bi-highlighter me-3"></i>Foro
+                        Peugeot 405<i class="bi bi-highlighter mx-2"></i></a></p>
+                <p class="text-center">
+                    <a href="mailto:clubpeugeot405@gmail.com"><i class="bi bi-envelope mx-2"></i>
+                        clubpeugeot405@gmail.com<i class="bi bi-envelope me-3 mx-2"></i></a>
+                </p>
+                <p class="text-center"><a href="https://www.facebook.com/club405esp/"><i
+                            class="bi bi-facebook me-3"></i>Club405esp
+                        <i class="bi bi-facebook mx-2"></i></a></p>
+                <p class="text-center"><a href="https://www.instagram.com/club405es/"><i
+                            class="bi bi-instagram me-3"></i>Club405es
+                        <i class="bi bi-instagram mx-2"></i></a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- End Footer -->
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+.fondoEstatico{
+    background-image: url(../img/mythosaurNegro.png);
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+    background-position: center;
+    background-color: rgb(58, 65, 71);
+    font-family: Arial, sans-serif;
+    }
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+    .producto {
+        margin-bottom: 20px;
+        border: solid black 2px;
+        border-radius: 20px;
+        padding: 5%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .producto img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        padding: 10px;
+        margin-bottom: 5px;
+    }
+    .producto:hover .img{
+        transform:scale(1.3);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-comprar {
+        transition: transform 0.3s;
+        background-color: rgb(13, 112, 241);
+        width: 100%;
+    }
+    .btn-comprar:hover {
+        /*transform: scale(1.1);*/
+        background-color: greenyellow;
+        color: black;
+    }
+
+    .precioEntero{
+        font-size: 3em;
+    }
+    .precioDecimal{
+        font-size: 1.5em;
+        padding-top: 5%;
+        vertical-align: top;
+    }
+    .precioMoneda{
+        font-size: 1.5em;
+        padding-top: 5%;
+        vertical-align: top;
+    }
+
+    header, main, footer{
+        padding: 20px;
+    }
+
+    button{
+        border-radius: 20px;
+    }

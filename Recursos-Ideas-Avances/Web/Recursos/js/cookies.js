@@ -1,0 +1,2 @@
+alert('Utilizamos cookies propias y de terceros para analizar tus hábitos de navegación y mostrarte publicidad según los mismos o los productos que visites o de los que puedas mostrar un interés en nuestra web, personalizar tus preferencias, gestionar el contenido de la cesta así como ofrecerte nuestros consejos personalizados. Si continúas navegando, consideramos que aceptas su uso.');
+//mejor hacer con un modal en vez de con alert

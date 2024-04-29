@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="icon" href="./Recursos/img/favicon.ico" type="image/x-icon"> <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Iconos -->
+    <link rel="stylesheet" href="./Recursos/css/bootstrap.min.css">
+    <!-- Tema -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Mythosaur Shop</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style type="text/css">
+        card {
+            border-radius: 10px;
+        }
+        @media screen and (max-width: 640px) {
+            .modalForm {
+                width: 90%;
+            }
+
+            .companyInfo {
+                display: none;
+            }
+        }
+
+        .modalForm {
+            border-radius: 20px;
+        }
+
+        .modalDesign {
+            
+            background-image: radial-gradient(circle, rgba(255,255,255,0.25) 37%, rgba(0,0,0,0.5) 100%), url(./Recursos/img/mythosaurNegro.png);
+            background-size: 120%;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .bi {
+            font-size: 2.5em;
+        } 
+
+        input:hover{
+           background-color: greenyellow;
+        }
+        /*
+        .symbol-input100 {
+        font-size: 15px;
+        color: #999;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        position: absolute;
+        border-radius: 25px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding-left: 30px;
+        pointer-events: none;
+        -webkit-transition: all .4s;
+        -o-transition: all .4s;
+        -moz-transition: all .4s;
+        transition: all .4s
+    }
+    .input100:focus+.focus-input100+.symbol-input100 {
+        color: #00c6fb;
+        padding-left: 23px
+    }
+    .input100:focus+.focus-input100 {
+        -webkit-animation: anim-shadow .5s ease-in-out forwards;
+        animation: anim-shadow .5s ease-in-out forwards
+    }
+    .focus-input100 {
+        display: block;
+        position: absolute;
+        border-radius: 25px;
+        bottom: 0;
+        left: 0;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        box-shadow: 0 0;
+        color: rgba(0,91,234,.6)
+    }
+    @-webkit-keyframes anim-shadow {
+        to {
+            box-shadow: 0 0 80px 30px;
+            opacity: 0
+        }
+    }
+
+    @keyframes anim-shadow {
+        to {
+            box-shadow: 0 0 80px 30px;
+            opacity: 0
+        }
+    }
+    .alert-validate::before {
+        content: attr(data-validate);
+        position: absolute;
+        max-width: 70%;
+        background-color: #fff;
+        border: 1px solid #0075c8;
+        border-radius: 14px;
+        padding: 4px 25px 4px 10px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 8px;
+        pointer-events: none;
+        font-family: Montserrat-Bold;
+        color: #c80000;
+        font-size: 13px;
+        line-height: 1.4;
+        text-align: left;
+        visibility: hidden;
+        opacity: 0;
+        -webkit-transition: opacity .4s;
+        -o-transition: opacity .4s;
+        -moz-transition: opacity .4s;
+        transition: opacity .4s
+    }
+
+    .alert-validate::after {
+        content: "\f06a";
+        font-family: FontAwesome;
+        display: block;
+        position: absolute;
+        color: #c80000;
+        font-size: 15px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        right: 13px
+    }
+
+    .alert-validate:hover:before {
+        visibility: visible;
+        opacity: 1
+    }
+
+    @media(max-width: 992px) {
+        .alert-validate::before {
+            visibility:visible;
+            opacity: 1
+        }
+    }
+
+    @media(max-width: 576px) {
+        .wrap-login100 {
+            padding-top:80px;
+            padding-left: 15px;
+            padding-right: 15px
+        }
+    }
+        */
+    </style>
+</head>
+
+<body>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row  text-center">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card modalForm modalDesign shadow-sm p-3 mb-5 bg-dark text-white">
+                            <div class="card-body p-5 text-center">
+
+                                <div class="mb-md-5 mt-md-2 pb-5">
+
+                                    <h2 class="fw-bold mb-4 text-uppercase">Login</h2>
+                                    <p class="text-white-75 mb-5">Please enter your username and password!</p>
+
+                                    <div class="form-outline form-white mb-4" data-validate="Username is required!">
+                                        <input type="email" id="typeEmailX" class="form-control form-control-lg"  placeholder="Username" />
+                                        <span class="symbolInputForm"><i class="bi bi-person-fill"></i></span>
+                                    </div>
+
+                                    <div class="form-outline form-white mb-4">
+                                        <input type="password" id="typePasswordX"
+                                            class="form-control form-control-lg" />
+                                            <span class="symbolInputForm"><i class="bi bi-lock-fill"></i></span>
+
+                                    </div>
+
+                                    <p class="small mb-5 pb-lg-2"><a class="text-white-75" href="#!">Forgot
+                                            password?</a>
+                                    </p>
+
+                                    <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+
+                                    <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                        <a href="#!" class="text-white"><i class="bi bi-facebook"></i></a>
+                                        <a href="#!" class="text-white"><i class="bi bi-github mx-4 px-2"></i></a>
+                                        <a href="#!" class="text-white"><i class="bi bi-google"></i></a>
+                                        <a href="#!" class="text-white"><i class="bi bi-linkedin mx-4 px-2"></i></a>
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <p class="mb-0">Don't have an account? <a href="#!"
+                                            class="text-white-50 fw-bold">Sign
+                                            Up</a>
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+</body>
+
+</html>
+
+<!--
+    https://www.web-leb.com/en/code/288
+    https://www.web-leb.com/en/code/206
+    https://www.web-leb.com/en/code/205
+    https://www.web-leb.com/en/code/161
+    https://www.web-leb.com/en/code/17
+    https://www.web-leb.com/en/code/16
+    https://www.web-leb.com/en/code/8
+
+    https://colorlib.com/wp/template/login-form-v12/
+
+-->

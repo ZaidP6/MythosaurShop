@@ -1,0 +1,13 @@
+.theme-dark{
+    --primary:#f8f8f8;
+    --secondary:#ff0066;
+}
+
+
+.theme-panda{
+    --primary: #ff0000;
+    --secondary: #20d5bb;
+    --background: #282c2f;
+    --font-base: 'la que sea';
+    --font-size: 1.5em;
+}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./Recursos/img/favicon.ico" type="image/x-icon"> <!-- Favicon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Iconos -->
+
+    <link rel="stylesheet" href="./Recursos/css/bootstrap.min.css">
+    <!-- Tema -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Mythosaur Shop</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<!--Para dejar Navbar fija arriba fixed-top navbar-shrink-->
+
+<nav class="navbar navbar-collapse navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid justify-content-between">
+        <a class="navbar-brand" href="#inicio"><img src="./Recursos/img/Mythosaur Shop Lineal Black.png" width="90%"
+                alt="Logo lineal"></a>
+        <button class="navbar-toggler collapsed float-sm-end" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Productos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="#">Llaveros</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" aria-disabled="true">Felpudos</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Carteras</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Tazas</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Fundas Móvil</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">Funkos</a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider" />
+                        </li>
+                        <li><a class="dropdown-item" href="#">Todos los productos</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#modalinicio"><i
+                            class="bi bi-heart-fill"></i></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" href="#modalinicio"><i
+                            class="bi bi-person-fill"></i></a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#bolsacompra"><i class="bi bi-bag-fill"></i></a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<body>
+
+    <div class="container-fluid">
+        <div>
+            <div>
+                <div class="d-flex justify-content-center">
+                    <h1>Registro</h1>
+                </div>
+                <div>
+                    <div id="registro" class="bg-body-secondary p-5 m-4 rounded-3">
+                        <form>
+                            <fieldset>
+                                <legend>Datos</legend>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-4">
+                                        <label for="nombre" class="form-label">Nombre</label>
+                                        <input type="text" class="form-control" id="nombre" placeholder="Nombre"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <label for="apellido1" class="form-label">Apellido 1</label>
+                                        <input type="text" class="form-control" id="apellido1" placeholder="Apellido1"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <label for="apellido2" class="form-label">Apellido 2</label>
+                                        <input type="text" class="form-control" id="apellido2" placeholder="Apellido2"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="fechaNacimiento" class="form-label">Fecha de
+                                            Nacimiento</label>
+                                        <input type="date" class="form-control" id="fechaNacimiento" min="1900-01-01"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="telefono" class="form-label">Teléfono</label>
+                                        <input type="text" class="form-control" id="telefono" placeholder="Teléfono"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="telefono" class="form-label">DNI</label>
+                                        <input type="text" class="form-control" id="dni" placeholder="Dni"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <label class="form-label">Género</label>
+                                        <div class="d-flex">
+                                            <div class="form-check mx-2">
+                                                <input class="form-check-input" type="radio" name="genero"
+                                                    id="generoHombre" value="hombre" required>
+                                                <label class="form-check-label" for="generoHombre">Hombre</label>
+                                            </div>
+                                            <div class="form-check mx-2">
+                                                <input class="form-check-input" type="radio" name="genero"
+                                                    id="generoMujer" value="mujer">
+                                                <label class="form-check-label" for="generoMujer">Mujer</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div id="registro" class="bg-body-secondary p-5 m-4 rounded-3">
+                        <form>
+                            <fieldset>
+                                <legend>Dirección</legend>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-3">
+                                        <label for="selectTipoDireccion" class="form-label">Tipo de
+                                            Dirección</label>
+                                        <select class="form-select" id="selectTipoDireccion" required>
+                                            <option value>Seleccione</option>
+                                            <option value="calle">Calle</option>
+                                            <option value="avenida">Avenida</option>
+                                            <option value="plaza">Plaza</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-12 col-md-9">
+                                        <label for="direccion" class="form-label">Dirección</label>
+                                        <input type="text" class="form-control" id="direccion" placeholder="Dirección"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-2">
+                                        <label for="numero" class="form-label">Número</label>
+                                        <input type="text" class="form-control" id="numero" placeholder="Número"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-2">
+                                        <label for="bloque" class="form-label">Bloque</label>
+                                        <input type="text" class="form-control" id="bloque" placeholder="Bloque">
+                                    </div>
+                                    <div class="col-sm-12 col-md-2">
+                                        <label for="piso" class="form-label">Piso</label>
+                                        <input type="text" class="form-control" id="piso" placeholder="Piso">
+                                    </div>
+                                    <div class="col-sm-12 col-md-2">
+                                        <label for="letra" class="form-label">Letra</label>
+                                        <input type="text" class="form-control" id="letra" placeholder="Letra">
+                                    </div>
+                                    <div class="col-sm-12 col-md-4">
+                                        <label for="codigoPostal" class="form-label">Código
+                                            Postal</label>
+                                        <input type="text" class="form-control" id="codigoPostal" placeholder="CP"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="localidad" class="form-label">Localidad</label>
+                                        <input type="text" class="form-control" id="localidad" placeholder="Localidad"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="provincia" class="form-label">Provincia</label>
+                                        <input type="text" class="form-control" id="provincia" placeholder="Provincia"
+                                            required>
+                                    </div>
+                                    <div class="col-sm-12 col-md-4 col-lg-4">
+                                        <label for="exampleDataList" class="form-label">Paises</label>
+                                        <input class="form-control" list="listaPaises" id="paises"
+                                            placeholder="Indica tu país">
+                                        <datalist id="listaPaises">
+                                            <option value="España">
+                                            <option value="Kazajistán">
+                                            <option value="Italia">
+                                            <option value="México">
+                                            <option value="Zimbadwe">
+                                        </datalist>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div id="registro" class="bg-body-secondary p-5 m-4 rounded-3">
+                        <form>
+                            <fieldset>
+                                <legend>Datos de pago</legend>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-9">
+                                        <label for="nombreCompleto" class="form-label">Nombre completo del titular</label>
+                                        <input type="text" class="form-control" id="nombreCompleto" placeholder="Nombre completo"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-9">
+                                        <label for="numeroTrajeta" class="form-label">Número de tarjeta</label>
+                                        <input type="text" class="form-control" id="numeroTrajeta" placeholder="Número de tarjeta"
+                                            required>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-12 col-md-3 col-lg-3">
+                                        <label for="cvv" class="form-label">CVV</label>
+                                        <input type="text" class="form-control" id="cvv" placeholder="CVV">
+                                    </div>
+                                    <div class="col-sm-12 col-md-3 col-lg-3">
+                                        <label for="fechaCac" class="form-label">Fecha Caducidad</label>
+                                        <input type="date" class="form-control" id="fechaCac" placeholder="Fecha de caducidad" min="" max="31/12/2035">
+                                    </div>
+                                    <div class="col-sm-12 col-md-3 col-lg-3">
+                                        <label for="cp" class="form-label">CP</label>
+                                        <input type="text" class="form-control" id="cp" placeholder="Código Postal">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="col-sm-12 col-md-3 mb-4">
+                <button type="submit" class="btn btn-primary" data-bs-target="#modalverificacion"
+                    data-bs-toggle="modal">Registrarse</button>
+            </div>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    <!-- End Modal Registro Completo -->
+</body>
+
+</html>

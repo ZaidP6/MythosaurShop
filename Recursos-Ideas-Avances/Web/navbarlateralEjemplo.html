@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Lateral - Tienda Online</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/bootstrap-icons.min.js"></script>
+    <script defer>
+        $(document).ready(function () {
+            // Función para mostrar/ocultar el navbar en pantallas pequeñas
+            $('#sidebarToggle').on('click', function () {
+                $('.navbar').toggleClass('show');
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .navbar {
+            background-color: #e60012;
+            color: #fff;
+            height: 100vh;
+            position: fixed;
+            left: -280px;
+            top: 0;
+            transition: left 0.3s ease;
+        }
+        .navbar.show {
+            left: 0;
+        }
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            color: #fff !important;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .nav-link:hover {
+            color: #f0f0f0 !important;
+        }
+        .bi {
+            margin-right: 10px;
+        }
+        @media (max-width: 992px) {
+            .navbar {
+                width: 250px;
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Perfil</a>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-person"></i>Mi Cuenta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-heart"></i>Favoritos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-cart"></i>Carrito</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-clock-history"></i>Historial de Pedidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-box-arrow-right"></i>Cerrar Sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Botón para mostrar/ocultar el navbar en pantallas pequeñas -->
+    <button class="btn btn-primary d-block mt-3 ml-3" id="sidebarToggle"><i class="bi bi-list"></i></button>
+</body>
+</html>
