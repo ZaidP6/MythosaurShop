@@ -7,4 +7,4 @@ Demostración de funciones y aplicaciones;
 Acceso al Proyecto;
 Tecnologías utilizadas;
 
-<em> Mythosaur Shop </em>
+<h1 align="center"> Mythosaur Shop </h1>
