@@ -11,7 +11,7 @@
 
 ## Índice
 - [Funcionalidades del proyecto](#funcionalidades)
-- [Tecnologías utilizadas](#tecnologias)
+- [Tecnologías utilizadas](#tecnologías-utilizadas)
 - [Insignias](#insignias)
 - [Descripción del proyecto](#descripcion)
 
@@ -51,9 +51,6 @@
 
 [Acceso al proyecto](#acceso-proyecto)
 
-[Tecnologías utilizadas](#tecnologías-utilizadas)
 [Personas Contribuyentes](#personas-contribuyentes)
-
-
 
 [Conclusión](#conclusión)
