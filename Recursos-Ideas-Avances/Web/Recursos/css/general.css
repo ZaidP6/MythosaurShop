@@ -65,3 +65,22 @@
     button{
         border-radius: 20px;
     }
+
+    /*Esto hace que si la navbar es fijo, que el contenido no se oculte debajo*/
+    body {
+        padding-top: 56px; /* Ajustar según altura de navbar */
+    }
+
+    @media (min-width: 992px) {
+        body {
+            padding-top: 68px; /* Ajustar si hay cambio de altura en pantallas lg */
+        }
+    }
+
+    @media (max-width: 991.98px) {
+        body {
+            padding-top: 48px; /* Ajustar si hay cambio de altura en pantallas sm */
+        }
+    }
+
+    /*Hasta aquí lo del navbar con los tamaños de las pantallas*/
