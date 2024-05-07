@@ -159,7 +159,7 @@
 
 												<div class="form-outline form-white input-group mb-4"
 													data-validate="Apellidos necesarios!">
-													<input type="text" id="inputLastName" th:field="${apellidos}"
+													<input type="text" id="inputLastName" th:field="${basicUserLastName}"
 														class="form-control form-control-lg"
 														placeholder="Apellidos" />
 												</div>
@@ -167,21 +167,21 @@
 												<div class="form-outline form-white input-group mb-4"
 													data-validate="Correo electrónico necesario!">
 													<input type="email" id="email"
-														class="form-control form-control-lg"
+														class="form-control form-control-lg" th:field="${cuatomerMail}"
 														placeholder="Correo electrónico" /> <i
 														class="bi bi-envelope-fill input-icon input-group-text"></i>
 												</div>
 
 												<div class="form-outline form-white input-group mb-4">
 													<input type="password" id="inputPassword"
-														class="form-control form-control-lg"
+														class="form-control form-control-lg" th:field="${basicUserPassword}"
 														placeholder="Contraseña"> <i
 														class="bi bi-lock-fill input-icon input-group-text"></i>
 												</div>
 
 												<div class="form-outline form-white input-group mb-4">
 													<input type="password" id="inputPasswordConfirm"
-														class="form-control form-control-lg"
+														class="form-control form-control-lg" th:field="${basicUserPassword}"
 														placeholder="Repite la contraseña"> <i
 														class="bi bi-lock-fill input-icon input-group-text"></i>
 												</div>
