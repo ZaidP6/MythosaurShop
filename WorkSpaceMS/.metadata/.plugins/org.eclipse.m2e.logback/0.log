@@ -199,3 +199,6 @@
 2024-05-07 12:21:51,458 [Worker-68: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-05-07 12:21:51,464 [Worker-68: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 8 resources from src\main\resources to target\classes
 2024-05-07 12:21:51,468 [Worker-68: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\aguilar.dimar23_tria\Desktop\MythosaurShop\WorkSpaceMS\PilarAguilarTiendaOnline02\src\test\resources
+2024-05-07 12:43:42,012 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-05-07 12:43:42,015 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-05-07 12:43:42,019 [Worker-71: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Users\aguilar.dimar23_tria\Desktop\MythosaurShop\WorkSpaceMS\PilarAguilarTiendaOnline02\src\test\resources
