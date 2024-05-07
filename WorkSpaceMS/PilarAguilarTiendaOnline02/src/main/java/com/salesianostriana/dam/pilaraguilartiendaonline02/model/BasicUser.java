@@ -14,19 +14,26 @@ public class BasicUser {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long basicUserId;
 	
-	private String basicUserName;
+	private String basicUserUName;
 	private String basicUserPassword;
 	private String basicUserDni;
+	private String basicUserName;
+	private String basicUserLastName;
 	private String basicUserPhoto;
 	
 	
-	public BasicUser(String basicUserName, String basicUserPassword, String basicUserDni , String basicUserPhoto) {
+	public BasicUser(String basicUserUName, String basicUserPassword, String basicUserDni, String basicUserName,
+			String basicUserLastName) {
 		super();
-		this.basicUserName = basicUserName;
+		this.basicUserUName = basicUserUName;
 		this.basicUserPassword = basicUserPassword;
 		this.basicUserDni = basicUserDni;
-		this.basicUserPhoto = basicUserPhoto;
+		this.basicUserName = basicUserName;
+		this.basicUserLastName = basicUserLastName;
 	}
+	
+	
+
 
 	
 	

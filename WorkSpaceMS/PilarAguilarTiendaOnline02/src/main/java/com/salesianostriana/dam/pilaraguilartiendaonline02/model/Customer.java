@@ -21,9 +21,14 @@ public class Customer extends BasicUser{
 	private String customerPhone;
 	private String customerAddress;
 	
-	public Customer(String basicUserName, String basicUserPassword, String basicUserDni, String basicUserPhoto) {
-		super(basicUserName, basicUserPassword, basicUserDni, basicUserPhoto);
-		// TODO Auto-generated constructor stub
+	
+	public Customer(String basicUserUName, String basicUserPassword, String basicUserDni, String basicUserName,
+			String basicUserLastName) {
+		super(basicUserUName, basicUserPassword, basicUserDni, basicUserName, basicUserLastName);
 	}
+	
+	
+	
+	
 	
 }
