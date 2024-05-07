@@ -11,12 +11,18 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class Admin extends BasicUser {
-
-	public Admin(String basicUserName, String basicUserPassword, String basicUserDni, String basicUserPhoto) {
-		super(basicUserName, basicUserPassword, basicUserDni, basicUserPhoto);
-		// TODO Auto-generated constructor stub
+	
+	public Admin(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword,
+			String basicUserDni, String basicUserPhoto) {
+		super(basicUserUName, basicUserName, basicUserLastName, basicUserPassword, basicUserDni, basicUserPhoto);
 	}
 
+	public Admin(String basicUserUName, String basicUserPassword) {
+		super(basicUserUName, basicUserPassword);
+	}
+
+
+	
 	
 	
 	

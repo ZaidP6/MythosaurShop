@@ -25,9 +25,9 @@ public class UserController {
         return "formulario";
     }
 
-    @PostMapping("/addCustomer")
+    @PostMapping("/newUser")
     public String addCustomer(@ModelAttribute("customerForm") Customer customer, Model model) {
-        //customerRepository.save(customer);
+        customerRepository.save(customer);
         return "redirect:/form"; 
     }
 	

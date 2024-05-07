@@ -19,10 +19,7 @@ import com.salesianostriana.dam.pilaraguilartiendaonline02.service.ProductServic
 
 public class ProductController {
 
-	/*
-	 * De las dos formas de inyectar un objeto, elegimos en esta ocasión
-	 * el objeto private y el constructor de dicho objeto
-	 * */
+	
 	private ProductRepository productRepository;
 	private ProductService productService;
 	private OrderLine orderLine;
@@ -32,12 +29,7 @@ public class ProductController {
 	}
 	
 	/**
-	 * Método que gestiona la petición "/" o de listado 
-	 * de alumnos "list", ya que en ambas se mostrará 
-	 * la lista completa de alumnos.
-	 * Para ello, como puede verse, se añaden al 
-	 * GetMapping los dos nombres, entre comillas dobles separados por coma.
-	 * 
+	 * Método gestiona listado de productos "/list"que mostrará la lista completa de productos.
 	 */
 	@GetMapping({"/list"})
 	public String listarTodos(Model model) {
@@ -46,8 +38,7 @@ public class ProductController {
 	}
 	
 	/**
-	 * Método que atiende la petición de mostrar el formulario, 
-	 * en este caso vacío. Pasamos al model un nuevo alumno vacío.
+	 * Método muestra el formulario vacío y pasamos al model un nuevo producto vacío.
 	 */
 	@GetMapping("/nuevo")
 	public String mostrarFormulario(Model model) {
@@ -56,30 +47,24 @@ public class ProductController {
 	}
 	
 	/**
-	 * Método que procesa la petición post.
-	 * Nombramos "la petición" en el PostMapping con la ruta /nuevo/submit 
-	 * para distinguirla de la de editar que será, 
-	 * como puede verse más abajo, /editar/submit.
-	 * Por otro lado, no mandamos directamente a una web en el return, ya que esto 
-	 * no nos "actualizaría" la tabla con el nuevo elemento
+	 * Método petición post. No se manda a web en el return, ya que no "actualizaría" la tabla con el nuevo elemento
 	 * sino que devolvemos o redirigimos de nuevo al controller inicial (listarTodos) 
-	 * para que pinte la tabla con el nuevo alumno recién agregado
+	 * para que pinte la tabla con el nuevo producto recién agregado.
 	 */
 	
-	@PostMapping("/nuevo/submit")
+	@PostMapping("/nuevo/")
 	public String procesarFormulario(@ModelAttribute("product") Product p) {
 		productService.agregar(p);
-		return "redirect:/";//Podría ser también return "redirect:/list
+		return "redirect:/list";
 	}
 	
 	
 	/**
-	 * Método que atiende la petición de mostrar el formulario 
-	 * de edición de un alumno, con los datos del alumno a modificar ya cargados 
+	 * Método mostrar el formulario de edición de un producto, con los datos del producto a modificar ya cargados 
 	 * en los campos. Para ello, "cogeremos" el id al pinchar en el botón 
 	 * de editar del alumno seleccionado y por ello, {id}. 
 	 * Este id se detecta como un parámetro al estar entre llaves 
-	 * y cambiará dependiendo de en qué alumno hayamos pinchado para editar. 
+	 * y cambiará dependiendo de en qué producto hayamos pinchado para editar. 
 	 * 
 	 * PathVariable sirve para configurar variables dentro de una url o ruta
 	 * 
@@ -93,7 +78,6 @@ public class ProductController {
 		//Buscamos el producto por id y recordemos que el método findById del servicio, 
 		//devuelve el objeto buscado o null si no se encuentra.
 		 
-		
 		Product pEditar = productService.findById(id);
 		
 		if (pEditar != null) {
@@ -104,26 +88,30 @@ public class ProductController {
 			// Redirigimos hacia el listado.
 			return "redirect:/";
 		}
-		
-		
 	}
 	
+	
 	/**
-	 * Método que procesa la petición post del formulario al editar
-	 * agregar el alumno de nuevo
+	 * Método petición post del formulario al editar
+	 * agregar el producto de nuevo
 	 */
-	@PostMapping("/editar/submit")
+	
+	@PostMapping("/editar/{id}")
 	public String procesarFormularioEdicion(@ModelAttribute("producto") Product p) {
 		productService.edit(p);
-		return "redirect:/";//Volvemos a redirigir la listado a través del controller 
+		return "redirect:/";
+		
+		//Volvemos a redirigir el listado a través del controller 
 		//para pintar la lista actualizada con la modificación hecha
 	}
 	
+	
 	/**
-	 * Método que borra un alumno por su Id
+	 * Método que borra un producto por su Id
 	 * @param id
 	 * @return
 	 */
+	
 	@GetMapping("/borrar/{id}")
 	public String borrar(@PathVariable("id") long id) {
 		productService.delete(id);
@@ -149,7 +137,7 @@ public class ProductController {
             model.addAttribute("productoComprado", product);
             return "confirmacionCompra";
         } else {
-            // Manejar el caso en el que no se encuentre el producto
+            // Añadir error de compra???
             return "errorCompra";
         }
     }

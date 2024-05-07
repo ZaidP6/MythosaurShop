@@ -21,9 +21,29 @@ public class Customer extends BasicUser{
 	private String customerPhone;
 	private String customerAddress;
 	
-	public Customer(String basicUserName, String basicUserPassword, String basicUserDni, String basicUserPhoto) {
-		super(basicUserName, basicUserPassword, basicUserDni, basicUserPhoto);
-		// TODO Auto-generated constructor stub
+	
+	public Customer(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword,
+			String basicUserDni, String basicUserPhoto, String customerMail, Date customerBirth,
+			Date customerLastSession, String customerPhone, String customerAddress) {
+		super(basicUserUName, basicUserName, basicUserLastName, basicUserPassword, basicUserDni, basicUserPhoto);
+		this.customerMail = customerMail;
+		this.customerBirth = customerBirth;
+		this.customerLastSession = customerLastSession;
+		this.customerPhone = customerPhone;
+		this.customerAddress = customerAddress;
 	}
+
+
+	public Customer(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword) {
+		super(basicUserUName, basicUserName, basicUserLastName, basicUserPassword);
+	}
+
+
+	public Customer(String basicUserUName, String basicUserPassword) {
+		super(basicUserUName, basicUserPassword);
+	}
+	
+
+	
 	
 }
