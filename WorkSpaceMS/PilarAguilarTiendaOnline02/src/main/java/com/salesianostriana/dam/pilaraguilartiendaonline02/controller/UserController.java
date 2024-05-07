@@ -2,7 +2,7 @@ package com.salesianostriana.dam.pilaraguilartiendaonline02.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,16 +19,18 @@ public class UserController {
         this.customerRepository = customerRepository;
     }
 
-    @GetMapping("/form")
+    /*
+     * @GetMapping("/form/signin")
     public String showForm(Model model) {
-        model.addAttribute("customerForm", new Customer());
+    	model.addAttribute("customerForm", new Customer());
         return "formulario";
     }
+     */
 
-    @PostMapping("/newUser")
+    @PostMapping("/form/signin")
     public String addCustomer(@ModelAttribute("customerForm") Customer customer, Model model) {
         customerRepository.save(customer);
-        return "redirect:/form"; 
+        return "redirect:/index"; 
     }
 	
 	

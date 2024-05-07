@@ -42,8 +42,12 @@ public class Customer extends BasicUser{
 	public Customer(String basicUserUName, String basicUserPassword) {
 		super(basicUserUName, basicUserPassword);
 	}
-	
 
+
+	public Customer() {
+		super();
+	}
+	
 	
 	
 }

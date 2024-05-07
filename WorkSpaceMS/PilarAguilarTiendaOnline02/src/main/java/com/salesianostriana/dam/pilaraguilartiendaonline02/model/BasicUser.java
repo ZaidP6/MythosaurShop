@@ -50,6 +50,12 @@ public class BasicUser {
 		this.basicUserLastName = basicUserLastName;
 		this.basicUserPassword = basicUserPassword;
 	}
+
+
+
+	public BasicUser() {
+		super();
+	}
 	
 	
 	
