@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.pilaraguilartiendaonline01.model;
+package com.salesianostriana.dam.pilaraguilartiendaonline02.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,13 +16,15 @@ public class BasicUser {
 	
 	private String basicUserName;
 	private String basicUserPassword;
+	private String basicUserDni;
 	private String basicUserPhoto;
 	
 	
-	public BasicUser(String basicUserName, String basicUserPassword, String basicUserPhoto) {
+	public BasicUser(String basicUserName, String basicUserPassword, String basicUserDni , String basicUserPhoto) {
 		super();
 		this.basicUserName = basicUserName;
 		this.basicUserPassword = basicUserPassword;
+		this.basicUserDni = basicUserDni;
 		this.basicUserPhoto = basicUserPhoto;
 	}
 

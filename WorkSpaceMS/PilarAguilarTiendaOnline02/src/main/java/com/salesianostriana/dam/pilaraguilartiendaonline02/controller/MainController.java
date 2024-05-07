@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.pilaraguilartiendaonline01.controller;
+package com.salesianostriana.dam.pilaraguilartiendaonline02.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
