@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@NoArgsConstructor @Entity @Data
+@Entity @Data @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true) @AllArgsConstructor
 public class Customer extends BasicUser{
@@ -34,16 +34,20 @@ public class Customer extends BasicUser{
 	}
 
 
-	public Customer(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword) {
-		super(basicUserUName, basicUserName, basicUserLastName, basicUserPassword);
-	}
-
 
 	public Customer(String basicUserUName, String basicUserPassword) {
 		super(basicUserUName, basicUserPassword);
 	}
-	
 
+
+
+	public Customer(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword,
+			String basicUserPasswordCheck) {
+		super(basicUserUName, basicUserName, basicUserLastName, basicUserPassword, basicUserPasswordCheck);
+	}
+
+
+	
 	
 	
 }

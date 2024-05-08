@@ -19,6 +19,7 @@ public class BasicUser {
 	private String basicUserName;
 	private String basicUserLastName;
 	private String basicUserPassword;
+	private String basicUserPasswordCheck;
 	private String basicUserDni;
 	private String basicUserPhoto;
 	
@@ -43,13 +44,19 @@ public class BasicUser {
 	}
 
 
-	public BasicUser(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword) {
+
+	public BasicUser(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword,
+			String basicUserPasswordCheck) {
 		super();
 		this.basicUserUName = basicUserUName;
 		this.basicUserName = basicUserName;
 		this.basicUserLastName = basicUserLastName;
 		this.basicUserPassword = basicUserPassword;
+		this.basicUserPasswordCheck = basicUserPasswordCheck;
 	}
+
+
+	
 	
 	
 	
