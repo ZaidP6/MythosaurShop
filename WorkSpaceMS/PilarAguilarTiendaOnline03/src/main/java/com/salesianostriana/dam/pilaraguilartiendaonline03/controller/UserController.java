@@ -22,7 +22,7 @@ public class UserController {
     @GetMapping("/form/signin")
     public String showForm(Model model) {
         model.addAttribute("customerForm", new Customer());
-        return "formulario";
+        return "signInSimple";
     }
 
     @PostMapping("/form/signin")
@@ -36,9 +36,5 @@ public class UserController {
         return "logIn";
     }
 
-    @GetMapping("/signInSimple")
-    public String showSignInSimplePage() {
-        return "signInSimple";
-    }
 
 }

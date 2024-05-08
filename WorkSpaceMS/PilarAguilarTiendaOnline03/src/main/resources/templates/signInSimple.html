@@ -22,26 +22,30 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <div class="card modalDesign">
+                <div class="card cardLogInDesign">
                     <div class="card-body p-4 text-center">
                         <h2 class="fw-bold mb-4 text-uppercase">Registro</h2>
-                        <form method="POST" th:action="@{form/signin}" th:object="${customerForm}">
+						
+                        <form method="POST" th:action="form/signin" th:object="${customerForm}">
                             <div class="form-outline form-white input-group mb-4" data-validate="Nombre necesario!">
-                                <input type="text" th:name="basicUserName" th:field="*{basicUserName}" th:id="${basicUserName}" class="form-control form-control-lg" placeholder="Nombre" />
+                                <input type="text" id="inputName" th:field="*{basicUserName}" class="form-control form-control-lg" placeholder="Nombre" />
                             </div>
                             <div class="form-outline form-white input-group mb-4" data-validate="Apellidos necesarios!">
-                                <input type="text" id="inputLastName" th:name="basicUserLastName" th:field="*{basicUserLastName}" th:id="${basicUserLastName}" class="form-control form-control-lg" placeholder="Apellidos" />
+                                <input type="text" id="inputLastName" th:field="*{basicUserLastName}" class="form-control form-control-lg" placeholder="Apellidos" />
+                            </div>
+							<div class="form-outline form-white input-group mb-4" data-validate="Apellidos necesarios!">
+                                <input type="text" id="inputUserUName" th:field="*{inputUserUName}" class="form-control form-control-lg" placeholder="Nombre de usuario" />
                             </div>
                             <div class="form-outline form-white input-group mb-4" data-validate="Correo electrónico necesario!">
-                                <input type="email" id="email" th:id="${customerMail}" class="form-control form-control-lg" th:name="customerMail" th:field="*{customerMail}" placeholder="Correo electrónico" />
+                                <input type="email" id="email" class="form-control form-control-lg" th:field="*{customerMail}" placeholder="Correo electrónico" />
                                 <i class="bi bi-envelope-fill input-icon input-group-text"></i>
                             </div>
                             <div class="form-outline form-white input-group mb-4">
-                                <input type="password" id="inputPassword" th:id="${basicUserPassword}" class="form-control form-control-lg" th:name="basicUserPassword" th:field="*{basicUserPassword}" placeholder="Contraseña">
+                                <input type="password" id="inputPassword" class="form-control form-control-lg" th:field="*{basicUserPassword}" placeholder="Contraseña">
                                 <i class="bi bi-lock-fill input-icon input-group-text"></i>
                             </div>
                             <div class="form-outline form-white input-group mb-4">
-                                <input type="password" id="inputPasswordConfirmCheck" class="form-control form-control-lg" th:name="basicUserPasswordCheck" th:field="*{basicUserPasswordCheck}" placeholder="Repite la contraseña">
+                                <input type="password" id="inputPasswordConfirmCheck" class="form-control form-control-lg" th:field="*{basicUserPasswordCheck}" placeholder="Repite la contraseña">
                                 <i class="bi bi-lock-fill input-icon input-group-text"></i>
                             </div>
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Entrar</button>
