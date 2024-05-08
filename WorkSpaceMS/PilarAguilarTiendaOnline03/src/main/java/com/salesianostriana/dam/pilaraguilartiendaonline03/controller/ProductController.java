@@ -35,7 +35,7 @@ public class ProductController {
 	 */
 	@GetMapping({"/list"})
 	public String listarTodos(Model model) {
-		model.addAttribute("lista",productService.getLista());
+		model.addAttribute("lista",productService.findAll());
 		return "index";
 	}
 	
@@ -121,9 +121,9 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("/productos")
+	@GetMapping("/")
     public String mostrarProductos(Model model) {
-        List<Product> productos = productService.showAllProducts();
+        List<Product> productos = productService.findAll();
         model.addAttribute("products", productos);
         return "index"; 
     }

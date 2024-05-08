@@ -38,10 +38,6 @@ public class ProductService
 		productRepository.save(p);	
 	}
 	
-	public List<Product> getLista (){
-		return productRepository.findAll();
-	}
-	
 	public Product findById(long id) {
 		return productRepository.findById(id).orElse(null);
 	}
