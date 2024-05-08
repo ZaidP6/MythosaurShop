@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -25,7 +25,7 @@
                 <div class="card modalDesign">
                     <div class="card-body p-4 text-center">
                         <h2 class="fw-bold mb-4 text-uppercase">Registro</h2>
-                        <form method="POST" action="@{form/signin}" th:object="${customerForm}">
+                        <form method="POST" th:action="@{form/signin}" th:object="${customerForm}">
                             <div class="form-outline form-white input-group mb-4" data-validate="Nombre necesario!">
                                 <input type="text" th:name="basicUserName" th:field="*{basicUserName}" th:id="${basicUserName}" class="form-control form-control-lg" placeholder="Nombre" />
                             </div>
