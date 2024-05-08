@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.pilaraguilartiendaonline02.model;
+package com.salesianostriana.dam.pilaraguilartiendaonline03.model;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

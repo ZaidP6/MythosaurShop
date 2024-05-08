@@ -1,5 +1,5 @@
 
-package com.salesianostriana.dam.pilaraguilartiendaonline02.model;
+package com.salesianostriana.dam.pilaraguilartiendaonline03.model;
 
 import java.time.LocalDate;
 import jakarta.persistence.Entity;

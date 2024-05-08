@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.pilaraguilartiendaonline02.service.base;
+package com.salesianostriana.dam.pilaraguilartiendaonline03.service.base;
 
 import java.util.List;
 import java.util.Optional;

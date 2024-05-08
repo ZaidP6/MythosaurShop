@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.pilaraguilartiendaonline02.service;
+package com.salesianostriana.dam.pilaraguilartiendaonline03.service;
 
 import java.util.List;
 import java.util.function.Consumer;
@@ -6,9 +6,9 @@ import java.util.function.Consumer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.salesianostriana.dam.pilaraguilartiendaonline02.model.Product;
-import com.salesianostriana.dam.pilaraguilartiendaonline02.repository.ProductRepository;
-import com.salesianostriana.dam.pilaraguilartiendaonline02.service.base.BaseServiceImpl;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.ProductRepository;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.base.BaseServiceImpl;
 
 import jakarta.annotation.PostConstruct;
 

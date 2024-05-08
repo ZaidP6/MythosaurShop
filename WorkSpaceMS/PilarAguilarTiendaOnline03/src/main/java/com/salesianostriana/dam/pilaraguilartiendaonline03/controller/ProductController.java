@@ -1,4 +1,4 @@
-package com.salesianostriana.dam.pilaraguilartiendaonline02.controller;
+package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 
 
 import java.util.List;
@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.salesianostriana.dam.pilaraguilartiendaonline02.model.OrderLine;
-import com.salesianostriana.dam.pilaraguilartiendaonline02.model.Product;
-import com.salesianostriana.dam.pilaraguilartiendaonline02.repository.ProductRepository;
-import com.salesianostriana.dam.pilaraguilartiendaonline02.service.ProductService;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.ProductRepository;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductService;
 
 
 
