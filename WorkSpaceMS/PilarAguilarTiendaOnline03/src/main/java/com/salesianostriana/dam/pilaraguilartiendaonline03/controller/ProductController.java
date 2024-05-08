@@ -3,6 +3,7 @@ package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,8 +20,9 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductServic
 
 public class ProductController {
 
-	
+	@Autowired
 	private ProductRepository productRepository;
+	
 	private ProductService productService;
 	private OrderLine orderLine;
 	
@@ -123,7 +125,7 @@ public class ProductController {
     public String mostrarProductos(Model model) {
         List<Product> productos = productService.showAllProducts();
         model.addAttribute("products", productos);
-        return "productos"; 
+        return "index"; 
     }
 	
 	@PostMapping("/comprar")

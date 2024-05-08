@@ -50,16 +50,16 @@
 
 						</ul>
 					</li>
-					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html">Quiénes
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html" th:href="@{/quienesSomos}">Quiénes
 							Somos</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
-							href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
+							th:href="@{/trabaja}" href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
 					<li class="nav-item"><a class="nav-link" aria-current="page"
-							href="./contenidoContacto.html">Contacto</a></li>
+							th:href="@{/contenidoContacto}" href="./contenidoContacto.html">Contacto</a></li>
 
-					<li class="nav-item"><a class="nav-link" aria-current="page" href="#modalinicio"><i
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="#"><i
 								class="bi bi-heart-fill"></i></a></li>
-					<li class="nav-item"><a class="nav-link" href="#bolsacompra"><i class="bi bi-bag-fill"></i></a></li>
+					<li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-bag-fill"></i></a></li>
 				</ul>
 
 				<form class="d-flex mx-auto" role="search">
@@ -70,10 +70,11 @@
 				<ul class="navbar-nav mb-2 mb-lg-0 fs-5">
 					<li class="nav-item d-flex">
 						
-						<a href="../logIn.html"><button type="button" class="btn fs-5">
-							<i class="bi bi-person-fill"></i>Mi cuenta
-						</button></a>
-						<button type="button" class="btn text-white-50 fw-bold fs-5 pb-2" onclick="window.location.href = 'logIn.html';"><i class="bi bi-person-fill"></i> Mi cuenta</button>
+						<a href="../logIn.html" th:href="@{./logIn.html}">
+						    <button type="button" class="btn fs-5">
+						        <i class="bi bi-person-fill"></i>Mi cuenta
+						    </button>
+						</a>
 					</li>
 				</ul>
 			</div>
