@@ -18,6 +18,7 @@ import jakarta.annotation.PostConstruct;
 public class ProductService 
     extends BaseServiceImpl<Product, Long, ProductRepository>{
 
+	/*
 	@Autowired
 	private ProductRepository productRepository;
 	
@@ -52,4 +53,6 @@ public class ProductService
     public List<Product> showAllProducts() {
         return productRepository.findAll();
     }
+    
+    */
 }

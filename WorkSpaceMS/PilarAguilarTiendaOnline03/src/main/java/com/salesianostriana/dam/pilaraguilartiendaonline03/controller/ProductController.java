@@ -4,26 +4,26 @@ package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
-import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.ProductRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductService;
 
 
 
-
+@Controller
 public class ProductController {
 
-	@Autowired
-	private ProductRepository productRepository;
+
 	
+	@Autowired
 	private ProductService productService;
+	
 	private OrderLine orderLine;
 	
 	public ProductController(ProductService productService) {
@@ -54,11 +54,16 @@ public class ProductController {
 	 * para que pinte la tabla con el nuevo producto recién agregado.
 	 */
 	
-	@PostMapping("/nuevo/")
-	public String procesarFormulario(@ModelAttribute("product") Product p) {
-		productService.agregar(p);
-		return "redirect:/list";
-	}
+	
+	
+					/*
+					
+					@PostMapping("/nuevo/")
+					public String procesarFormulario(@ModelAttribute("product") Product p) {
+						productService.agregar(p);
+						return "redirect:/list";
+					}
+					*/
 	
 	
 	/**
@@ -74,23 +79,28 @@ public class ProductController {
 	 * @param model
 	 * @return
 	 */
-	@GetMapping("/editar/{id}")
-	public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
-		
-		//Buscamos el producto por id y recordemos que el método findById del servicio, 
-		//devuelve el objeto buscado o null si no se encuentra.
-		 
-		Product pEditar = productService.findById(id);
-		
-		if (pEditar != null) {
-			model.addAttribute("product", pEditar);
-			return "formulario";
-		} else {
-			// No existe ningún alumno con el Id proporcionado.
-			// Redirigimos hacia el listado.
-			return "redirect:/";
-		}
-	}
+	
+	
+							/*
+							@GetMapping("/editar/{id}")
+							public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
+								
+								//Buscamos el producto por id y recordemos que el método findById del servicio, 
+								//devuelve el objeto buscado o null si no se encuentra.
+								 
+								Product pEditar = productService.findById(id);
+								
+								if (pEditar != null) {
+									model.addAttribute("product", pEditar);
+									return "formulario";
+								} else {
+									// No existe ningún alumno con el Id proporcionado.
+									// Redirigimos hacia el listado.
+									return "redirect:/";
+								}
+							}
+							
+							*/
 	
 	
 	/**
@@ -114,12 +124,17 @@ public class ProductController {
 	 * @return
 	 */
 	
-	@GetMapping("/borrar/{id}")
-	public String borrar(@PathVariable("id") long id) {
-		productService.delete(id);
-		return "redirect:/";
-	}
 	
+					/*
+					
+					@GetMapping("/borrar/{id}")
+					public String borrar(@PathVariable("id") long id) {
+						productService.delete(id);
+						return "redirect:/";
+					}
+					
+					
+					*/
 	
 	@GetMapping("/")
     public String mostrarProductos(Model model) {
@@ -132,7 +147,7 @@ public class ProductController {
     public String comprarProducto(Long productId, Model model) {
 		
         // Buscar el producto en la base de datos por el id
-        Product product = productRepository.findById(productId).orElse(null);
+        Product product = productService.findById(productId).orElse(null);
 
         if (product != null) {
             product.setProductStockQuantity(product.getProductStockQuantity()- orderLine.getOrderLineQuantity());

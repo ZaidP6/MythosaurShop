@@ -4,6 +4,7 @@ package com.salesianostriana.dam.pilaraguilartiendaonline03.model;
 import java.sql.Date;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -12,6 +13,7 @@ import lombok.ToString;
 @Entity @Data @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true) @AllArgsConstructor
+@Builder
 public class Customer extends BasicUser{
 
 
