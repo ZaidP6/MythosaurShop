@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,15 +20,15 @@
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-md-6">
-                <div class="card cardLogInDesign">
+                <div class="card cardLogInDesign" th:action="@{/form/logIn}">
                     <div class="card-body p-5 text-center">
                         <h2 class="fw-bold mb-4 text-uppercase">Inicio de Sesión</h2>
                         <div class="form-outline form-white input-group mb-4" data-validate="Username is required!">
-                            <input type="email" id="typeEmailX" class="form-control form-control-lg" placeholder="Nombre de usuario" />
+                            <input type="email" id="username" name="username" class="form-control form-control-lg" placeholder="Nombre de usuario" />
                             <i class="bi bi-person-fill input-icon input-group-text"></i>
                         </div>
                         <div class="form-outline form-white input-group mb-4">
-                            <input type="password" id="typePasswordX" class="form-control form-control-lg" placeholder="Contraseña">
+                            <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Contraseña">
                             <i class="bi bi-lock-fill input-icon input-group-text"></i>
                         </div>
                         <p class="mb-5 pb-lg-2 fw-normal">
