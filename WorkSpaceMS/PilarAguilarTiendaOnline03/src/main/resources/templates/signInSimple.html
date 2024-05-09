@@ -26,7 +26,7 @@
                     <div class="card-body p-4 text-center">
                         <h2 class="fw-bold mb-4 text-uppercase">Registro</h2>
 						
-                        <form method="POST" th:action="form/signin" th:object="${customerForm}">
+                        <form method="POST" th:action="/form/signInSimple" th:object="${customerForm}">
                             <div class="form-outline form-white input-group mb-4" data-validate="Nombre necesario!">
                                 <input type="text" id="inputName" th:field="*{basicUserName}" class="form-control form-control-lg" placeholder="Nombre" />
                             </div>

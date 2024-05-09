@@ -19,13 +19,13 @@ public class UserController {
         this.customerRepository = customerRepository;
     }
 
-    @GetMapping("/form/signin")
+    @GetMapping("/form/signInSimple")
     public String showForm(Model model) {
         model.addAttribute("customerForm", new Customer());
         return "signInSimple";
     }
 
-    @PostMapping("/form/signin")
+    @PostMapping("/form/signInSimple")
     public String addCustomer(@ModelAttribute("customerForm") Customer customer, Model model) {
         customerRepository.save(customer);
         return "redirect:/index";
