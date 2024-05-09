@@ -2,7 +2,14 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
+
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -48,8 +55,5 @@ public class Customer extends BasicUser{
 		super(basicUserUName, basicUserName, basicUserLastName, basicUserPassword, basicUserPasswordCheck);
 	}
 
-
-	
-	
 	
 }
