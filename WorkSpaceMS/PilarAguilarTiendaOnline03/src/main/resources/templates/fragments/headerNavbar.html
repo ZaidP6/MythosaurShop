@@ -65,17 +65,12 @@
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn bg-danger btn-outline-light" type="submit">Search</button>
 				</form>
-
-				<ul class="navbar-nav mb-2 mb-lg-0 fs-5">
-					<li class="nav-item d-flex">
-						
-						<a href="../logIn.html" th:href="@{/logIn}">
-						    <button type="button" class="btn fs-5">
-						        <i class="bi bi-person-fill"></i>Mi cuenta
-						    </button>
-						</a>
-					</li>
-				</ul>
+				<button sec:authorize="isAnonymous()" class="btn fs-5" type="button"> 
+					<a th:href="@{/logIn}" href="/templates/logIn.html">Mi cuenta</a>
+				</button>
+                <button sec:authorize="isAuthenticated()" class="btn fs-5" type="button"> 
+                    <a th:href="@{/myProfile}"> <i class="bi bi-person"></i></a>
+               	</button>
 			</div>
 
 

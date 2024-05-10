@@ -19,7 +19,7 @@ import lombok.ToString;
 @Entity @Data @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true) @AllArgsConstructor
-@Builder
+@Builder 
 public class Customer extends BasicUser{
 
 

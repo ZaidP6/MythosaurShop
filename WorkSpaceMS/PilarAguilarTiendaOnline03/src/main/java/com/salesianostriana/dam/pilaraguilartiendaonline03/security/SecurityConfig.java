@@ -7,60 +7,66 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+
+import lombok.RequiredArgsConstructor;
 
 @Configuration
 @EnableWebSecurity
+@RequiredArgsConstructor
 public class SecurityConfig {
 
-    @Bean
-    AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
+	private final UserDetailsService userDetailsService;
+	private final PasswordEncoder passwordEncoder;
+	
+	@Bean
+	public AuthenticationManager 
+	authenticationManager(HttpSecurity http) throws Exception {
 
-        AuthenticationManagerBuilder authBuilder = http.getSharedObject(AuthenticationManagerBuilder.class);
+	AuthenticationManagerBuilder authBuilder =
+		http.getSharedObject(AuthenticationManagerBuilder.class);
 
-        return authBuilder.authenticationProvider(daoAuthenticationProvider()).build();
+	return authBuilder
+	.authenticationProvider(daoAuthenticationProvider())
+	.build();
 
-    }
 
-    @Bean
-    InMemoryUserDetailsManager userDetailsService() {
-        UserDetails user = User.builder()
-                .username("admin").password("{noop}admin")
-                .roles("ADMIN").build();
-        return new InMemoryUserDetailsManager(user);
-    }
+}
+	
+	@Bean 
+	public DaoAuthenticationProvider daoAuthenticationProvider() {
+		DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+		provider.setUserDetailsService(userDetailsService);
+		provider.setPasswordEncoder(passwordEncoder);
+		return provider;
+	}
+	
+	@Bean
+	public SecurityFilterChain securityFilderChain(HttpSecurity http)throws Exception{
+		
+		http.authorizeHttpRequests((authz) -> authz
+	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**").permitAll()
+	        .requestMatchers("/**/admin/**").hasRole("ADMIN")
+	        .anyRequest().authenticated())
+	        .formLogin((loginz) -> loginz
+	        		.loginPage("/form/logIn")
+	        		.defaultSuccessUrl("/")
+	        		.permitAll())
+	        .logout((logoutz) -> logoutz
+	        	.logoutUrl("/logOut")
+	        	.logoutSuccessUrl("/").permitAll());
+	    
+	    
+	    
+	    http.csrf(csrfz -> csrfz.disable());
+    	http.headers(headersz -> headersz
+    			.frameOptions(frameOptionsz -> frameOptionsz.disable()));
 
-    @Bean
-    DaoAuthenticationProvider daoAuthenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService());
-        provider.setPasswordEncoder(PasswordEncoderFactories.createDelegatingPasswordEncoder());
-        return provider;
-    }
-
-    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        /*
-         * http .authorizeRequests()
-         * .antMatchers("/css/**","/js/**","/webjars/**").permitAll()
-         * .anyRequest().authenticated() .and() .formLogin() .loginPage("/login")
-         * .permitAll();
-         *
-         * return http.build();
-         */
-
-        http.authorizeHttpRequests(
-                        (authz) -> authz
-                                .requestMatchers("/css/**", "/js/**").permitAll()
-                                .anyRequest().authenticated())
-                .formLogin((loginz) -> loginz
-                        .loginPage("/form/logIn").permitAll());
-
-        return http.build();
-
-    }
+	    
+	    return http.build();
+	}
+	
+	
 }

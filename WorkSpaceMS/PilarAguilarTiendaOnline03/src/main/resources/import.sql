@@ -36,4 +36,3 @@ insert into product (product_name, product_description, product_pvp, product_sto
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_13', 'Descripción del Producto 13', 39.99, 60, 'imagen_13.jpg', '2024-05-04');
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_14', 'Descripción del Producto 14', 99.99, 8, 'imagen_14.jpg', '2024-05-04');
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_15', 'Descripción del Producto 15', 79.99, 12, 'imagen_15.jpg', '2024-05-04');
-

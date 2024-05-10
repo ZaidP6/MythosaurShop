@@ -24,30 +24,41 @@
             <div class="col-md-6">
                 <div class="card cardLogInDesign">
                     <div class="card-body p-4 text-center">
-                        <h2 class="fw-bold mb-4 text-uppercase">Registro</h2>
+                    	<form method="POST" th:action="/form/signInSimple" th:object="${customerForm}">
+                        	<h2 class="fw-bold mb-4 text-uppercase">Registro</h2>
 						
-                        <form method="POST" th:action="/form/signInSimple" th:object="${customerForm}">
                             <div class="form-outline form-white input-group mb-4" data-validate="Nombre necesario!">
-                                <input type="text" id="inputName" th:field="*{basicUserName}" class="form-control form-control-lg" placeholder="Nombre" />
+                                <input type="text" id="inputName" th:field="*{basicUserName}" class="form-control form-control-lg" placeholder="Nombre" required />
                             </div>
                             <div class="form-outline form-white input-group mb-4" data-validate="Apellidos necesarios!">
-                                <input type="text" id="inputLastName" th:field="*{basicUserLastName}" class="form-control form-control-lg" placeholder="Apellidos" />
+                                <input type="text" id="inputLastName" th:field="*{basicUserLastName}" class="form-control form-control-lg" placeholder="Apellidos" required/>
                             </div>
 							<div class="form-outline form-white input-group mb-4" data-validate="Apellidos necesarios!">
-                                <input type="text" id="inputUserUName" th:field="*{inputUserUName}" class="form-control form-control-lg" placeholder="Nombre de usuario" />
+                                <input type="text" id="inputUserUName" th:field="*{inputUserUName}" class="form-control form-control-lg" placeholder="Nombre de usuario" required/>
                             </div>
                             <div class="form-outline form-white input-group mb-4" data-validate="Correo electrónico necesario!">
-                                <input type="email" id="email" class="form-control form-control-lg" th:field="*{customerMail}" placeholder="Correo electrónico" />
+                                <input type="email" id="email" class="form-control form-control-lg" th:field="*{customerMail}" placeholder="Correo electrónico" required/>
                                 <i class="bi bi-envelope-fill input-icon input-group-text"></i>
                             </div>
                             <div class="form-outline form-white input-group mb-4">
-                                <input type="password" id="inputPassword" class="form-control form-control-lg" th:field="*{basicUserPassword}" placeholder="Contraseña">
+                                <input type="password" id="inputPassword" class="form-control form-control-lg" th:field="*{basicUserPassword}" placeholder="Contraseña" required>
                                 <i class="bi bi-lock-fill input-icon input-group-text"></i>
                             </div>
                             <div class="form-outline form-white input-group mb-4">
-                                <input type="password" id="inputPasswordConfirmCheck" class="form-control form-control-lg" th:field="*{basicUserPasswordCheck}" placeholder="Repite la contraseña">
+                                <input type="password" id="inputPasswordConfirmCheck" class="form-control form-control-lg" th:field="*{basicUserPasswordCheck}" placeholder="Repite la contraseña" required>
                                 <i class="bi bi-lock-fill input-icon input-group-text"></i>
                             </div>
+                            <div class="form-outline form-white input-group mb-4">
+                               <input type="date" id="inputBirthDay" class="form-control form-control-lg" th:field="*{customerBirth}" required />
+                                <i class="bi bi-calendar-date input-group-text"></i>
+                            </div>
+                            <div class="d-flex justify-content-around">
+                            <div class="form-check d-flex justify-content-start mb-4">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="checkboxPassword" />
+                                <label class="form-check-label" for="checkboxPassword"> Recordar contraseña </label>
+                            </div>
+                            <p><a href="login.html" class="registerhref">Log in</a></p>
+                        </div>
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Entrar</button>
                         </form>
                         <p class="mb-0 fs-5 mt-4">

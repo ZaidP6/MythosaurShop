@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
@@ -47,6 +48,24 @@ public class ProductController {
 		model.addAttribute("product", new Product());
 		return "formulario";
 	}
+	
+
+	//EDITAR PRODUCTO Y GUARDAR	
+	
+	@PostMapping("/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("alumno") Product p) {
+		productService.edit(p);
+		return "redirect:/";
+	}
+	
+	//BORRAR PRODUCTO POR ID
+	
+	@GetMapping("/borrar/{productId}")
+	public String borrar(@PathVariable("productId") long id) {
+		productService.deleteById(id);
+		return "redirect:/";
+	}
+	
 	
 	/**
 	 * Método petición post. No se manda a web en el return, ya que no "actualizaría" la tabla con el nuevo elemento
@@ -103,38 +122,6 @@ public class ProductController {
 							*/
 	
 	
-	/**
-	 * Método petición post del formulario al editar
-	 * agregar el producto de nuevo
-	 */
-	
-	@PostMapping("/editar/{id}")
-	public String procesarFormularioEdicion(@ModelAttribute("producto") Product p) {
-		productService.edit(p);
-		return "redirect:/";
-		
-		//Volvemos a redirigir el listado a través del controller 
-		//para pintar la lista actualizada con la modificación hecha
-	}
-	
-	
-	/**
-	 * Método que borra un producto por su Id
-	 * @param id
-	 * @return
-	 */
-	
-	
-					/*
-					
-					@GetMapping("/borrar/{id}")
-					public String borrar(@PathVariable("id") long id) {
-						productService.delete(id);
-						return "redirect:/";
-					}
-					
-					
-					*/
 	
 	@GetMapping("/")
     public String mostrarProductos(Model model) {

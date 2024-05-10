@@ -42,6 +42,7 @@ public class Product {
 	private double productPvP;
 	private int productStockQuantity;
 	
+	@Lob
 	private String productImage;
 	
 	@DateTimeFormat(pattern = "dd-MM-YYYY")
