@@ -13,12 +13,13 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.service.AdminService;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-	
+
 	@Autowired
-	public AdminService adminservice;
+	public AdminService adminService;
 	
 	@GetMapping("/")
 	public String index() {
+
 		return "admin";
 	}
 	

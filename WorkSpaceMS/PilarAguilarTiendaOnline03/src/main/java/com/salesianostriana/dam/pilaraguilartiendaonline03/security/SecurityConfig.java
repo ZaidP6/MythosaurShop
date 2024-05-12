@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
-public class SecurityConfig {
+public class SecurityConfig{
 
 	private final UserDetailsService userDetailsService;
 	private final PasswordEncoder passwordEncoder;
@@ -42,10 +42,10 @@ public class SecurityConfig {
 		provider.setPasswordEncoder(passwordEncoder);
 		return provider;
 	}
-	
+
 	@Bean
 	public SecurityFilterChain securityFilderChain(HttpSecurity http)throws Exception{
-		
+
 		http.authorizeHttpRequests((authz) -> authz
 	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**").permitAll()
 	        .requestMatchers("/**/admin/**").hasRole("ADMIN")
@@ -55,18 +55,18 @@ public class SecurityConfig {
 	        		.defaultSuccessUrl("/")
 	        		.permitAll())
 	        .logout((logoutz) -> logoutz
-	        	.logoutUrl("/logOut")
+	        	.logoutUrl("/form/logOut")
 	        	.logoutSuccessUrl("/").permitAll());
-	    
-	    
-	    
+
+
+
 	    http.csrf(csrfz -> csrfz.disable());
     	http.headers(headersz -> headersz
     			.frameOptions(frameOptionsz -> frameOptionsz.disable()));
 
-	    
+
 	    return http.build();
 	}
-	
-	
+
+
 }

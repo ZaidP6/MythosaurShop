@@ -5,21 +5,14 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import lombok.experimental.SuperBuilder;
 
 
 @NoArgsConstructor @Entity @Data
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true)
-public class Admin extends BasicUser {
-	
-	public Admin(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword,
-			String basicUserDni, String basicUserPhoto) {
-		super(basicUserUName, basicUserName, basicUserLastName, basicUserPassword, basicUserDni, basicUserPhoto);
-	}
+@ToString(callSuper = true) @SuperBuilder
+public class Admin extends BasicUser{
 
-	public Admin(String basicUserUName, String basicUserPassword) {
-		super(basicUserUName, basicUserPassword);
-	}
 
 
 	

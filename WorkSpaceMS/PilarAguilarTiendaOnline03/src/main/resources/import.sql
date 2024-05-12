@@ -36,3 +36,23 @@ insert into product (product_name, product_description, product_pvp, product_sto
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_13', 'Descripción del Producto 13', 39.99, 60, 'imagen_13.jpg', '2024-05-04');
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_14', 'Descripción del Producto 14', 99.99, 8, 'imagen_14.jpg', '2024-05-04');
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_15', 'Descripción del Producto 15', 79.99, 12, 'imagen_15.jpg', '2024-05-04');
+
+insert into admin (basic_useruname, basic_user_password, basic_user_password_check) values ('admin', '{noop}admin','{noop}admin');
+insert into customer (basic_useruname, basic_user_password, basic_user_password_check) values ('user', '{noop}1234','{noop}1234');
+
+INSERT INTO category (category_name, category_description) VALUES ('llaveros', 'Productos para llevar tus llaves con estilo');
+INSERT INTO category (category_name, category_description) VALUES ('felpudos', 'Bienvenidas originales para tu hogar');
+INSERT INTO category (category_name, category_description) VALUES ('carteras', 'Carteras y monederos de diseño para todas las ocasiones');
+INSERT INTO category (category_name, category_description) VALUES ('tazas', 'Tazas únicas para disfrutar tu bebida favorita');
+INSERT INTO category (category_name, category_description) VALUES ('funkos', 'Figuras de colección para fans de películas, series y videojuegos');
+
+
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Disney', 'Temas relacionados con Disney', 'foto_disney.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Deadpool', 'Temas relacionados con Deadpool', 'foto_deadpool.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Avengers', 'Temas relacionados con los Avengers', 'foto_avengers.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Star Wars', 'Temas relacionados con Star Wars', 'foto_star_wars.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('DC', 'Temas relacionados con DC Comics', 'foto_dc.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Marvel', 'Temas relacionados con Marvel Comics', 'foto_marvel.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('El Señor de los Anillos', 'Temas relacionados con El Señor de los Anillos', 'foto_señor_anillos.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Juego de Tronos', 'Temas relacionados con Juego de Tronos', 'foto_juego_tronos.jpg');
+INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Pokémon', 'Temas relacionados con Pokémon', 'foto_pokemon.jpg');

@@ -1,9 +1,13 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.model;
 
 import java.util.Collection;
+import java.util.List;
 
+import lombok.experimental.SuperBuilder;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,10 +18,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor
-@MappedSuperclass @AllArgsConstructor
+@MappedSuperclass @AllArgsConstructor @SuperBuilder
 public class BasicUser implements UserDetails{
-	
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
+
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long basicUserId;
 	
 	private String basicUserUName;
@@ -27,103 +31,48 @@ public class BasicUser implements UserDetails{
 	private String basicUserPasswordCheck;
 	private String basicUserDni;
 	private String basicUserPhoto;
-	
-	
-	public BasicUser(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword,
-			String basicUserDni, String basicUserPhoto) {
-		super();
-		this.basicUserUName = basicUserUName;
-		this.basicUserName = basicUserName;
-		this.basicUserLastName = basicUserLastName;
-		this.basicUserPassword = basicUserPassword;
-		this.basicUserDni = basicUserDni;
-		this.basicUserPhoto = basicUserPhoto;
-	}
-
-	
-
-	public BasicUser(String basicUserUName, String basicUserPassword) {
-		super();
-		this.basicUserUName = basicUserUName;
-		this.basicUserPassword = basicUserPassword;
-	}
-
-
-
-	public BasicUser(String basicUserUName, String basicUserName, String basicUserLastName, String basicUserPassword,
-			String basicUserPasswordCheck) {
-		super();
-		this.basicUserUName = basicUserUName;
-		this.basicUserName = basicUserName;
-		this.basicUserLastName = basicUserLastName;
-		this.basicUserPassword = basicUserPassword;
-		this.basicUserPasswordCheck = basicUserPasswordCheck;
-	}
 
 
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO Auto-generated method stub
-		return null;
+		String role = "ROLE_";
+		if (this instanceof Admin){
+			role += "ADMIN";
+		}else if(this instanceof Customer){
+			role += "USER";
+		}
+		return List.of(new SimpleGrantedAuthority(role));
 	}
-
-
 
 	@Override
 	public String getPassword() {
-		// TODO Auto-generated method stub
-		return null;
+		return basicUserPassword;
 	}
-
-
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
-		return null;
+		return basicUserUName;
 	}
-
-
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
-
-
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
-
-
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
-
-
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
-
-	
-	
-	
-	
-	
-
-
-	
-	
 }

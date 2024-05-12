@@ -24,6 +24,9 @@
                     <div class="card-body p-5 text-center">
                         <form method="POST" action="#" th:action="@{/form/logIn}">
                         	<h2 class="fw-bold mb-4 text-uppercase">Inicio de Sesión</h2>
+                            <div th:if="${param.error}" class="alert alert-error">
+                                Nombre de usuario o contraseña no válida.
+                            </div>
 	                        <div class="form-outline form-white input-group mb-4" data-validate="Username is required!">
 	                            <input type="email" id="username" name="username" class="form-control form-control-lg" placeholder="Nombre de usuario" required autofocus/>
 	                            <i class="bi bi-person-fill input-icon input-group-text"></i>

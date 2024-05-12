@@ -26,10 +26,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	private OrderLine orderLine;
-	
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
+
 	
 	/**
 	 * Método gestiona listado de productos "/list"que mostrará la lista completa de productos.
@@ -90,13 +87,7 @@ public class ProductController {
 	 * en los campos. Para ello, "cogeremos" el id al pinchar en el botón 
 	 * de editar del alumno seleccionado y por ello, {id}. 
 	 * Este id se detecta como un parámetro al estar entre llaves 
-	 * y cambiará dependiendo de en qué producto hayamos pinchado para editar. 
-	 * 
-	 * PathVariable sirve para configurar variables dentro de una url o ruta
-	 * 
-	 * @param id del alumno a editar
-	 * @param model
-	 * @return
+	 * y cambiará dependiendo de en qué producto hayamos pinchado para editar.
 	 */
 	
 	
