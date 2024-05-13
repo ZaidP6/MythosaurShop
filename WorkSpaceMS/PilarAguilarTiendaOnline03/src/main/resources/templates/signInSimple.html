@@ -24,7 +24,7 @@
             <div class="col-md-6">
                 <div class="card cardLogInDesign">
                     <div class="card-body p-4 text-center">
-                    	<form method="POST" th:action="/form/signInSimple" th:object="${customerForm}">
+                    	<form method="POST" th:action="@{/form/signInSimple/submit}" th:object="${customerForm}">
                         	<h2 class="fw-bold mb-4 text-uppercase">Registro</h2>
 						
                             <div class="form-outline form-white input-group mb-4" data-validate="Nombre necesario!">
@@ -33,8 +33,8 @@
                             <div class="form-outline form-white input-group mb-4" data-validate="Apellidos necesarios!">
                                 <input type="text" id="inputLastName" th:field="*{basicUserLastName}" class="form-control form-control-lg" placeholder="Apellidos" required/>
                             </div>
-							<div class="form-outline form-white input-group mb-4" data-validate="Apellidos necesarios!">
-                                <input type="text" id="inputUserUName" th:field="*{inputUserUName}" class="form-control form-control-lg" placeholder="Nombre de usuario" required/>
+							<div class="form-outline form-white input-group mb-4" data-validate="Nombre de usuario necesario!">
+                                <input type="text" id="inputUserUName" th:field="*{basicUserUName}" class="form-control form-control-lg" placeholder="Nombre de usuario" required/>
                             </div>
                             <div class="form-outline form-white input-group mb-4" data-validate="Correo electrónico necesario!">
                                 <input type="email" id="email" class="form-control form-control-lg" th:field="*{customerMail}" placeholder="Correo electrónico" required/>
@@ -62,7 +62,9 @@
                             <button class="btn btn-outline-light btn-lg px-5" type="submit">Entrar</button>
                         </form>
                         <p class="mb-0 fs-5 mt-4">
-                            ¿Ya tienes cuenta? <button class="btn text-white-50 fw-bold fs-5 pb-2" onclick="window.location.href = 'logIn.html';">¡Inicia Sesión!</button>
+                            ¿Ya tienes cuenta? <a href="./signInSimple.html" th:href="@{/form/logIn}">
+								<button type="button" class="btn text-white-50 fw-bold fs-5 pb-2">¡Inicia Sesión!</button>
+							</a>
                         </p>
                     </div>
                 </div>

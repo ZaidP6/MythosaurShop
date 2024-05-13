@@ -4,6 +4,7 @@ package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,9 @@ public class UserController {
 
     @Autowired
     private CustomerService customerService;
+    
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/form/signInSimple")
     public String showForm(Model model) {
@@ -25,18 +29,21 @@ public class UserController {
         return "signInSimple";
     }
 
-    @PostMapping("/form/signInSimple")
-    public String addCustomer(@ModelAttribute("customerForm") Customer customer, Model model) {
+    @PostMapping("/form/signInSimple/submit")
+    public String submitSignIn(@ModelAttribute("customerForm") Customer customer) {
+    	String encodedPassword = passwordEncoder.encode(customer.getBasicUserPassword());
+    	customer.setBasicUserPassword(encodedPassword);
         customerService.save(customer);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
-    @GetMapping("/logIn")
+    @GetMapping("/form/logIn")
     public String showLogInPage() {
 
         return "logIn";
     }
-
+    
+   
     @GetMapping("/newCustomer")
 	public String nuevoUsuario(Model model) {
 		

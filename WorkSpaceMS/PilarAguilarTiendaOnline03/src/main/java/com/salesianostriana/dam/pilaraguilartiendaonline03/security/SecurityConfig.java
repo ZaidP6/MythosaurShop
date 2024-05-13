@@ -43,12 +43,13 @@ public class SecurityConfig{
 		return provider;
 	}
 
+	
 	@Bean
 	public SecurityFilterChain securityFilderChain(HttpSecurity http)throws Exception{
 
 		http.authorizeHttpRequests((authz) -> authz
-	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**").permitAll()
-	        .requestMatchers("/**/admin/**").hasRole("ADMIN")
+	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**", "form/logIn/**").permitAll()
+	        .requestMatchers("/admin/**").hasRole("ADMIN")
 	        .anyRequest().authenticated())
 	        .formLogin((loginz) -> loginz
 	        		.loginPage("/form/logIn")

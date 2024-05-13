@@ -66,11 +66,11 @@
 					<button class="btn bg-danger btn-outline-light" type="submit">Search</button>
 				</form>
 				<button sec:authorize="isAnonymous()" class="btn fs-5" type="button"> 
-					<a th:href="@{/logIn}" href="/templates/logIn.html">Mi cuenta</a>
+					<a th:href="@{/form/logIn}" href="/templates/logIn.html">Mi cuenta</a>
 				</button>
-                <button sec:authorize="isAuthenticated()" class="btn fs-5" type="button"> 
+                <!-- <button sec:authorize="isAuthenticated()" class="btn fs-5" type="button"> 
                     <a th:href="@{/myProfile}"> <i class="bi bi-person"></i></a>
-               	</button>
+               	</button> -->
 			</div>
 
 

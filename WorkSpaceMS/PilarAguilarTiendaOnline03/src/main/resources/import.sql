@@ -37,14 +37,16 @@ insert into product (product_name, product_description, product_pvp, product_sto
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_14', 'Descripción del Producto 14', 99.99, 8, 'imagen_14.jpg', '2024-05-04');
 insert into product (product_name, product_description, product_pvp, product_stock_quantity, product_image, product_date) values ('Producto_15', 'Descripción del Producto 15', 79.99, 12, 'imagen_15.jpg', '2024-05-04');
 
-insert into admin (basic_useruname, basic_user_password, basic_user_password_check) values ('admin', '{noop}admin','{noop}admin');
+insert into admin (basic_useruname, basic_user_name, basic_user_last_name, basic_user_password, basic_user_password_check, basic_user_dni, basic_user_photo) VALUES ('admin', 'Juan', 'Pérez', '{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa', '{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa', '12345678A', 'ruta/foto1.jpg');
+insert into customer (basic_useruname, basic_user_name, basic_user_last_name, basic_user_password, basic_user_password_check, basic_user_dni, basic_user_photo, customer_mail, customer_birth, customer_last_session, customer_phone, customer_address) VALUES ('user', 'Alberto', 'González', '{bcrypt}$2a$10$lsHpqw5K/gL8ooHr/LdZfOzcNKpknmIETBEwJZBwegqfAP3PrEdFq', '{bcrypt}$2a$10$lsHpqw5K/gL8ooHr/LdZfOzcNKpknmIETBEwJZBwegqfAP3PrEdFq', '87654321Z', 'ruta/foto1.jpg', 'correo@ejemplo.com', '1990-01-01', '2024-05-13', '123456789', 'Calle Ejemplo 123');
+
 insert into customer (basic_useruname, basic_user_password, basic_user_password_check) values ('user', '{noop}1234','{noop}1234');
 
-INSERT INTO category (category_name, category_description) VALUES ('llaveros', 'Productos para llevar tus llaves con estilo');
-INSERT INTO category (category_name, category_description) VALUES ('felpudos', 'Bienvenidas originales para tu hogar');
-INSERT INTO category (category_name, category_description) VALUES ('carteras', 'Carteras y monederos de diseño para todas las ocasiones');
-INSERT INTO category (category_name, category_description) VALUES ('tazas', 'Tazas únicas para disfrutar tu bebida favorita');
-INSERT INTO category (category_name, category_description) VALUES ('funkos', 'Figuras de colección para fans de películas, series y videojuegos');
+insert into category (category_name, category_description) VALUES ('llaveros', 'Productos para llevar tus llaves con estilo');
+insert into category (category_name, category_description) VALUES ('felpudos', 'Bienvenidas originales para tu hogar');
+insert into category (category_name, category_description) VALUES ('carteras', 'Carteras y monederos de diseño para todas las ocasiones');
+insert into category (category_name, category_description) VALUES ('tazas', 'Tazas únicas para disfrutar tu bebida favorita');
+insert into category (category_name, category_description) VALUES ('funkos', 'Figuras de colección para fans de películas, series y videojuegos');
 
 
 INSERT INTO theme (theme_name, theme_description, theme_photo) VALUES ('Disney', 'Temas relacionados con Disney', 'foto_disney.jpg');

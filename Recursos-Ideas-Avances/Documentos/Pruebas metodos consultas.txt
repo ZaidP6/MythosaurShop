@@ -1,0 +1,18 @@
+Producto
+- id
+- nombre: String
+- precio: double
+- descuento: double
+- especial: boolean
+- categoria: Categoria
+
+-------------------------------------------------------------------------------
+
+public List<Producto> findByTop3precioASC()			----
+
+public List<Producto, Categoria> findByEspecialAndCategoriaLikeAppleAndContainsDescuento()	---	findByEspecialIsTrueAndCategoriaNombreAndDescuentoIsNotNull(String categoriaNombre);
+
+public List<Producto> findByNombreOrCategoriaIlikeOrdenador()		---		List<Producto> findByNombreOrCategoriaNombreAllIgnoreCase(String nombre, String categoriaNombre);
+		public List<Producto> buscarPorNombre(String nombre){
+			return repositorio.findBy...(nombre, nombre);
+		}

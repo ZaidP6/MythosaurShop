@@ -45,7 +45,7 @@ public class BasicUser implements UserDetails{
 		return List.of(new SimpleGrantedAuthority(role));
 	}
 
-	@Override
+	 @Override
 	public String getPassword() {
 		return basicUserPassword;
 	}
@@ -54,7 +54,7 @@ public class BasicUser implements UserDetails{
 	public String getUsername() {
 		return basicUserUName;
 	}
-
+	
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
