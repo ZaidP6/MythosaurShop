@@ -44,6 +44,7 @@ public class Product {
 	
 	@Lob
 	private String productImage;
+	private String productImageAlternativeText;
 	
 	@DateTimeFormat(pattern = "dd-MM-YYYY")
 	private LocalDate productDate;
