@@ -48,12 +48,13 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilderChain(HttpSecurity http)throws Exception{
 
 		http.authorizeHttpRequests((authz) -> authz
-	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**", "form/logIn/**").permitAll()
+	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
+	        		"/quienesSomos/**", "/trabaja/**", "/contenidoContacto/**").permitAll()
 	        .requestMatchers("/admin/**").hasRole("ADMIN")
 	        .anyRequest().authenticated())
 	        .formLogin((loginz) -> loginz
 	        		.loginPage("/form/logIn")
-	        		.defaultSuccessUrl("/")
+	        		.defaultSuccessUrl("/admin")
 	        		.permitAll())
 	        .logout((logoutz) -> logoutz
 	        	.logoutUrl("/form/logOut")

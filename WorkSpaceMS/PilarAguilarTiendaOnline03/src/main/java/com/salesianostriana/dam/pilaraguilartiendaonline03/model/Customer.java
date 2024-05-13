@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
@@ -21,7 +21,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity @Data @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true) @AllArgsConstructor
-@SuperBuilder
+@SuperBuilder @DiscriminatorValue("USER")
 public class Customer extends BasicUser {
 
 
