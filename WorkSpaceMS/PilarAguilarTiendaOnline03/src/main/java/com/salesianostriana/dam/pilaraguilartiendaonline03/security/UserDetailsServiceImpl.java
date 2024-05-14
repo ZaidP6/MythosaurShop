@@ -1,7 +1,9 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.security;
 
-import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.BasicUserRepository;
-//import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.CustomerRepository;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Admin;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Customer;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.AdminRepository;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -11,18 +13,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private final BasicUserRepository customerRepository;
+    private final CustomerRepository customerRepository;
+    private final AdminRepository adminRepository;
 
-    @Autowired //cuidao que se ha modificado y puede no funcionar, hay q volver al customerRepository 
-    public UserDetailsServiceImpl(BasicUserRepository customerRepository) {
+    @Autowired
+    public UserDetailsServiceImpl(CustomerRepository customerRepository, AdminRepository adminRepository) {
         this.customerRepository = customerRepository;
+        this.adminRepository = adminRepository;
     }
-    
-     
+
+
 
     @Override
     public UserDetails loadUserByUsername(String basicUserUName) throws UsernameNotFoundException {
-        return customerRepository.findFirstByBasicUserUName(basicUserUName)
-                .orElseThrow(() -> new UsernameNotFoundException("Error al buscar el usuario"));
+
+        Customer customer = customerRepository.findFirstByBasicUserUName(basicUserUName)
+                .orElse(null);
+
+        if (customer != null) {
+            return customer;
+        }
+        Admin admin = adminRepository.findFirstByBasicUserUName(basicUserUName)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado"));
+
+        return admin;
     }
 }
+

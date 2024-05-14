@@ -76,6 +76,11 @@ public class UserController {
 
         return "perfil";
     }
+    @GetMapping("/customer/index")
+    public String showIndexCustomer() {
+
+        return "/customer/indexCustomer";
+    }
 
 
 }

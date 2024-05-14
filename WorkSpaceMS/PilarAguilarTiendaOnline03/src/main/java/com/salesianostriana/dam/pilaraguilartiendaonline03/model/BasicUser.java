@@ -38,11 +38,9 @@ public class BasicUser implements UserDetails{
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		String role = "ROLE_";
-		if (this instanceof Admin){
-			role += "ADMIN";
-		}else if(this instanceof Customer){
-			role += "USER";
+		String role = "ROLE_USER";
+		if (this instanceof Admin) {
+			role = "ROLE_ADMIN";
 		}
 		return List.of(new SimpleGrantedAuthority(role));
 	}
