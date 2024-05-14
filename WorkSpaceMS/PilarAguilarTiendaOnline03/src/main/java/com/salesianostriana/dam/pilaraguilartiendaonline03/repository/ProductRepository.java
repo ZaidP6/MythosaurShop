@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
@@ -11,8 +12,18 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
 
+	@Query("""
+			SELECT p
+		     FROM Product p
+		     WHERE p.productPvP < :precio
+		""")
+	public List<Product> buscarPrecioMenor10(double precio);
+
+	
+
+	
    /*
-    * default public List<Product> findByNameContainsIgnoreCase (String search){
+    *public List<Product> findByNameContainsIgnoreCase (String search){
   
         SELECT *
         FROM product

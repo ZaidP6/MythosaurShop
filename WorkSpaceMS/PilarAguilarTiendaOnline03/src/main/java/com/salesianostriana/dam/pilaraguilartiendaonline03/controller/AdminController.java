@@ -23,5 +23,29 @@ public class AdminController {
 		return "admin";
 	}
 	
-
+	@GetMapping("/nuevaCategoria")
+	public String nuevaCategoria() {
+		
+		return "nuevaCategoria";
+	}
+	
+	@PostMapping("/nuevaCategoria/submit")
+	public String nuevaCategoriaOk() {
+		
+		return "gestionCategorias";
+	}
+	
+	@GetMapping("/nuevoProducto")
+	public String nuevoProducto() {
+		
+		return "nuevoProducto";
+	}
+	
+	@PostMapping("/nuevoProduct/submit")
+	public String nuevoProductoOk() {
+		
+		return "gestionProductos";
+	}
+	
+	
 }
