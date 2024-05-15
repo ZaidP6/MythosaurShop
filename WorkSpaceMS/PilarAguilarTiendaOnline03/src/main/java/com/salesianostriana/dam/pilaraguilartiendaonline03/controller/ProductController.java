@@ -121,6 +121,7 @@ public class ProductController {
         return "index"; 
     }
 	
+	
 	@PostMapping("/comprar")
     public String comprarProducto(Long productId, Model model) {
 		
@@ -137,6 +138,12 @@ public class ProductController {
         }
     }
 	
+	@GetMapping("/admin/admin")
+    public String mostrarProductosAdmin(Model model) {
+        List<Product> productos = productService.findAll();
+        model.addAttribute("products", productos);
+        return "indexAdmin"; 
+    }
 	
 	
 }

@@ -16,11 +16,11 @@
 </head>
 <!--Para dejar Navbar fija arriba fixed-top navbar-shrink-->
 
-<header th:fragment="navbarUser">
+<header th:fragment="navbarAdmin">
 	<nav class="navbar navbar-collapse navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand w-25" href="../index.html" 
-				th:href="@{/}">
+			<a class="navbar-brand w-25" href="../admin/indexAdmin.html" 
+				th:href="@{./indexAdmin}">
 				<img href="../static/images/Mythosaur Shop Lineal Black White.png" th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal">
 			</a>
 
@@ -65,9 +65,10 @@
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn bg-danger btn-outline-light" type="submit">Search</button>
 				</form>
-				<button sec:authorize="isAnonymous()" class="btn fs-5" type="button"> 
-					<a th:href="@{/form/logIn}" href="/templates/logIn.html">Mi cuenta</a>
+				<button class="btn fs-5" type="button">
+				    <a th:href="@{/admin/admin}" href="../admin/indexAdmin.html" sec:authentication="name"><span th:text="${Admin.basicUserUName}">Administrador</span></a>
 				</button>
+
                 <!-- <button sec:authorize="isAuthenticated()" class="btn fs-5" type="button"> 
                     <a th:href="@{/myProfile}"> <i class="bi bi-person"></i></a>
                	</button> -->
