@@ -14,25 +14,25 @@
 	<link href="../static/css/general.css" th:href="@{/css/general.css}" rel="stylesheet" />
 </head>
 <body>
-	<header th:replace="~{fragments/headerNavbar :: navbarUser}"></header>
+	<header th:replace="~{fragments/headerNavbarAdmin :: navbarAdmin}"></header>
 	<main class="w-75<">
-	    <div class="container-fluid">
-	        <div class="row justify-content-center">
-	            <div class="col-sm-12 col-lg-3 col-md-4" th:each="producto : ${products}">
-	                <div class="producto">
-	                    <img th:src="${producto.productImage}" alt="Producto">
-	                    <h2 th:text="${producto.productName}">Producto</h2>
-	                    <p th:text="${producto.productDescription}">Descripción del producto</p>
-	                    <p class="precioEntero" th:text="${producto.productPvP + '€'}">0.00€</p>
-	                    <form th:action="@{/comprar}" method="post">
-	                        <input type="hidden" th:name="productId" th:value="${producto.productId}">
-	                        <button type="submit" class="btn btn-primary btn-comprar">Comprar</button>
-	                    </form>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	</main>
+		    <div class="container-fluid">
+		        <div class="row justify-content-center">
+		            <div class="col-sm-12 col-lg-3 col-md-4" th:each="producto : ${products}">
+		                <div class="producto">
+		                    <img th:src="${producto.productImage}" alt="Producto">
+		                    <h2 th:text="${producto.productName}">Producto</h2>
+		                    <p th:text="${producto.productDescription}">Descripción del producto</p>
+		                    <p class="precioEntero" th:text="${producto.productPvP + '€'}">0.00€</p>
+		                    <form th:action="@{/comprar}" method="post">
+		                        <input type="hidden" th:name="productId" th:value="${producto.productId}">
+		                        <button type="submit" class="btn btn-primary btn-comprar">Comprar</button>
+		                    </form>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</main>
 	<footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
 </html>

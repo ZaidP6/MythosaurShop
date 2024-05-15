@@ -121,6 +121,7 @@ public class ProductController {
         return "index"; 
     }
 	
+	
 	@PostMapping("/comprar")
     public String comprarProducto(Long productId, Model model) {
 		
