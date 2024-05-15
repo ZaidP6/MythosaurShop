@@ -62,7 +62,7 @@ public class SecurityConfig{
 						.successHandler((request, response, authentication) -> {
 							Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
 							if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
-								response.sendRedirect("/admin");
+								response.sendRedirect("/admin/");
 							}
 							else if (authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))) {
 								response.sendRedirect("/customer/index");

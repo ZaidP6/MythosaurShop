@@ -22,7 +22,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true) @AllArgsConstructor
 @SuperBuilder @DiscriminatorValue("USER")
-public class Customer extends BasicUser implements UserDetails{
+public class Customer extends BasicUser{
 
 
 	private String customerMail;
