@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<meta charset="utf-8" />
@@ -65,12 +65,9 @@
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn bg-danger btn-outline-light" type="submit">Search</button>
 				</form>
-				<button sec:authorize="isAnonymous()" class="btn fs-5" type="button"> 
-					<a th:href="@{/form/logIn}" href="/templates/logIn.html">Mi cuenta</a>
+				<button class="btn fs-5" type="button"><span sec:authentication="name">Administrador</span>
+					<i class="bi bi-person"></i>
 				</button>
-                <!-- <button sec:authorize="isAuthenticated()" class="btn fs-5" type="button"> 
-                    <a th:href="@{/myProfile}"> <i class="bi bi-person"></i></a>
-               	</button> -->
 			</div>
 
 
