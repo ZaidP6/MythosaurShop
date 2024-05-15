@@ -7,14 +7,14 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 
 @NoArgsConstructor @Entity @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true) @SuperBuilder
 @DiscriminatorValue("ADMIN")
-public class Admin extends BasicUser implements UserDetails {
+public class Admin extends BasicUser {
 
 
 
