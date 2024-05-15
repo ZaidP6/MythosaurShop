@@ -53,9 +53,9 @@ public class SecurityConfig{
 
 		http.authorizeHttpRequests((authz) -> authz
 	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
-	        		"/quienesSomos/", "/trabaja", "/contenidoContacto", "/").permitAll()
+	        		"/quienesSomos", "/trabaja", "/contenidoContacto", "/").permitAll()
 						.requestMatchers("/admin/**").hasRole("ADMIN")
-						.requestMatchers("/customer/**").hasRole("USER")
+						.requestMatchers("/user/**").hasRole("USER")
 						.anyRequest().authenticated())
 				.formLogin((loginz) -> loginz
 						.loginPage("/form/logIn")
@@ -65,7 +65,7 @@ public class SecurityConfig{
 								response.sendRedirect("/admin/");
 							}
 							else if (authorities.contains(new SimpleGrantedAuthority("ROLE_USER"))) {
-								response.sendRedirect("/customer/index");
+								response.sendRedirect("/user/");
 							}
 							else {
 								response.sendRedirect("/");
@@ -73,8 +73,8 @@ public class SecurityConfig{
 						})
 						.permitAll())
 				.logout((logoutz) -> logoutz
-						.logoutUrl("/form/logOut")
-						.logoutSuccessUrl("/login")
+						.logoutUrl("/logout")
+						.logoutSuccessUrl("/")
 						.permitAll());
 				/*
 				.requestMatchers("/admin/**").hasRole("ADMIN")
