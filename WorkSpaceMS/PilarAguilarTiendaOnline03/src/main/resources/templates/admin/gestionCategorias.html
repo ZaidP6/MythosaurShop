@@ -16,8 +16,8 @@
 </head>
 
 <body>
-	<div id="menu">
-		<a th:href="@{/admin}">Inicio</a> | <a th:href="@{/admin/nuevoProducto}">Producto nuevo</a>
+	<div>
+		<a th:href="@{/admin/nuevaCat}">Nueva Categoría</a>
 	</div>
 	<br /><br />
 	<table border=1 class="table table-bordered">
@@ -26,27 +26,17 @@
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Descripción</th>
-				<th>Precio</th>
-				<th>Cantidad</th>
-				<th>Imagen</th>
-				<th>Fecha</th>
-				<th>Categoría</th>
 				<th>Operaciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="product : ${products}">
-				<td th:text="${product.productId}">1</td>
-				<td th:text="${product.productName}">Producto</td>
-				<td th:text="${product.productDescription}">Descripcion</td>
-				<td th:text="${product.productPvP}">Precio</td>
-				<td th:text="${product.productstockQuantity}">100</td>
-				<td th:text="${product.productImage}">https://www.hola.com/imagenes/mascotas/20201104178485/consejos-gatos-para-principiantes/0-884-859/gatito-m.jpg?im=Resize=(680)</td>
-				<td th:text="${product.productDate}">02/05/2024</td>
-				<td th:text="${product.productCategory}">Gato</td>
-				<td clas="d-flex justify-content-between">
-					<a href="#" th:href="@{/editar/{id}(id=${product.productId})}"><i class="bi bi-pencil-square"></i></a>
-					<a href="#" th:href="@{/borrar/{id}(id=${product.productId})}"><i class="bi bi-x-circle"></i></a>
+			<tr th:each="category : ${categorias}">
+				<td th:text="${categoryId}">1</td>
+				<td th:text="${categoryName}">Categoría</td>
+				<td th:text="${categoryDescription}">Descripción de la categoría</td>
+				<td class="d-flex justify-content-around">
+					<a href="#" th:href="@{/editar/{id}(id=${categoryId})}"><i class="bi bi-pencil-square"></i> Editar</a>
+					<a href="#" th:href="@{/borrar/{id}(id=${categoryId})}"><i class="bi bi-x-circle"></i> Borrar</a>
 				</td>
 			</tr>
 		</tbody>

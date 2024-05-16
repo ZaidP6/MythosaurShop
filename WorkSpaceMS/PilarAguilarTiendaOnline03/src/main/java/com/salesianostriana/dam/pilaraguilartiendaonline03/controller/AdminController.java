@@ -47,7 +47,12 @@ public class AdminController {
 	
 	//---------------- FUNCIONA --------------------------
 	
-	
+	@GetMapping("/listCat")
+	public String listarCategorias(Model model) {
+		List<Category> categorias = categoryService.findAll();
+		model.addAttribute("categorias", categoryService.findAll());
+		return "admin/gestionCategorias";
+	}
 	
 	
 	
