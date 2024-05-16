@@ -27,7 +27,7 @@
                 <h5 class="card-title fs-5 text-center"><span th:text="${category.categoryId} ? 'Editar' : 'Nueva'"></span> Categoría</h5>
             </div>
             <div class="card-body">
-                <form method="post" action="#" th:action="@{/admin/form/category/sumbit}" th:object="${category}">
+                <form method="post" th:action="@{/admin/form/category/sumbit}" th:object="${category}">
 					<input type="hidden" th:field="*{category.categoryId}" id="categoryId" />
 					<div class="form-group">
 						<label for="nombre">Nombre</label> <input type="text" class="form-control" id="nombre"

@@ -44,6 +44,14 @@
                         <label for="stockProduct" class="form-label">Cantidad</label>
                         <input type="number" class="form-control" min="0" max="20000" id="stockProduct">
                     </div>
+                    <div class="mb-3">
+                        <label for="imageProduct" class="form-label">Imagen</label>
+                        <input type="text" class="form-control" id="imageProduct">
+                    </div>
+                    <div class="mb-3">
+                        <label for="altImageProduct" class="form-label">Texto alternativo</label>
+                        <input type="text" class="form-control" id="altImageProduct">
+                    </div>
                     <div class="form-group">
                         <label for="categoria">Categoría</label> <select th:field="*{category}" class="form-control">
                             <option value="-1">---</option>
