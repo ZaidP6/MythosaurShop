@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,6 +39,22 @@ public class CategoryController {
 		categoryService.save(c);
 		return "redirect:/list";//Podría ser también return "admin/gestionCategorias";
 	}
+	
+	//EDITAR PRODUCTO Y GUARDAR	
+	
+		@PostMapping("/editar/submit")
+		public String procesarFormularioEdicion(@ModelAttribute("categoria") Category c) {
+			categoryService.edit(c);
+			return "redirect:/";
+		}
+		
+		//BORRAR PRODUCTO POR ID
+		
+		@GetMapping("/borrar/{categoryId}")
+		public String borrar(@PathVariable("categoryId") long id) {
+			categoryService.deleteById(id);
+			return "redirect:/";
+		}
 	
 }
 

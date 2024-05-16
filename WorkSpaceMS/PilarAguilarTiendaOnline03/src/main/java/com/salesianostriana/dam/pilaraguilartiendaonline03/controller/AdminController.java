@@ -49,28 +49,6 @@ public class AdminController {
 		return "admin/gestionProductos";
 	}
 	
-	
-	
-
-	
-	//EDITAR PRODUCTO Y GUARDAR	
-	
-	@PostMapping("/editar/submit")
-	public String procesarFormularioEdicion(@ModelAttribute("categoria") Category c) {
-		categoryService.edit(c);
-		return "redirect:/";
-	}
-	
-	//BORRAR PRODUCTO POR ID
-	
-	@GetMapping("/borrar/{categoryId}")
-	public String borrar(@PathVariable("productId") long id) {
-		productService.deleteById(id);
-		return "redirect:/";
-	}
-	
-	
-	
 	@GetMapping("/nuevoProducto")
 	public String nuevoProducto() {
 		

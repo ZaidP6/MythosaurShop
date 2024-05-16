@@ -28,10 +28,10 @@
 			<div class="container d-flex justify-content-center align-items-center vh-100" th:each="category : ${categories}">
 		        <div class="card w-75 bg-success">
 		            <div class="card-header">
-		                <h5 class="card-title fs-5 text-center"><span th:text="${category.categoryId} ? 'Editar' : 'Nueva'"></span> Categoría</h5>
+		                <h5 class="card-title fs-5 text-center"><span th:text="${category.categoryId} ? 'Editar' : 'Borrar'"></span> Categoría</h5>
 		            </div>
 		            <div class="card-body">
-		                <form method="post" th:action="${category.categoryId != 0} ? @{/editar/submit} : @{/nueva/submit}" th:object="${category}">
+		                <form method="post" th:action="${category.categoryId != 0} ? @{/admin/categoria/editar/submit} : @{/admin/categoria/borrar/submit}" th:object="${category}">
 							<input type="hidden" th:if="${category.categoryId != 0}" th:field="*{category.categoryId}" id="categoryId" />
 							<div class="form-group">
 								<label for="nombre">Nombre</label> <input type="text" class="form-control" id="nombre"
