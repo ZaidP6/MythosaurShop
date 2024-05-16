@@ -1,0 +1,42 @@
+package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
+
+@Controller
+@RequestMapping("/admin/categoria")
+public class CategoryController {
+
+	@Autowired
+	private CategoryService categoryService;
+
+	
+	@GetMapping("/list")
+	public String listarCategorias(Model model) {
+		model.addAttribute("categorias", categoryService.findAll());
+		return "admin/gestionCategorias";
+	}
+	
+	@GetMapping("/nueva") //muestra formulario vacio
+	public String nuevaCategoria(Model model) {
+        model.addAttribute("category",new Category());
+		return "admin/nuevaCategoria";
+	}
+	
+	@PostMapping("/nueva/submit")
+	public String nuevaCategoriaOk(@ModelAttribute("category") Category c) {
+		categoryService.save(c);
+		return "redirect:/list";//Podría ser también return "admin/gestionCategorias";
+	}
+	
+}
+
+

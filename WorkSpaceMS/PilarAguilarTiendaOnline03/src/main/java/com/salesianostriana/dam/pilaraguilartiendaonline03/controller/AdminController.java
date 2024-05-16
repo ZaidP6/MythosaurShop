@@ -47,21 +47,17 @@ public class AdminController {
 	
 	//---------------- FUNCIONA --------------------------
 	
-	@GetMapping("/listCat")
-	public String listarCategorias(Model model) {
-		List<Category> categorias = categoryService.findAll();
-		model.addAttribute("categorias", categoryService.findAll());
-		return "admin/gestionCategorias";
+	
+	
+	@GetMapping("/listProd")
+	public String listarProductos(Model model) {
+		model.addAttribute("productos", productService.findAll());
+		return "admin/gestionProductos";
 	}
 	
 	
 	
 
-	@PostMapping("/nuevaCat/submit")
-	public String nuevaCategoriaOk(@ModelAttribute("alumno") Category c) {
-		categoryService.save(c);
-		return "admin/gestionCategorias";//Podría ser también return "redirect:/list" si tuviera metodo para ello
-	}
 	
 	//EDITAR PRODUCTO Y GUARDAR	
 	
