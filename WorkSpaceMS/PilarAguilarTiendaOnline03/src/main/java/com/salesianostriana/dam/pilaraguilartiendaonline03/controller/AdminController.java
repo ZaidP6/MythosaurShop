@@ -43,7 +43,8 @@ public class AdminController {
 	
 	
 	
-	@GetMapping("/listProd")
+	/*
+	 * @GetMapping("/listProd")
 	public String listarProductos(Model model) {
 		model.addAttribute("productos", productService.findAll());
 		return "admin/gestionProductos";
@@ -61,5 +62,6 @@ public class AdminController {
 		return "gestionProductos";
 	}
 	
+	 */
 	
 }

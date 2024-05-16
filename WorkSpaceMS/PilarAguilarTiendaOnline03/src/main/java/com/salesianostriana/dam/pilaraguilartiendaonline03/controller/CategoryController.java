@@ -26,6 +26,15 @@ public class CategoryController {
 		return "admin/gestionCategorias";
 	}
 	
+	//BORRAR CATEGORIA POR ID
+	
+		@GetMapping("/borrar/{categoryId}")
+		public String borrar(@PathVariable("categoryId") long id) {
+			categoryService.deleteById(id);
+			return "redirect:/admin/categoria/list";
+		}
+		
+	
 	//---------------- FUNCIONA --------------------------
 	
 	@GetMapping("/nueva") //muestra formulario vacio
@@ -37,24 +46,29 @@ public class CategoryController {
 	@PostMapping("/nueva/submit")
 	public String nuevaCategoriaOk(@ModelAttribute("category") Category c) {
 		categoryService.save(c);
-		return "redirect:/list";//Podría ser también return "admin/gestionCategorias";
+		return "redirect:/admin/categoria/list";//Podría ser también return "admin/gestionCategorias";
 	}
 	
-	//EDITAR PRODUCTO Y GUARDAR	
+	//EDITAR CATEGORIA Y GUARDAR	
 	
-		@PostMapping("/editar/submit")
-		public String procesarFormularioEdicion(@ModelAttribute("categoria") Category c) {
-			categoryService.edit(c);
+	@GetMapping("/editar/{id}")
+	public String mostrarFormCategoria(@PathVariable("id") long id, Model model) {
+		Category category = categoryService.findById(id).get();
+		if(category!=null) {
+			model.addAttribute("category", category);
+			return "admin/nuevaCategoria";
+		} else {
 			return "redirect:/";
 		}
 		
-		//BORRAR PRODUCTO POR ID
+	}
+	
+	@PostMapping("/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("category") Category c) {
+		categoryService.save(c);
+		return "redirect:/";
+	}
 		
-		@GetMapping("/borrar/{categoryId}")
-		public String borrar(@PathVariable("categoryId") long id) {
-			categoryService.deleteById(id);
-			return "redirect:/";
-		}
 	
 }
 

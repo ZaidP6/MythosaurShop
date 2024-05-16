@@ -31,8 +31,8 @@
 				<td th:text="${category.categoryName}">Categoría</td>
 				<td th:text="${category.categoryDescription}">Descripción de la categoría</td>
 				<td class="d-flex justify-content-around">
-					<a href="#" th:href="@{/editar/{id}(id=${categoryId})}"><i class="bi bi-pencil-square"></i> Editar</a>
-					<a href="#" th:href="@{/borrar/{id}(id=${categoryId})}"><i class="bi bi-x-circle"></i> Borrar</a>
+					<a href="#" th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}"><i class="bi bi-pencil-square"></i> Editar</a>
+					<a href="#" th:href="@{/admin/categoria/borrar/{id}(id=${category.categoryId})}"><i class="bi bi-x-circle"></i> Borrar</a>
 				</td>
 			</tr>
 		</tbody>
