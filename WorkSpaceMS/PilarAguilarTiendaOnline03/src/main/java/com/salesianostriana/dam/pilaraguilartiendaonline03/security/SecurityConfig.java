@@ -52,7 +52,7 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
 
 		http.authorizeHttpRequests((authz) -> authz
-	        .requestMatchers("/css/**","/js/**","/webjars/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
+	        .requestMatchers("/css/**","/js/**","/webjars/**", "/img/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
 	        		"/quienesSomos", "/trabaja", "/contenidoContacto", "/").permitAll()
 						.requestMatchers("/admin/**").hasRole("ADMIN")
 						.requestMatchers("/user/**").hasRole("USER")

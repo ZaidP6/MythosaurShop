@@ -58,7 +58,7 @@ public class CategoryController {
 			model.addAttribute("category", category);
 			return "admin/nuevaCategoria";
 		} else {
-			return "redirect:/";
+			return "redirect:/admin/categoria/list";
 		}
 		
 	}

@@ -15,24 +15,23 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.AdminService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CustomerService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 
-	@Autowired
-	public AdminService adminService;
 	
 	@Autowired
-	public ProductService productService;
+	private ProductService productService;
 	
 	@Autowired
-	public CategoryService categoryService;
+	private CustomerService customerService;
 	
 	
 	
-	@GetMapping("/")  //Mostrar productos bbdd
+	@GetMapping("/")  //Mostrar productos bbdd en indexAdmin
 	public String index(Model model) { 
 		List<Product> productos = productService.findAll();
         model.addAttribute("products", productos);
@@ -42,26 +41,20 @@ public class AdminController {
 	//---------------- FUNCIONA --------------------------
 	
 	
-	
-	/*
-	 * @GetMapping("/listProd")
-	public String listarProductos(Model model) {
-		model.addAttribute("productos", productService.findAll());
-		return "admin/gestionProductos";
+	@GetMapping("/customer/list")
+	public String listarClientes(Model model) {
+		model.addAttribute("clientes", customerService.findAll());
+		return "admin/gestionClientes";
 	}
 	
-	@GetMapping("/nuevoProducto")
-	public String nuevoProducto() {
+	//BORRAR CLIENTE POR ID
+	
+		@GetMapping("/customer/borrar/{customerId}")
+		public String borrar(@PathVariable("customerId") long id) {
+			customerService.deleteById(id);
+			return "redirect:/admin/customer/list";
+		}
 		
-		return "nuevoProducto";
-	}
 	
-	@PostMapping("/nuevoProduct/submit")
-	public String nuevoProductoOk() {
-		
-		return "gestionProductos";
-	}
-	
-	 */
 	
 }

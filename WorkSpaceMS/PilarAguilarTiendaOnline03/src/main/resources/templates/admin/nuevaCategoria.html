@@ -25,26 +25,29 @@
 	<div class="container-fluid">
         <div class="row">
 			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
-			<div class="container d-flex justify-content-center align-items-center vh-100" th:each="category : ${categories}">
+			<div class="container d-flex justify-content-center align-items-center vh-100">
 		        <div class="card w-75 bg-success">
 		            <div class="card-header">
-		                <h5 class="card-title fs-5 text-center"><span th:text="${category.categoryId} ? 'Editar' : 'Nuevo'"></span> Categoría</h5>
+		                <h5 class="card-title fs-5 text-center"><span th:text="${category.categoryId != 0} ? 'Editar' : 'Nuevo'"></span> Categoría</h5>
 		            </div>
 		            <div class="card-body">
 						<form method="post" th:action="${category.categoryId != 0} ? @{/admin/categoria/editar/submit} : @{/admin/categoria/nueva/submit}" th:object="${category}" autocomplete="on">
-							<input type="hidden" th:if="${category.categoryId != 0}" th:field="*{category.categoryId}" id="categoryId" />
+							<input type="hidden" th:if="${category.categoryId != 0}" th:field="*{categoryId}" id="categoryId" />
 							<div class="form-group">
 								<label for="nombre">Nombre</label> <input type="text" class="form-control" id="nombre"
-									placeholder="Nombre" required="required" th:field="*{category.categoryName}">
+									placeholder="Nombre" required="required" th:field="*{categoryName}">
 							</div>
 							<div class="form-group">
 								<label for="description">Descripción</label> <input type="text" class="form-control" id="description"
-									placeholder="Descripción" required="required" th:field="*{category.categoryDescription}">
+									placeholder="Descripción" required="required" th:field="*{categoryDescription}">
+							</div>
+							<div>
+								<button type="submit" class="btn btn-primary">Añadir</button>
 							</div>
 						</form>
 		            </div>
 		            <div class="card-footer">
-		                <button type="submit" class="btn btn-primary">Añadir</button>
+		                
 		            </div>
         		</div>				
       		 </div>

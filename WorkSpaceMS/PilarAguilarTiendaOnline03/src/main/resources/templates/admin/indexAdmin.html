@@ -23,8 +23,9 @@
 					<div class="row justify-content-center">
 						<div class="col-sm-12 col-lg-3 col-md-4" th:each="producto : ${products}">
 							<div class="producto">
-								<img th:src="${producto.productImage}" alt="${producto.productImageAlternativeText}">
+								<img th:src="${producto.productImage}" th:alt="${producto.productImageAlternativeText}" alt="Imagen perdida">
 								<h2 th:text="${producto.productName}">Producto</h2>
+								<h5 th:if="${producto.category} != null" th:text="${producto.category.categoryName}">Categoría</h5>
 								<p th:text="${producto.productDescription}">Descripción del producto</p>
 								<p class="precioEntero" th:text="${producto.productPvP + '€'}">0.00€</p>
 								<form th:action="@{/comprar}" method="post">
