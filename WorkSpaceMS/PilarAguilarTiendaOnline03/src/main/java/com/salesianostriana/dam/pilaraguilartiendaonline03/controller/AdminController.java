@@ -39,12 +39,6 @@ public class AdminController {
 		return "admin/indexAdmin";
 	}
 	
-	@GetMapping("/nuevaCat") //muestra formulario vacio
-	public String nuevaCategoria(Model model) {
-        model.addAttribute("category",new Category());
-		return "admin/nuevaCategoria";
-	}
-	
 	//---------------- FUNCIONA --------------------------
 	
 	

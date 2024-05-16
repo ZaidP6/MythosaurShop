@@ -25,6 +25,8 @@ public class CategoryController {
 		return "admin/gestionCategorias";
 	}
 	
+	//---------------- FUNCIONA --------------------------
+	
 	@GetMapping("/nueva") //muestra formulario vacio
 	public String nuevaCategoria(Model model) {
         model.addAttribute("category",new Category());

@@ -17,7 +17,7 @@
 
 <body>
 	<div>
-		<a th:href="@{/admin/nuevaCat}">Nueva Categoría</a>
+		<a th:href="@{/admin/categoria/nueva}">Nueva Categoría</a>
 	</div>
 	<br /><br />
 	<table border=1 class="table table-bordered">
@@ -31,9 +31,9 @@
 		</thead>
 		<tbody>
 			<tr th:each="category : ${categorias}">
-				<td th:text="${categoryId}">1</td>
-				<td th:text="${categoryName}">Categoría</td>
-				<td th:text="${categoryDescription}">Descripción de la categoría</td>
+				<td th:text="${category.categoryId}">1</td>
+				<td th:text="${category.categoryName}">Categoría</td>
+				<td th:text="${category.categoryDescription}">Descripción de la categoría</td>
 				<td class="d-flex justify-content-around">
 					<a href="#" th:href="@{/editar/{id}(id=${categoryId})}"><i class="bi bi-pencil-square"></i> Editar</a>
 					<a href="#" th:href="@{/borrar/{id}(id=${categoryId})}"><i class="bi bi-x-circle"></i> Borrar</a>
