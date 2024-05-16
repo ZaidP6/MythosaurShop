@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.AdminService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
@@ -39,9 +40,10 @@ public class AdminController {
 	//---------------- FUNCIONA --------------------------
 	
 	@GetMapping("/nuevaCategoria")
-	public String nuevaCategoria() {
-		
-		return "nuevaCategoria";
+	public String nuevaCategoria(Model model) {
+		List<Category> categories = categoryService.findAll();
+        model.addAttribute("products", categories);
+		return "admin/nuevaCategoria";
 	}
 	
 	@PostMapping("/nuevaCategoria/submit")

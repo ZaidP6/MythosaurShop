@@ -21,13 +21,18 @@
 </head>
 
 <body>
+	<header th:replace="~{fragments/headerNavbarAdmin :: navbarAdmin}"></header>
+	<div class="container-fluid">
+        <div class="row">
+			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
+			
     <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card w-75 bg-success">
+        <div class="card w-75 bg-success" th:each="category : ${categories}">
             <div class="card-header">
                 <h5 class="card-title fs-5 text-center"><span th:text="${category.categoryId} ? 'Editar' : 'Nueva'"></span> Categoría</h5>
             </div>
             <div class="card-body">
-                <form method="post" th:action="@{/admin/form/category/sumbit}" th:object="${category}">
+                <form method="post" th:action="@{nuevaCategoria/sumbit}" th:object="${category}">
 					<input type="hidden" th:field="*{category.categoryId}" id="categoryId" />
 					<div class="form-group">
 						<label for="nombre">Nombre</label> <input type="text" class="form-control" id="nombre"
@@ -43,9 +48,10 @@
                 <button type="submit" class="btn btn-primary">Añadir</button>
             </div>
         </div>
-        
+       </div>
     </div>
     </div>
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
 
 </body>
 
