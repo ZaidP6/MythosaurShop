@@ -47,7 +47,7 @@
 								<td th:text="${product.productStockQuantity}">100</td>
 								<td th:text="${product.productImage}">https://www.hola.com/imagenes/mascotas/20201104178485/consejos-gatos-para-principiantes/0-884-859/gatito-m.jpg?im=Resize=(680)</td>
 								<td th:text="${product.productDate}">02/05/2024</td>
-								<td th:text="${product.category.categoryName}" th:if="${product.category.categoryId != 0}">Gato</td>
+								<td th:text="${product.category.categoryName}" th:if="${product.category.categoryId != null}">Gato</td>
 								<td class="d-flex justify-content-between">
 									<a href="#" th:href="@{/editar/{id}(id=${product.productId})}"><i class="bi bi-pencil-square"></i></a>
 									<a href="#" th:href="@{/borrar/{id}(id=${product.productId})}"><i class="bi bi-x-circle"></i></a>
