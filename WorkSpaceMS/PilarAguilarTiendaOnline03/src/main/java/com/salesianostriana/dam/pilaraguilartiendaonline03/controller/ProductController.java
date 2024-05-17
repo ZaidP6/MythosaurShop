@@ -1,6 +1,8 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -80,7 +82,8 @@ public class ProductController {
 	
 	@GetMapping({"/admin/producto/list"})
 	public String listarTodosTabla(Model model) {
-		model.addAttribute("lista",productService.findAll());
+		List<Product> products = productService.findAll();
+		model.addAttribute("products",productService.findAll());
 		return "admin/gestionProductos";
 	}
 	
