@@ -25,8 +25,8 @@
 	<div class="container-fluid">
         <div class="row">
 			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
-			<div class="container d-flex justify-content-center align-items-center vh-100">
-		        <div class="card w-75 bg-success">
+			<div class="container d-flex justify-content-center align-items-center w-75">
+		        <div class="card w-50 bg-success">
 		            <div class="card-header">
 		                <h5 class="card-title fs-5 text-center"><span th:text="${category.categoryId != 0} ? 'Editar' : 'Nuevo'"></span> Categoría</h5>
 		            </div>

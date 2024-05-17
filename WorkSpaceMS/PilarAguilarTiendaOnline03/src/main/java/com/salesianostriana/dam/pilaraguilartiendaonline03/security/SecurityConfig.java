@@ -52,7 +52,7 @@ public class SecurityConfig{
 	public SecurityFilterChain securityFilterChain(HttpSecurity http)throws Exception{
 
 		http.authorizeHttpRequests((authz) -> authz
-	        .requestMatchers("/css/**","/js/**","/webjars/**", "/img/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
+	        .requestMatchers("/css/**","/js/**","/webjars/**", "/images/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
 	        		"/quienesSomos", "/trabaja", "/contenidoContacto", "/").permitAll()
 						.requestMatchers("/admin/**").hasRole("ADMIN")
 						.requestMatchers("/user/**").hasRole("USER")
@@ -60,7 +60,7 @@ public class SecurityConfig{
 				.formLogin((loginz) -> loginz
 						.loginPage("/form/logIn")
 						.successHandler((request, response, authentication) -> {
-							Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+							Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities(); //Esto no le gusta a Luismi asi, meter en una clase
 							if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
 								response.sendRedirect("/admin/");
 							}

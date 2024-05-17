@@ -21,14 +21,19 @@
 </head>
 
 <body>
-    <div class="container d-flex justify-content-center align-items-center vh-100">
-        <div class="card w-75 bg-success">
-            <div class="card-header">
-                <h5 class="card-title fs-5 text-center">Nuevo Producto</h5>
-            </div>
+    <header th:replace="~{fragments/headerNavbarAdmin :: navbarAdmin}"></header>
+	<div class="container-fluid">
+        <div class="row">
+			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
+			<div class="container d-flex justify-content-center align-items-center w-75">
+		        <div class="card w-50 bg-success">
+		            <div class="card-header">
+		                <h5 class="card-title fs-5 text-center"><span th:text="${product.productId != 0} ? 'Editar' : 'Nuevo'"></span> Producto</h5>
+		            </div>
             <div class="card-body">
-                <form>
-                    <div class="mb-3">
+                <form method="post" th:action="${product.productId != 0} ? @{/admin/producto/editar/submit} : @{/admin/producto/nuevo/submit}" th:object="${product}" autocomplete="on">
+                    <input type="hidden" th:if="${product.productId != 0}" th:field="*{productId}" id="productId" />
+                    <div class="mb-3 form-group">
                         <label for="nameProduct" class="form-label">Nombre del producto</label>
                         <input type="text" class="form-control" id="nameProduct">
                     </div>
@@ -59,11 +64,13 @@
                                 th:text="${category.categoryName}">Categoría</option>
                         </select>
                     </div>
+                    
+                    <div>
+                    	<button type="submit" class="btn btn-primary">Añadir</button>
+                    </div>
                 </form>
             </div>
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary">Añadir</button>
-            </div>
+           </div>
         </div>
         
     </div>

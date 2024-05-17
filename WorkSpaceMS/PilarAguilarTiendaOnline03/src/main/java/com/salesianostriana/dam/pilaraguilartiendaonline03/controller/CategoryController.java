@@ -28,32 +28,17 @@ public class CategoryController {
 	
 	//BORRAR CATEGORIA POR ID
 	
-		@GetMapping("/borrar/{categoryId}")
-		public String borrar(@PathVariable("categoryId") long id) {
-			categoryService.deleteById(id);
-			return "redirect:/admin/categoria/list";
-		}
-		
-	
-	//---------------- FUNCIONA --------------------------
-	
-	@GetMapping("/nueva") //muestra formulario vacio
-	public String nuevaCategoria(Model model) {
-        model.addAttribute("category",new Category());
-		return "admin/nuevaCategoria";
+	@GetMapping("/borrar/{categoryId}")
+	public String borrar(@PathVariable("categoryId") long id) {
+		categoryService.deleteById(id);
+		return "redirect:/admin/categoria/list";
 	}
 	
-	@PostMapping("/nueva/submit")
-	public String nuevaCategoriaOk(@ModelAttribute("category") Category c) {
-		categoryService.save(c);
-		return "redirect:/admin/categoria/list";//Podría ser también return "admin/gestionCategorias";
-	}
-	
-	//EDITAR CATEGORIA Y GUARDAR	
+	//EDITAR CATEGORIA Y GUARDAR
 	
 	@GetMapping("/editar/{id}")
 	public String mostrarFormCategoria(@PathVariable("id") long id, Model model) {
-		Category category = categoryService.findById(id).get();
+		Category category = categoryService.findById(id).get();  //Esto no le gusta a Luismi asi, buscar otra manera
 		if(category!=null) {
 			model.addAttribute("category", category);
 			return "admin/nuevaCategoria";
@@ -66,8 +51,28 @@ public class CategoryController {
 	@PostMapping("/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("category") Category c) {
 		categoryService.save(c);
-		return "redirect:/";
+		return "redirect:/admin/categoria/list";
 	}
+		
+	@GetMapping("/nueva") //muestra formulario vacio
+	public String nuevaCategoria(Model model) {
+        model.addAttribute("category",new Category());
+		return "admin/nuevaCategoria";
+	}
+	
+	@PostMapping("/nueva/submit")
+	public String nuevaCategoriaOk(@ModelAttribute("category") Category c) {
+		categoryService.save(c);
+		return "redirect:/admin/categoria/list";//Podría ser también return "admin/gestionCategorias";
+	}
+	
+	//---------------- FUNCIONA --------------------------
+	
+	
+	
+		
+	
+	
 		
 	
 }
