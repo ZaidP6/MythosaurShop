@@ -53,7 +53,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/admin/producto/nuevo/submit")
-	public String nuevoProductoOk(@ModelAttribute("preducto") Product p) {
+	public String nuevoProductoOk(@ModelAttribute("producto") Product p) {
 		productService.save(p);
 		return "redirect:/admin/producto/list";//Podría ser también return "admin/gestionCategorias";
 	}

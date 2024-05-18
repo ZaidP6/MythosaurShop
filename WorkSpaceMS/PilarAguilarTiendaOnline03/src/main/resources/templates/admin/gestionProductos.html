@@ -22,9 +22,6 @@
 		<div class="row">
 			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
 			<div class="col-md-9 col-lg-10 py-3 w-75">
-				<div th:if="${#lists.isEmpty(products)}">
-					<p>No hay productos disponibles.</p>
-				</div>
 				<table border=1 class="table table-bordered" id="dataTable">
 					<thead>
 						<tr>
@@ -40,6 +37,9 @@
 						</tr>
 					</thead>
 					<tbody>
+						<div th:if="${#lists.isEmpty(products)}">
+							<p>No hay productos disponibles.</p>
+						</div>
 						<tr th:each="product : ${products}">
 							<td th:text="${product.productId}">1</td>
 							<td th:text="${product.productName}">Producto</td>

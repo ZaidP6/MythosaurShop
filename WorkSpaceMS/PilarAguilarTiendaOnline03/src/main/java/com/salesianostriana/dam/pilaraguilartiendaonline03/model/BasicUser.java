@@ -30,9 +30,7 @@ public class BasicUser implements UserDetails{
 	private String basicUserName;
 	private String basicUserLastName;
 	private String basicUserPassword;
-	private String basicUserPasswordCheck;
 	private String basicUserDni;
-	private String basicUserPhoto;
 
 
 

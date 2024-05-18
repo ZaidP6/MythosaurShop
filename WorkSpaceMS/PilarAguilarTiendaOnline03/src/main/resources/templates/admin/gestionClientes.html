@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<!-- Iconos -->
 
-	<title>Gestión productos</title>
+	<title>Gestión clientes</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -23,7 +23,7 @@
 		<div class="row">
 			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
 			<div class="col-md-9 col-lg-10 py-3 w-75">
-				<table border=1 class="table table-bordered">
+				<table border=1 class="table table-bordered" id="dataTable">
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -31,31 +31,29 @@
 							<th>Nombre</th>
 							<th>Apellidos</th>
 							<th>DNI</th>
-							<th>Foto</th>
 							<th>Correo</th>
 							<th>Fecha nacimiento</th>
 							<th>Última conexión</th>
 							<th>Teléfono</th>
 							<th>Dirección</th>
 						</tr>
-					</thead> <!-- CUIDAO, INTRODUCIR BIEN LOS DATOS, EN PROCESO... -->
+					</thead>
 					<tbody>
-						<tr th:each="cliente : ${clientes}">
+						<tr th:each="cliente : ${customers}">
 							<td th:text="${cliente.basicUserId}">1</td>
 							<td th:text="${cliente.basicUserUName}">user</td>
 							<td th:text="${cliente.basicUserName}">Ángel</td>
 							<td th:text="${cliente.basicUserLastName}">Naranjo</td>
 							<td th:text="${cliente.basicUserDni}">28711746H</td>
-							<td th:text="${cliente.basicUserPhoto}"></td>
 							<td th:text="${cliente.customerMail}">angel@naranjo.es</td>
 							<td th:text="${cliente.customerBirth}">12/05/1958</td>
 							<td th:text="${cliente.customerLastSession}">Naranjo</td>
 							<td th:text="${cliente.customerPhone}">28711746H</td>
 							<td th:text="${cliente.customerAddress}"></td>
 							<td class="d-flex justify-content-around">
-								<a href="#" th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}"><i
+								<a href="#" th:href="@{/admin/cliente/editar/{id}(id=${cliente.basicUserId})}"><i
 										class="bi bi-pencil-square"></i> Editar</a>
-								<a href="#" th:href="@{/admin/categoria/borrar/{id}(id=${category.categoryId})}"><i
+								<a href="#" th:href="@{/admin/clientes/borrar/{id}(id=${cliente.basicUserId})}"><i
 										class="bi bi-x-circle"></i> Borrar</a>
 							</td>
 						</tr>

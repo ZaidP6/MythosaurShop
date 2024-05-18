@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.AdminService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
@@ -37,22 +38,53 @@ public class AdminController {
         model.addAttribute("products", productos);
 		return "admin/indexAdmin";
 	}
-	
-	//---------------- FUNCIONA --------------------------
-	
-	
-	@GetMapping("/customer/list")
+
+	@GetMapping("/cliente/list")
 	public String listarClientes(Model model) {
-		model.addAttribute("clientes", customerService.findAll());
+		model.addAttribute("customers", customerService.findAll());
 		return "admin/gestionClientes";
 	}
 	
+	//---------------- FUNCIONA --------------------------
+	
+	@GetMapping("/cliente/nuevo")
+	public String nuevoCliente(Model model) {
+		model.addAttribute("customer", new Customer());
+		return "admin/nuevoCliente";
+	}
+	
+	@PostMapping("/cliente/nuevo/submit")
+	public String nuevoClienteOk(@ModelAttribute("customer") Customer c) {
+		customerService.save(c);
+		return "redirect:/admin/cliente/list";
+	}
+	
+	
+	@GetMapping("/cliente/editar/{id}")
+	public String mostrarFormCliente(@PathVariable("id") long id, Model model) {
+		Customer customer = customerService.findById(id).get();  //Esto no le gusta a Luismi asi, buscar otra manera
+		if(customer!=null) {
+			model.addAttribute("customer", customer);
+			return "admin/nuevoCliente";
+		} else {
+			return "redirect:/admin/cliente/list";
+		}
+		
+	}
+	
+	@PostMapping("/cliente/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("customer") Customer c) {
+		customerService.save(c);
+		return "redirect:/admin/cliente/list";
+	}
+	
+	
 	//BORRAR CLIENTE POR ID
 	
-		@GetMapping("/customer/borrar/{customerId}")
+		@GetMapping("/cliente/borrar/{customerId}")
 		public String borrar(@PathVariable("customerId") long id) {
 			customerService.deleteById(id);
-			return "redirect:/admin/customer/list";
+			return "redirect:/admin/cliente/list";
 		}
 		
 	
