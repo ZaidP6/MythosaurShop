@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductService;
 
 
@@ -24,7 +25,11 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private CategoryService categoryService;
 	private OrderLine orderLine;
+	
+	
 
 	
 	/**
@@ -41,7 +46,9 @@ public class ProductController {
 	 */
 	@GetMapping("/admin/producto/nuevo")
 	public String nuevoProducto(Model model) {
+		List<Category>categorias = categoryService.findAll();
 		model.addAttribute("product", new Product());
+		model.addAttribute("categorias", categorias);
 		return "admin/nuevoProducto";
 	}
 	
@@ -57,8 +64,10 @@ public class ProductController {
 	@GetMapping("/admin/producto/editar/{id}")
 	public String mostrarFormProducto(@PathVariable("id") long id, Model model) {
 		Product producto = productService.findById(id).get();  //Esto no le gusta a Luismi asi, buscar otra manera
+		List<Category>categorias = categoryService.findAll();
 		if(producto!=null) {
-			model.addAttribute("category", producto);
+			model.addAttribute("product", producto);
+			model.addAttribute("categorias", categorias);
 			return "admin/nuevoProducto";
 		} else {
 			return "redirect:/admin/producto/list";

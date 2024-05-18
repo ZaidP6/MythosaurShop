@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="es" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 	<meta charset="utf-8" />
@@ -19,9 +20,9 @@
 <header th:fragment="navbarAdmin">
 	<nav class="navbar navbar-collapse navbar-expand-lg bg-body-tertiaryp bg-black">
 		<div class="container-fluid">
-			<a class="navbar-brand w-25" href="../indexAdmin.html" 
-				th:href="@{/admin/}">
-				<img href="../static/images/Mythosaur Shop Lineal Black White.png" th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal">
+			<a class="navbar-brand w-25" href="../indexAdmin.html" th:href="@{/admin/}">
+				<img href="../static/images/Mythosaur Shop Lineal Black White.png"
+					th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal">
 			</a>
 
 			<button class="navbar-toggler collapsed float-sm-end" type="button" data-bs-toggle="collapse"
@@ -49,12 +50,13 @@
 
 						</ul>
 					</li>
-					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html" th:href="@{/quienesSomos}">Quiénes
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html"
+							th:href="@{/quienesSomos}">Quiénes
 							Somos</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-							th:href="@{/trabaja}" href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-							th:href="@{/contenidoContacto}" href="./contenidoContacto.html">Contacto</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/trabaja}"
+							href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/contenidoContacto}"
+							href="./contenidoContacto.html">Contacto</a></li>
 				</ul>
 
 				<form class="d-flex mx-auto" role="search">

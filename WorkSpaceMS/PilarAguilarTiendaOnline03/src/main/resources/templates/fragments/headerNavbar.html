@@ -19,9 +19,9 @@
 <header th:fragment="navbarUser">
 	<nav class="navbar navbar-collapse navbar-expand-lg bg-body-tertiary">
 		<div class="container-fluid">
-			<a class="navbar-brand w-25" href="../index.html" 
-				th:href="@{/}">
-				<img href="../static/images/Mythosaur Shop Lineal Black White.png" th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal">				</a>
+			<a class="navbar-brand w-25" href="../index.html" th:href="@{/}">
+				<img href="../static/images/Mythosaur Shop Lineal Black White.png"
+					th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal"> </a>
 
 			<button class="navbar-toggler collapsed float-sm-end" type="button" data-bs-toggle="collapse"
 				data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
@@ -48,22 +48,23 @@
 
 						</ul>
 					</li>
-					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html" th:href="@{/quienesSomos}">Quiénes
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html"
+							th:href="@{/quienesSomos}">Quiénes
 							Somos</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-							th:href="@{/trabaja}" href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-							th:href="@{/contenidoContacto}" href="./contenidoContacto.html">Contacto</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/trabaja}"
+							href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/contenidoContacto}"
+							href="./contenidoContacto.html">Contacto</a></li>
 				</ul>
 
 				<form class="d-flex mx-auto" role="search">
 					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn bg-danger btn-outline-light" type="submit">Search</button>
 				</form>
-				<button sec:authorize="isAnonymous()" class="btn fs-5" type="button"> 
+				<button sec:authorize="isAnonymous()" class="btn fs-5" type="button">
 					<a th:href="@{/form/logIn}" href="/templates/logIn.html">Mi cuenta</a>
 				</button>
-                <!-- <button sec:authorize="isAuthenticated()" class="btn fs-5" type="button"> 
+				<!-- <button sec:authorize="isAuthenticated()" class="btn fs-5" type="button"> 
                     <a th:href="@{/myProfile}"> <i class="bi bi-person"></i></a>
                	</button> -->
 			</div>

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" data-bs-theme="dark">
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	data-bs-theme="dark">
+
 <head>
-    <meta charset="utf-8" />
+	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon">
 	<!-- Favicon -->
@@ -16,51 +17,53 @@
 </head>
 
 <body>
-	
+
 	<header th:replace="~{fragments/headerNavbarAdmin :: navbarAdmin}"></header>
-		<div class="container-fluid">
-	        <div class="row">
-				<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
-				<div class="col-md-9 col-lg-10 py-3 w-75">
-					<table border=1 class="table table-bordered">
-							<thead>
-								<tr>
-									<th>Id</th>
-									<th>Nombre de usuario</th>
-									<th>Nombre</th>
-									<th>Apellidos</th>
-									<th>DNI</th>
-									<th>Foto</th>
-									<th>Correo</th>
-									<th>Fecha nacimiento</th>
-									<th>Última conexión</th>
-									<th>Teléfono</th>
-									<th>Dirección</th>
-								</tr>
-							</thead>						<!-- CUIDAO, INTRODUCIR BIEN LOS DATOS, EN PROCESO... -->
-							<tbody>
-								<tr th:each="cliente : ${clientes}">
-									<td th:text="${cliente.basicUserId}">1</td>
-									<td th:text="${cliente.basicUserUName}">user</td>
-									<td th:text="${cliente.basicUserName}">Ángel</td>
-									<td th:text="${cliente.basicUserLastName}">Naranjo</td>
-									<td th:text="${cliente.basicUserDni}">28711746H</td>
-									<td th:text="${cliente.basicUserPhoto}"></td>
-									<td th:text="${cliente.customerMail}">angel@naranjo.es</td>
-									<td th:text="${cliente.customerBirth}">12/05/1958</td>
-									<td th:text="${cliente.customerLastSession}">Naranjo</td>
-									<td th:text="${cliente.customerPhone}">28711746H</td>
-									<td th:text="${cliente.customerAddress}"></td>
-									<td class="d-flex justify-content-around">
-										<a href="#" th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}"><i class="bi bi-pencil-square"></i> Editar</a>
-										<a href="#" th:href="@{/admin/categoria/borrar/{id}(id=${category.categoryId})}"><i class="bi bi-x-circle"></i> Borrar</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-				</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
+			<div class="col-md-9 col-lg-10 py-3 w-75">
+				<table border=1 class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nombre de usuario</th>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>DNI</th>
+							<th>Foto</th>
+							<th>Correo</th>
+							<th>Fecha nacimiento</th>
+							<th>Última conexión</th>
+							<th>Teléfono</th>
+							<th>Dirección</th>
+						</tr>
+					</thead> <!-- CUIDAO, INTRODUCIR BIEN LOS DATOS, EN PROCESO... -->
+					<tbody>
+						<tr th:each="cliente : ${clientes}">
+							<td th:text="${cliente.basicUserId}">1</td>
+							<td th:text="${cliente.basicUserUName}">user</td>
+							<td th:text="${cliente.basicUserName}">Ángel</td>
+							<td th:text="${cliente.basicUserLastName}">Naranjo</td>
+							<td th:text="${cliente.basicUserDni}">28711746H</td>
+							<td th:text="${cliente.basicUserPhoto}"></td>
+							<td th:text="${cliente.customerMail}">angel@naranjo.es</td>
+							<td th:text="${cliente.customerBirth}">12/05/1958</td>
+							<td th:text="${cliente.customerLastSession}">Naranjo</td>
+							<td th:text="${cliente.customerPhone}">28711746H</td>
+							<td th:text="${cliente.customerAddress}"></td>
+							<td class="d-flex justify-content-around">
+								<a href="#" th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}"><i
+										class="bi bi-pencil-square"></i> Editar</a>
+								<a href="#" th:href="@{/admin/categoria/borrar/{id}(id=${category.categoryId})}"><i
+										class="bi bi-x-circle"></i> Borrar</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
+	</div>
 	<footer th:replace="~{fragments/footer :: footer}"></footer>
 </body>
 
