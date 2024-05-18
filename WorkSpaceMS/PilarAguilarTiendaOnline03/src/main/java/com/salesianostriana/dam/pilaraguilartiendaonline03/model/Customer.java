@@ -16,7 +16,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
-import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity @Data @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)

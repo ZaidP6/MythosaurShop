@@ -1,6 +1,8 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductService;
 
 
@@ -21,7 +25,11 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private CategoryService categoryService;
 	private OrderLine orderLine;
+	
+	
 
 	
 	/**
@@ -30,89 +38,69 @@ public class ProductController {
 	@GetMapping({"/list"})
 	public String listarTodos(Model model) {
 		model.addAttribute("lista",productService.findAll());
-		return "index";
+		return "/";
 	}
 	
 	/**
 	 * Método muestra el formulario vacío y pasamos al model un nuevo producto vacío.
 	 */
-	@GetMapping("/nuevo")
-	public String mostrarFormulario(Model model) {
+	@GetMapping("/admin/producto/nuevo")
+	public String nuevoProducto(Model model) {
+		List<Category>categorias = categoryService.findAll();
 		model.addAttribute("product", new Product());
-		return "formulario";
+		model.addAttribute("categorias", categorias);
+		return "admin/nuevoProducto";
+	}
+	
+	@PostMapping("/admin/producto/nuevo/submit")
+	public String nuevoProductoOk(@ModelAttribute("producto") Product p) {
+		productService.save(p);
+		return "redirect:/admin/producto/list";//Podría ser también return "admin/gestionCategorias";
 	}
 	
 
 	//EDITAR PRODUCTO Y GUARDAR	
 	
-	@PostMapping("/editar/submit")
-	public String procesarFormularioEdicion(@ModelAttribute("alumno") Product p) {
-		productService.edit(p);
-		return "redirect:/";
+	@GetMapping("/admin/producto/editar/{id}")
+	public String mostrarFormProducto(@PathVariable("id") long id, Model model) {
+		Product producto = productService.findById(id).get();  //Esto no le gusta a Luismi asi, buscar otra manera
+		List<Category>categorias = categoryService.findAll();
+		if(producto!=null) {
+			model.addAttribute("product", producto);
+			model.addAttribute("categorias", categorias);
+			return "admin/nuevoProducto";
+		} else {
+			return "redirect:/admin/producto/list";
+		}
+		
+	}
+	
+	@PostMapping("/admin/producto/editar/submit")
+	public String procesarFormularioEdicion(@ModelAttribute("producto") Product p) {
+		productService.save(p);
+		return "redirect:/admin/producto/list";
 	}
 	
 	//BORRAR PRODUCTO POR ID
 	
-	@GetMapping("/borrar/{productId}")
+	@GetMapping("/admin/producto/borrar/{productId}")
 	public String borrar(@PathVariable("productId") long id) {
 		productService.deleteById(id);
-		return "redirect:/";
+		return "redirect:/admin/producto/list";
 	}
 	
+	@GetMapping({"/admin/producto/list"})
+	public String listarTodosTabla(Model model) {
+		List<Product> products = productService.findAll();
+		model.addAttribute("products",productService.findAll());
+		return "admin/gestionProductos";
+	}
 	
-	/**
-	 * Método petición post. No se manda a web en el return, ya que no "actualizaría" la tabla con el nuevo elemento
-	 * sino que devolvemos o redirigimos de nuevo al controller inicial (listarTodos) 
-	 * para que pinte la tabla con el nuevo producto recién agregado.
-	 */
-	
-	
-	
-					/*
-					
-					@PostMapping("/nuevo/")
-					public String procesarFormulario(@ModelAttribute("product") Product p) {
-						productService.agregar(p);
-						return "redirect:/list";
-					}
-					*/
-	
-	
-	/**
-	 * Método mostrar el formulario de edición de un producto, con los datos del producto a modificar ya cargados 
-	 * en los campos. Para ello, "cogeremos" el id al pinchar en el botón 
-	 * de editar del alumno seleccionado y por ello, {id}. 
-	 * Este id se detecta como un parámetro al estar entre llaves 
-	 * y cambiará dependiendo de en qué producto hayamos pinchado para editar.
-	 */
-	
-	
-							/*
-							@GetMapping("/editar/{id}")
-							public String mostrarFormularioEdicion(@PathVariable("id") long id, Model model) {
-								
-								//Buscamos el producto por id y recordemos que el método findById del servicio, 
-								//devuelve el objeto buscado o null si no se encuentra.
-								 
-								Product pEditar = productService.findById(id);
-								
-								if (pEditar != null) {
-									model.addAttribute("product", pEditar);
-									return "formulario";
-								} else {
-									// No existe ningún alumno con el Id proporcionado.
-									// Redirigimos hacia el listado.
-									return "redirect:/";
-								}
-							}
-							
-							*/
-	
-	@PostMapping("/comprar")
+	@PostMapping("/user/comprar")
     public String comprarProducto(Long productId, Model model) {
 		
         // Buscar el producto en la base de datos por el id
-        Product product = productService.findById(productId).orElse(null);
+        Product product = productService.findById(productId).orElse(null); //Esto no le gusta a Luismi asi, buscar otra manera (OrElseThrow())
 
         if (product != null) {
             product.setProductStockQuantity(product.getProductStockQuantity()- orderLine.getOrderLineQuantity());
