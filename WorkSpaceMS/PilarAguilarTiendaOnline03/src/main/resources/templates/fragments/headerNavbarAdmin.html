@@ -35,17 +35,12 @@
 					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
 						<ul class="dropdown-menu">
-							<li><a class="dropdown-item" href="#">Llaveros</a></li>
-							<li><a class="dropdown-item" aria-disabled="true">Felpudos</a>
-							</li>
-							<li><a class="dropdown-item" href="#">Carteras</a></li>
-							<li><a class="dropdown-item" href="#">Tazas</a></li>
-							<li><a class="dropdown-item" href="#">Fundas Móvil</a></li>
-							<li><a class="dropdown-item" href="#">Funkos</a></li>
+							<li th:each="category : ${categorias}">
+								<a class="dropdown-item" th:href="@{'/admin/categoria/list' + ${category.id}}" th:text="${category.categoryName}">...</a></li>
 							<li>
 								<hr class="dropdown-divider" />
 							</li>
-							<li><a class="dropdown-item" href="#">Todos los
+							<li><a class="dropdown-item" href="">Todos los
 									productos</a></li>
 
 						</ul>
