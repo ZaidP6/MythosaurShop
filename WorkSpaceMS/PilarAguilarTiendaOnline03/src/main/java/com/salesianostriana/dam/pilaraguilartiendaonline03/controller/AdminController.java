@@ -28,20 +28,28 @@ public class AdminController {
 	private ProductService productService;
 	
 	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
 	private CustomerService customerService;
 	
-	
+	public void llamarCategorias (Model model) {
+		List<Category> categorias = categoryService.findAll();
+		model.addAttribute("categorias", categorias);
+	}
 	
 	@GetMapping("/")  //Mostrar productos bbdd en indexAdmin
 	public String index(Model model) { 
 		List<Product> productos = productService.findAll();
         model.addAttribute("products", productos);
+        llamarCategorias(model);
 		return "admin/indexAdmin";
 	}
 
 	@GetMapping("/cliente/list")
 	public String listarClientes(Model model) {
 		model.addAttribute("customers", customerService.findAll());
+		llamarCategorias(model);
 		return "admin/gestionClientes";
 	}
 	

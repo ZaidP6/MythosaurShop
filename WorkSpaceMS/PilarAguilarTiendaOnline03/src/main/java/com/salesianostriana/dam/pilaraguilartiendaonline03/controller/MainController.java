@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CustomerService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductService;
 
@@ -23,6 +25,9 @@ public class MainController {
 	
 	@Autowired
 	private CustomerService customerService;
+	
+	@Autowired
+	private CategoryService categoryService;
 	    
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -31,7 +36,9 @@ public class MainController {
 	@GetMapping("/")
 	public String index(Model model) {
 		List<Product> productos = productService.findAll();
+		List<Category> categorias = categoryService.findAll();
         model.addAttribute("products", productos);
+        model.addAttribute("categorias", categorias);
 		return "index";
 	}
 	

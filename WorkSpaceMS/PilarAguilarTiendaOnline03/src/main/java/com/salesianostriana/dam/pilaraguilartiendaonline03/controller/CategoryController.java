@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,10 @@ public class CategoryController {
 	@Autowired
 	private CategoryService categoryService;
 
+	public void llamarCategorias (Model model) {
+		List<Category> categorias = categoryService.findAll();
+		model.addAttribute("categorias", categorias);
+	}
 	
 	@GetMapping("/list")
 	public String listarCategorias(Model model) {
