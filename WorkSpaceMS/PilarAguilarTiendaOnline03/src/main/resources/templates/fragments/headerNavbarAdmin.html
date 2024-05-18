@@ -36,7 +36,7 @@
 							data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
 						<ul class="dropdown-menu">
 							<li th:each="category : ${categorias}">
-								<a class="dropdown-item" th:href="@{'/admin/categoria/list' + ${category.id}}" th:text="${category.categoryName}">...</a></li>
+								<a class="dropdown-item" th:href="@{'/admin/categoria/list' + ${categoryid}}" th:text="${category.categoryName}">...</a></li>
 							<li>
 								<hr class="dropdown-divider" />
 							</li>
