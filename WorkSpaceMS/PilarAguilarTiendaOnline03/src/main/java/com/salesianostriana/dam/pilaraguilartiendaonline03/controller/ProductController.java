@@ -58,16 +58,11 @@ public class ProductController {
 
 	@GetMapping("/admin/producto/editar/{id}")
 	public String mostrarFormProducto(@PathVariable("id") long id, Model model) {
-		Product producto = productService.findById(id).get(); // Esto no le gusta a Luismi asi, buscar otra manera
-		List<Category> categorias = categoryService.findAll();
-		if (producto != null) {
-			model.addAttribute("product", producto);
-			model.addAttribute("categorias", categorias);
-			return "admin/nuevoProducto";
-		} else {
-			return "redirect:/admin/producto/list";
-		}
-
+	    Product producto = productService.findById(id).orElseThrow(() -> new IllegalArgumentException("Producto con Id:" + id + " no válido"));
+	    List<Category> categorias = categoryService.findAll();
+	    model.addAttribute("product", producto);
+	    model.addAttribute("categorias", categorias);
+	    return "admin/nuevoProducto";
 	}
 
 	@PostMapping("/admin/producto/editar/submit")
@@ -95,8 +90,7 @@ public class ProductController {
 	public String comprarProducto(Long productId, Model model) {
 
 		// Buscar el producto en la base de datos por el id
-		Product product = productService.findById(productId).orElse(null); // Esto no le gusta a Luismi asi, buscar otra
-																			// manera (OrElseThrow())
+		Product product = productService.findById(productId).orElseThrow(() -> new IllegalArgumentException("Producto con Id:" + productId + " no válido"));
 
 		if (product != null) {
 			product.setProductStockQuantity(product.getProductStockQuantity() - orderLine.getOrderLineQuantity());
