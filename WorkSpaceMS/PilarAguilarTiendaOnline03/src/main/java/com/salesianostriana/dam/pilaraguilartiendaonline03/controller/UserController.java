@@ -54,6 +54,10 @@ public class UserController {
 
 	// ---------------- FUNCIONA ------------------------
 
+	
+	
+	
+	
 	@GetMapping("/myProfile")
 	public String myProfile() {
 		Customer c = (Customer) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

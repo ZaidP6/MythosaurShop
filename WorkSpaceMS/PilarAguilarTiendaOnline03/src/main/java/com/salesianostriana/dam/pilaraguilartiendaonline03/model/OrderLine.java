@@ -29,9 +29,19 @@ public class OrderLine {
 	
 					//ORDER
 	
-	@ManyToOne
+	@ManyToOne @Id
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_orderPedido_orderLine"))	
 	private OrderPedido orderPedido;
+	
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_product_orderLine"))
+	Product product;
+	
+	
+	public double obtenerPrecioOrderLine() {
+		orderLinePrice = product.getProductPvP() * orderLineQuantity;
+		return orderLinePrice;
+	}
 	
 }
 

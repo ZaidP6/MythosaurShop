@@ -29,18 +29,21 @@
 			<ul class="nav nav-pills flex-column mb-0 align-items-start align-items-sm-start" id="sidebarAdmin">
 				<li>
 					<a href="#submenu1" class="nav-link px-0 align-middle">
-						<i class="bi bi-table"></i> <span class="ms-1 d-none d-sm-inline">Mis pedidos</span> </a>
+						<i class="bi bi-cart"></i> <span class="ms-1 d-none d-sm-inline">Carrito</span> </a>
+				</li>
+				<li>
+					<a href="#submenu1" class="nav-link px-0 align-middle">
+						<i class="bi bi-bag-check-fill"></i> <span class="ms-1 d-none d-sm-inline">Mis pedidos</span> </a>
 				</li>
 				<li>
 					<a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
 						<i class="bi bi-people"></i> <span class="ms-1 d-none d-sm-inline">Mi perfil</span> </a>
 					<ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
 						<li class="w-100">
-							<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Datos Personales</span>
-								1</a>
+							<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Datos Personales</span></a>
 						</li>
 						<li>
-							<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Direcciones</span> 2</a>
+							<a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Direcciones</span></a>
 						</li>
 					</ul>
 				</li>
@@ -49,7 +52,7 @@
 					<a href="javascript:document.getElementById('logoutForm').submit()"
 						class="nav-link px-0 align-middle">
 						<form th:action="@{/logout}" method="POST" id="logoutForm">
-							<i class="bi bi-table"></i>
+							<i class="bi bi-door-closed"></i>
 							<span class="ms-1 d-none d-sm-inline">Cerrar sesión</span>
 						</form>
 					</a>
