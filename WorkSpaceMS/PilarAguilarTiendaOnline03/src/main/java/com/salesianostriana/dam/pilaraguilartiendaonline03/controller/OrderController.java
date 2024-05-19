@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.OrderLineService;
-import com.salesianostriana.dam.pilaraguilartiendaonline03.service.OrderService;
+
 
 
 
@@ -17,8 +17,7 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.service.OrderService;
 @Controller
 public class OrderController {
 
- 	@Autowired
-	private OrderService orderService;
+ 
 	
  	@Autowired
     private OrderLineService orderLineService;

@@ -20,7 +20,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class OrderLine {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long orderLineId;
 	
 	//private Product orderLineProduct;
@@ -29,7 +30,7 @@ public class OrderLine {
 	
 					//ORDER
 	
-	@ManyToOne @Id
+	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_orderPedido_orderLine"))	
 	private OrderPedido orderPedido;
 	
