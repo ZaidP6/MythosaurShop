@@ -23,26 +23,25 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductServic
 @RequestMapping("/admin")
 public class AdminController {
 
-	
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
-	public void llamarCategorias (Model model) {
+
+	public void llamarCategorias(Model model) {
 		List<Category> categorias = categoryService.findAll();
 		model.addAttribute("categorias", categorias);
 	}
-	
-	@GetMapping("/")  //Mostrar productos bbdd en indexAdmin
-	public String index(Model model) { 
+
+	@GetMapping("/") // Mostrar productos bbdd en indexAdmin
+	public String index(Model model) {
 		List<Product> productos = productService.findAll();
-        model.addAttribute("products", productos);
-        llamarCategorias(model);
+		model.addAttribute("products", productos);
+		llamarCategorias(model);
 		return "admin/indexAdmin";
 	}
 
@@ -52,49 +51,44 @@ public class AdminController {
 		llamarCategorias(model);
 		return "admin/gestionClientes";
 	}
-	
-	//---------------- FUNCIONA --------------------------
-	
+
 	@GetMapping("/cliente/nuevo")
 	public String nuevoCliente(Model model) {
 		model.addAttribute("customer", new Customer());
 		return "admin/nuevoCliente";
 	}
-	
+
 	@PostMapping("/cliente/nuevo/submit")
 	public String nuevoClienteOk(@ModelAttribute("customer") Customer c) {
 		customerService.save(c);
 		return "redirect:/admin/cliente/list";
 	}
-	
-	
+
 	@GetMapping("/cliente/editar/{id}")
 	public String mostrarFormCliente(@PathVariable("id") long id, Model model) {
-		Customer customer = customerService.findById(id).get();  //Esto no le gusta a Luismi asi, buscar otra manera
-		if(customer!=null) {
+		Customer customer = customerService.findById(id).get(); // Esto no le gusta a Luismi asi, buscar otra manera
+		if (customer != null) {
 			model.addAttribute("customer", customer);
 			return "admin/nuevoCliente";
 		} else {
 			return "redirect:/admin/cliente/list";
 		}
-		
 	}
-	
+
 	@PostMapping("/cliente/editar/submit")
 	public String procesarFormularioEdicion(@ModelAttribute("customer") Customer c) {
 		customerService.save(c);
 		return "redirect:/admin/cliente/list";
 	}
-	
-	
-	//BORRAR CLIENTE POR ID
-	
-		@GetMapping("/cliente/borrar/{customerId}")
-		public String borrar(@PathVariable("customerId") long id) {
-			customerService.deleteById(id);
-			return "redirect:/admin/cliente/list";
-		}
-		
-	
-	
+
+	// BORRAR CLIENTE POR ID
+
+	@GetMapping("/cliente/borrar/{customerId}")
+	public String borrar(@PathVariable("customerId") long id) {
+		customerService.deleteById(id);
+		return "redirect:/admin/cliente/list";
+	}
+
+	// ---------------- FUNCIONA --------------------------
+
 }

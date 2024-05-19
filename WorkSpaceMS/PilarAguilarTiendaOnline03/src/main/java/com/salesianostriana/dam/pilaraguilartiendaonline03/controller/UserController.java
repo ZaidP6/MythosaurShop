@@ -1,6 +1,5 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,59 +22,49 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductServic
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private ProductService productService;
-    
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    
-    @GetMapping("/")
-	public String index(Model model) { 
+	@Autowired
+	private CustomerService customerService;
+	@Autowired
+	private ProductService productService;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@GetMapping("/")
+	public String index(Model model) {
 		List<Product> productos = productService.findAll();
-        model.addAttribute("products", productos);
+		model.addAttribute("products", productos);
 		return "customer/indexCustomer";
 	}
-    
-    
-    
-    //---------------- FUNCIONA ------------------------
-    
-   
-    @GetMapping("/newCustomer")
+
+	@GetMapping("/newCustomer")
 	public String nuevoUsuario(Model model) {
-		
-		model.addAttribute("customer",new Customer());
-		
+
+		model.addAttribute("customer", new Customer());
+
 		return "signInSimple";
-		
-	}
-    
-    @PostMapping("/newCustomer/submit")
-	public String verifyCustomer(@ModelAttribute("usuario")Customer customer) {
-	    customerService.save(customer);    
-	    return "redirect:/users/";
+
 	}
 
-    @GetMapping("/myProfile")
-    public String myProfile() {
+	@PostMapping("/newCustomer/submit")
+	public String verifyCustomer(@ModelAttribute("usuario") Customer customer) {
+		customerService.save(customer);
+		return "redirect:/users/";
+	}
 
-        Customer c = (Customer) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	// ---------------- FUNCIONA ------------------------
 
-        System.out.println(c.toString());
+	@GetMapping("/myProfile")
+	public String myProfile() {
+		Customer c = (Customer) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(c.toString());
+		return "perfil";
+	}
 
-        return "perfil";
-    }
-
-    @GetMapping("/myProfile2")
-    public String myProfile2(@AuthenticationPrincipal Customer c) {
-
-        System.out.println(c.toString());
-
-        return "perfil";
-    }
-   
-
+	@GetMapping("/myProfile2")
+	public String myProfile2(@AuthenticationPrincipal Customer c) {
+		System.out.println(c.toString());
+		return "perfil";
+	}
 
 }
