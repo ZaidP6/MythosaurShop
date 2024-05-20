@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +23,13 @@ public class CustomerService extends BaseServiceImpl<Customer, Long, CustomerRep
 	public Customer save(Customer customer) {
 		return customerRepository.save(customer);
 	}
+
+	public void updateLastLogin(String basicUserUName) {
+        Customer customer = customerRepository.findByBasicUserUName(basicUserUName);
+        if (customer != null) {
+            customer.setCustomerLastSession(LocalDateTime.now());
+            customerRepository.save(customer);
+        }
+    }
 
 }

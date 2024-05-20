@@ -76,18 +76,6 @@ public class SecurityConfig{
 						.logoutUrl("/logout")
 						.logoutSuccessUrl("/")
 						.permitAll());
-				/*
-				.requestMatchers("/admin/**").hasRole("ADMIN")
-	        .anyRequest().authenticated())
-	        .formLogin((loginz) -> loginz
-	        		.loginPage("/form/logIn")
-	        		.defaultSuccessUrl("/admin")
-	        		.permitAll())
-	        .logout((logoutz) -> logoutz
-	        	.logoutUrl("/form/logOut")
-	        	.logoutSuccessUrl("/").permitAll());
-
-				 */
 
 
 	    http.csrf(csrfz -> csrfz.disable());

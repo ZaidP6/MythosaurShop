@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CategoryService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.CustomerService;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductService;
 
@@ -22,16 +24,26 @@ public class UserController {
 
 	@Autowired
 	private CustomerService customerService;
+	
 	@Autowired
 	private ProductService productService;
 
 	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	public void llamarCategorias(Model model) {
+		List<Category> categorias = categoryService.findAll();
+		model.addAttribute("categorias", categorias);
+	}
+	
 	@GetMapping("/")
 	public String index(Model model) {
 		List<Product> productos = productService.findAll();
 		model.addAttribute("products", productos);
+		llamarCategorias(model);
 		return "customer/indexCustomer";
 	}
 

@@ -26,6 +26,11 @@ public class ProductController {
 	private CategoryService categoryService;
 	private OrderLine orderLine;
 
+	public void llamarCategorias(Model model) {
+		List<Category> categorias = categoryService.findAll();
+		model.addAttribute("categorias", categorias);
+	}
+	
 	/**
 	 * Método gestiona listado de productos "/list"que mostrará la lista completa de
 	 * productos.
@@ -33,6 +38,7 @@ public class ProductController {
 	@GetMapping({ "/list" })
 	public String listarTodos(Model model) {
 		model.addAttribute("lista", productService.findAll());
+		llamarCategorias(model);
 		return "/";
 	}
 

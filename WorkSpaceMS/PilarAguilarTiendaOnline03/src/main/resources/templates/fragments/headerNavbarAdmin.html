@@ -21,8 +21,7 @@
 	<nav class="navbar navbar-collapse navbar-expand-lg bg-body-tertiaryp bg-black">
 		<div class="container-fluid">
 			<a class="navbar-brand w-25" href="../indexAdmin.html" th:href="@{/admin/}">
-				<img href="../static/images/Mythosaur Shop Lineal Black White.png"
-					th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal">
+				<img th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal">
 			</a>
 
 			<button class="navbar-toggler collapsed float-sm-end" type="button" data-bs-toggle="collapse"
@@ -43,16 +42,16 @@
 								<hr class="dropdown-divider" />
 							</li>
 							<li>
-								<a class="dropdown-item" href="">Todos los productos</a>
+								<a class="dropdown-item"  th:href="@{/admin/}">Todos los productos</a>
 							</li>
 						</ul>
 					</li>
 					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html"
-							th:href="@{/quienesSomos}">Quiénes
+							th:href="@{/admin/quienesSomos}">Quiénes
 							Somos</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/trabaja}"
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/trabaja}"
 							href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/contenidoContacto}"
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/contenidoContacto}"
 							href="./contenidoContacto.html">Contacto</a></li>
 				</ul>
 
