@@ -36,7 +36,8 @@
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
 
-[Acceso al proyecto](#acceso-proyecto)
+## Acceso al proyecto
+
 Administrador:
 - Nombre de usuario: admin
 - Contraseña: admin
@@ -45,12 +46,8 @@ Usuario:
 - Nombre de usuario: user
 - Contraseña: 1234
 
-[Descripción del proyecto](#descripción-del-proyecto)
+## Descripción del proyecto
 
-[Estado del proyecto](#Estado-del-proyecto)
+## Estado del proyecto
 
-[Características de la aplicación y demostración](#Características-de-la-aplicación-y-demostración)
 
-[Personas Contribuyentes](#personas-contribuyentes)
-
-[Conclusión](#conclusión)
