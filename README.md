@@ -9,18 +9,12 @@
 :construction: Proyecto en construcción :construction:
 </h4>
 
-## Índice
-- [Funcionalidades del proyecto](#funcionalidades)
-- [Tecnologías utilizadas](#tecnologías-utilizadas)
-- [Insignias](#insignias)
-- [Descripción del proyecto](#descripcion)
-
 ## 🔨Funcionalidades del proyecto
 
-- `Funcionalidad 1`: descripción de la funcionalidad 1
-- `Funcionalidad 2`: descripción de la funcionalidad 2
-- `Funcionalidad 2a`: descripción de la funcionalidade 2a relacionada con la funcionalidad 2
-- `Funcionalidad 3`: descripción de la funcionalidad 3
+- `Funcionalidad 1`: Usuario puede iniciar sesión. En caso de no tener cuenta se puede registrar e iniciar.
+- `Funcionalidad 2`: Administrador inicia sesión. No se pueden crear otros admin por el formulario.
+- `Funcionalidad 3`: Administrador puede gestionar productos, categorías y usuarios.
+- `Funcionalidad 4`: descripción de la funcionalidad 4
 
 ## ✔️Tecnologías utilizadas
 - `JDK 17`
@@ -42,15 +36,18 @@
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
 
+## Acceso al proyecto
 
-[Descripción del proyecto](#descripción-del-proyecto)
+Administrador:
+- Nombre de usuario: admin
+- Contraseña: admin
 
-[Estado del proyecto](#Estado-del-proyecto)
+Usuario:
+- Nombre de usuario: user
+- Contraseña: 1234
 
-[Características de la aplicación y demostración](#Características-de-la-aplicación-y-demostración)
+## Descripción del proyecto
 
-[Acceso al proyecto](#acceso-proyecto)
+## Estado del proyecto
 
-[Personas Contribuyentes](#personas-contribuyentes)
 
-[Conclusión](#conclusión)
