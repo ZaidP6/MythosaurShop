@@ -1,17 +1,30 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+//import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
 
-import java.util.List;
+//import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-
+	
+	@Query("""
+			SELECT p
+			FROM Product p
+			WHERE p.category.categoryName = :category
+			""")
+	public List<Product> productPerCategory(@Param ("category") String category);
+	
+	/*
 	@Query("""
 			SELECT p
 		     FROM Product p
@@ -22,7 +35,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	
 
 	
-   /*
+   
     *public List<Product> findByNameContainsIgnoreCase (String search){
   
         SELECT *

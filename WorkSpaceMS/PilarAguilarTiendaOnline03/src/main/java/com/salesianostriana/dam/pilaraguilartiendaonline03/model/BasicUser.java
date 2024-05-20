@@ -18,21 +18,24 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor
-@MappedSuperclass @AllArgsConstructor @SuperBuilder
+@SuppressWarnings("serial")
+@Data
+@NoArgsConstructor
+@MappedSuperclass
+@AllArgsConstructor
+@SuperBuilder
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-public class BasicUser implements UserDetails{
+public class BasicUser implements UserDetails {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long basicUserId;
-	
+
 	private String basicUserUName;
 	private String basicUserName;
 	private String basicUserLastName;
 	private String basicUserPassword;
 	private String basicUserDni;
-
-
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -43,7 +46,7 @@ public class BasicUser implements UserDetails{
 		return List.of(new SimpleGrantedAuthority(role));
 	}
 
-	 @Override
+	@Override
 	public String getPassword() {
 		return basicUserPassword;
 	}
@@ -52,7 +55,7 @@ public class BasicUser implements UserDetails{
 	public String getUsername() {
 		return basicUserUName;
 	}
-	
+
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;

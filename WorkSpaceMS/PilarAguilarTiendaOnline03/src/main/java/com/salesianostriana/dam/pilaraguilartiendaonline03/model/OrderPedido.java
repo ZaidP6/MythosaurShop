@@ -1,7 +1,8 @@
 
 package com.salesianostriana.dam.pilaraguilartiendaonline03.model;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -34,7 +35,9 @@ public class OrderPedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long orderId;
 	
-	private LocalDate orderDate;
+	private LocalDateTime orderDate;
+	
+	private double orderTotalAmount;
 	
 					//CUSTOMER
 	
@@ -67,20 +70,24 @@ public class OrderPedido {
 			cascade = CascadeType.ALL,
 			orphanRemoval = true
 	)
-	private List<OrderLine> orderLine = new ArrayList<>();
+	private List<OrderLine> orderLines = new ArrayList<>();
 
 	
 			// MÉTODOS HELPER 
 	
 	public void addOrderLine(OrderLine ol) {
 		ol.setOrderPedido(this);
-		this.orderLine.add(ol);
+		this.orderLines.add(ol);
 	}
 	
 	public void removeOrderLine(OrderLine ol) {
-		this.orderLine.remove(ol);
+		this.orderLines.remove(ol);
 		ol.setOrderPedido(null);
 		
 	}
+	
+	 public double calcularTotal() {
+	        return orderLines.stream().mapToDouble(OrderLine::obtenerPrecioOrderLine).sum();
+	    }
 
 }

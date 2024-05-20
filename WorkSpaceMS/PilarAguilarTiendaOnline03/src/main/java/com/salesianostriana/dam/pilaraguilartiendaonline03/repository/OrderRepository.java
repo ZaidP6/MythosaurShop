@@ -1,20 +1,25 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.repository;
 
-import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import org.springframework.data.jpa.repository.Query;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderPedido;
 
-import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
-import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
-
-public interface OrderRepository {
+@Repository
+public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 
 	
-	@Query("""
+	/*
+	 * @Query("""
 			SELECT o
 			FROM Order o LEFT JOIN o.OrderLine ol
 			WHERE ol.product = ?1
 			""")
 	List<OrderLine> ventasConProducto(Product p);
+	 */
+	
+	//boolean existByFinishedAndCustomer(boolean finished);
+	
+	
 	
 }

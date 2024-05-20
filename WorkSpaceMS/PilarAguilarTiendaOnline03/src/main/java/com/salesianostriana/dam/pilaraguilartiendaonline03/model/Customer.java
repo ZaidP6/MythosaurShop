@@ -1,7 +1,9 @@
 
 package com.salesianostriana.dam.pilaraguilartiendaonline03.model;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
+@SuppressWarnings("serial")
 @Entity @Data @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true) @AllArgsConstructor
@@ -25,8 +28,8 @@ public class Customer extends BasicUser{
 
 
 	private String customerMail;
-	private Date customerBirth;
-	private Date customerLastSession;
+	private LocalDate customerBirth;
+	private LocalDateTime customerLastSession;
 	private String customerPhone;
 	private String customerAddress;
 	

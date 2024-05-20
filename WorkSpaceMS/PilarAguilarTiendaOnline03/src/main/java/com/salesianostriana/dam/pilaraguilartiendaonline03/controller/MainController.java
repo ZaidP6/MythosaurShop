@@ -19,48 +19,46 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.service.ProductServic
 
 @Controller
 public class MainController {
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	    
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
-	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 	@GetMapping("/")
 	public String index(Model model) {
 		List<Product> productos = productService.findAll();
 		List<Category> categorias = categoryService.findAll();
-        model.addAttribute("products", productos);
-        model.addAttribute("categorias", categorias);
+		model.addAttribute("products", productos);
+		model.addAttribute("categorias", categorias);
 		return "index";
 	}
-	
+
 	@GetMapping("/form/signInSimple")
-    public String showForm(Model model) {
-        model.addAttribute("customerForm", new Customer());
-        return "signInSimple";
-    }
+	public String showForm(Model model) {
+		model.addAttribute("customerForm", new Customer());
+		return "signInSimple";
+	}
 
-    @PostMapping("/form/signInSimple/submit")
-    public String submitSignIn(@ModelAttribute("customerForm") Customer customer) {
-    	String encodedPassword = passwordEncoder.encode(customer.getBasicUserPassword());
-    	customer.setBasicUserPassword(encodedPassword);
-        customerService.save(customer);
-        return "redirect:/";
-    }
+	@PostMapping("/form/signInSimple/submit")
+	public String submitSignIn(@ModelAttribute("customerForm") Customer customer) {
+		String encodedPassword = passwordEncoder.encode(customer.getBasicUserPassword());
+		customer.setBasicUserPassword(encodedPassword);
+		customerService.save(customer);
+		return "redirect:/";
+	}
 
-    @GetMapping("/form/logIn")
-    public String showLogInPage() {
+	@GetMapping("/form/logIn")
+	public String showLogInPage() {
 
-        return "logIn";
-    }
-	 
-	
+		return "logIn";
+	}
+
 }

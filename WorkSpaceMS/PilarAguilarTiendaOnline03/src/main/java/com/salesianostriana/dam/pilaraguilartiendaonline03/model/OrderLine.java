@@ -20,7 +20,8 @@ import lombok.NoArgsConstructor;
 @Builder
 public class OrderLine {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long orderLineId;
 	
 	//private Product orderLineProduct;
@@ -32,6 +33,16 @@ public class OrderLine {
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_orderPedido_orderLine"))	
 	private OrderPedido orderPedido;
+	
+	@ManyToOne
+	@JoinColumn(foreignKey = @ForeignKey(name="fk_product_orderLine"))
+	Product product;
+	
+	
+	public double obtenerPrecioOrderLine() {
+		orderLinePrice = product.getProductPvP() * orderLineQuantity;
+		return orderLinePrice;
+	}
 	
 }
 
