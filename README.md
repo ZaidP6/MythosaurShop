@@ -19,8 +19,8 @@
 
 - `Funcionalidad 1`: Usuario puede iniciar sesión. En caso de no tener cuenta se puede registrar e iniciar.
 - `Funcionalidad 2`: Administrador inicia sesión. No se pueden crear otros admin por el formulario.
-- `Funcionalidad 2a`: Administrador puede gestionar productos, categorías y usuarios.
-- `Funcionalidad 3`: descripción de la funcionalidad 3
+- `Funcionalidad 3`: Administrador puede gestionar productos, categorías y usuarios.
+- `Funcionalidad 4`: descripción de la funcionalidad 4
 
 ## ✔️Tecnologías utilizadas
 - `JDK 17`
