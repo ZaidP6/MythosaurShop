@@ -24,7 +24,6 @@
 					<div class="producto">
 						<img th:src="${producto.productImage}" alt="Producto">
 						<h2 th:text="${producto.productName}">Producto</h2>
-						<p th:text="${producto.productDescription}">Descripción del producto</p>
 						<p class="precioEntero" th:text="${producto.productPvP + '€'}">0.00€</p>
 						<form th:action="@{/comprar}" method="post">
 							<input type="hidden" th:name="productId" th:value="${producto.productId}">

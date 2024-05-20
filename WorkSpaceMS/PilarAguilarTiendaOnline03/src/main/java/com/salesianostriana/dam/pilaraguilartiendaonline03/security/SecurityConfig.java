@@ -53,14 +53,17 @@ public class SecurityConfig{
 
 		http.authorizeHttpRequests((authz) -> authz
 	        .requestMatchers("/css/**","/js/**","/webjars/**", "/images/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
-	        		"/quienesSomos", "/trabaja", "/contenidoContacto", "/politicaPrivacidad", "/cookies","/").permitAll()
+	        		"/quienesSomos", "/trabajaConNosotros", "/contenidoContacto", "/politicaPrivacidad", "/cookies","/").permitAll()
 						.requestMatchers("/admin/**").hasRole("ADMIN")
 						.requestMatchers("/user/**").hasRole("USER")
 						.anyRequest().authenticated())
 				.formLogin((loginz) -> loginz
 						.loginPage("/form/logIn")
-						.successHandler((request, response, authentication) -> {
-							Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities(); //Esto no le gusta a Luismi asi, meter en una clase
+						.successHandler((request, response, authentication) -> { 
+							
+							//Esto no le gusta a Luismi asi, meter en una clase
+							
+							Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities(); 
 							if (authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"))) {
 								response.sendRedirect("/admin/");
 							}
