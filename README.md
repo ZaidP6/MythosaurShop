@@ -9,12 +9,6 @@
 :construction: Proyecto en construcción :construction:
 </h4>
 
-## Índice
-- [Funcionalidades del proyecto](#funcionalidades)
-- [Tecnologías utilizadas](#tecnologías-utilizadas)
-- [Insignias](#insignias)
-- [Descripción del proyecto](#descripcion)
-
 ## 🔨Funcionalidades del proyecto
 
 - `Funcionalidad 1`: Usuario puede iniciar sesión. En caso de no tener cuenta se puede registrar e iniciar.
