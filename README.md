@@ -17,9 +17,9 @@
 
 ## 🔨Funcionalidades del proyecto
 
-- `Funcionalidad 1`: descripción de la funcionalidad 1
-- `Funcionalidad 2`: descripción de la funcionalidad 2
-- `Funcionalidad 2a`: descripción de la funcionalidade 2a relacionada con la funcionalidad 2
+- `Funcionalidad 1`: Usuario puede iniciar sesión. En caso de no tener cuenta se puede registrar e iniciar.
+- `Funcionalidad 2`: Administrador inicia sesión. No se pueden crear otros admin por el formulario.
+- `Funcionalidad 2a`: Administrador puede gestionar productos, categorías y usuarios.
 - `Funcionalidad 3`: descripción de la funcionalidad 3
 
 ## ✔️Tecnologías utilizadas
@@ -42,14 +42,20 @@
 <img src="https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white"/>
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
 
+[Acceso al proyecto](#acceso-proyecto)
+Administrador:
+- Nombre de usuario: admin
+- Contraseña: admin
+
+Usuario:
+- Nombre de usuario: user
+- Contraseña: 1234
 
 [Descripción del proyecto](#descripción-del-proyecto)
 
 [Estado del proyecto](#Estado-del-proyecto)
 
 [Características de la aplicación y demostración](#Características-de-la-aplicación-y-demostración)
-
-[Acceso al proyecto](#acceso-proyecto)
 
 [Personas Contribuyentes](#personas-contribuyentes)
 
