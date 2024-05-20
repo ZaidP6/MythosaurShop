@@ -54,8 +54,7 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 		        
 		        // Agregar una línea de venta a la venta actual
 		        venta.addOrderLine(OrderLine.builder().product(p).orderLineQuantity(v).orderLinePrice(p.getProductPvP()).orderLinePrice(p.getProductPvP()*v).build());
-		        
-		        
+		       
 		        // Restar el stock del producto
 		        productService.restarStock(p.getProductId(), v);
     
@@ -64,10 +63,8 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 		    // Establecer el cliente de la venta
 		    venta.setCustomer(cliente);
 	
-	
 		    // Calcular el total de la venta
 		    
-
 		    // Establecer la fecha y guardar la venta
 		    venta.setOrderDate(LocalDateTime.now());
 		    save(venta);

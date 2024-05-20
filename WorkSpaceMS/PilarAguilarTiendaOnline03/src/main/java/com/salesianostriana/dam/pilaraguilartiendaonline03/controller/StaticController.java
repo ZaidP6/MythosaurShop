@@ -21,5 +21,15 @@ public class StaticController {
 		return "quienesSomos";
 	}
 	
+	@GetMapping("/politicaPrivacidad")
+	public String privacidad() {
+		return "politicaPrivacidad";
+	}
+	
+	@GetMapping("/cookies")
+	public String cookies() {
+		return "cookies";
+	}
+	
 	
 }

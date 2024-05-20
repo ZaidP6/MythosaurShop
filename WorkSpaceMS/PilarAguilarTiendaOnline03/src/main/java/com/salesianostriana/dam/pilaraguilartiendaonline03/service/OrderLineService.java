@@ -8,12 +8,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderPedido;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.CustomerRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.OrderLineRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.OrderRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.ProductRepository;
+import com.salesianostriana.dam.pilaraguilartiendaonline03.service.base.BaseServiceImpl;
 
 /*
  * import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +30,7 @@ import com.salesianostriana.dam.pilaraguilartiendaonline03.repository.ProductRep
 
  */
 @Service
-public class OrderLineService {
+public class OrderLineService extends BaseServiceImpl<OrderLine, Long, OrderLineRepository>{
 
 	@Autowired
 	private OrderLineRepository olRepository;
@@ -40,18 +43,18 @@ public class OrderLineService {
 	
 	private Map<Product, Integer> productoKey = new HashMap<>();
 
-	public List<OrderLine> getLineaVenta() {
+	public List<OrderLine> listarLineasVenta() {
 		return Collections.unmodifiableList(olRepository.findAll());
 	}
 
 	public OrderLine addOrderLine(Long orderId, Long productId, int quantity) {
 		// Obtenemos venta por ID
 		OrderPedido orderPedido = orderRepository.findById(orderId)
-				.orElseThrow(() -> new IllegalArgumentException("Order not found"));
+				.orElseThrow(() -> new IllegalArgumentException("Venta no encontrada"));
 
 		// Obtenemos producto por ID
 		Product product = productRepository.findById(productId)
-				.orElseThrow(() -> new IllegalArgumentException("Product not found"));
+				.orElseThrow(() -> new IllegalArgumentException("Producto no encontrado"));
 
 		// Se crea nueva linea
 		OrderLine orderLine = OrderLine.builder()
@@ -75,7 +78,7 @@ public class OrderLineService {
 	
 	public void deleteOrderLine(Long orderLineId) {
         OrderLine orderLine = olRepository.findById(orderLineId)
-                .orElseThrow(() -> new IllegalArgumentException("OrderLine not found"));
+                .orElseThrow(() -> new IllegalArgumentException("Línea de venta no encontrada"));
 
         OrderPedido orderPedido = orderLine.getOrderPedido();
         orderPedido.removeOrderLine(orderLine);
@@ -92,15 +95,14 @@ public class OrderLineService {
 	        if (orderLineId != null) {
 	            // Si existe el ID, actualizamos la línea de pedido
 	            orderLine = olRepository.findById(orderLineId)
-	                    .orElseThrow(() -> new IllegalArgumentException("OrderLine not found"));
+	                    .orElseThrow(() -> new IllegalArgumentException("Línea de venta no encontrada"));
 
 	            // Actualizamos la cantidad y el precio
 	            orderLine.setOrderLineQuantity(quantity);
 	            orderLine.setOrderLinePrice(orderLine.getProduct().getProductPvP() * quantity);
 	        } else {
-	            // Si no existe el ID, creamos una nueva línea de pedido
+	            // Si no existe el ID, creamos una nueva línea de pedido vacia
 	            orderLine = new OrderLine();
-	            // Aquí deberías establecer el producto y otros campos según tu lógica
 	        }
 
 	        return olRepository.save(orderLine);
@@ -108,7 +110,7 @@ public class OrderLineService {
 		
 		public double calcularTotal() {
 			Map<Product, Integer> carrito = this.productoKey;
-		    double total = 0;
+		    double total = 0.0;
 
 		    for (Map.Entry<Product, Integer> entry : carrito.entrySet()) {
 		        Product producto = entry.getKey();

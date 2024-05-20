@@ -3,8 +3,6 @@ package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,36 +37,27 @@ public class UserController {
 
 	@GetMapping("/newCustomer")
 	public String nuevoUsuario(Model model) {
-
 		model.addAttribute("customer", new Customer());
-
 		return "signInSimple";
-
 	}
+	
+		// Verifica si el nombre de usuario ya existe pero lo sigue admitiendo
+	 @PostMapping("/newCustomer/submit")
+	    public String verifyCustomer(@ModelAttribute("customer") Customer customer, Model model) {
+	        
+	        if (customerService.findByBasicUserUName(customer.getUsername()) != null) {
+	            model.addAttribute("error", "El nombre de usuario ya existe.");
+	            return "signInSimple";
+	        }
 
-	@PostMapping("/newCustomer/submit")
-	public String verifyCustomer(@ModelAttribute("usuario") Customer customer) {
-		customerService.save(customer);
-		return "redirect:/users/";
-	}
+	        // Guarda el nuevo usuario si el username no existe
+	        customerService.save(customer);
+	        return "redirect:/user/";
+	    }
 
 	// ---------------- FUNCIONA ------------------------
 
 	
 	
-	
-	
-	@GetMapping("/myProfile")
-	public String myProfile() {
-		Customer c = (Customer) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(c.toString());
-		return "perfil";
-	}
-
-	@GetMapping("/myProfile2")
-	public String myProfile2(@AuthenticationPrincipal Customer c) {
-		System.out.println(c.toString());
-		return "perfil";
-	}
 
 }

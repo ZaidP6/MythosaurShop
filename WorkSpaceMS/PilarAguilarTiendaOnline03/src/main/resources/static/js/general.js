@@ -1,3 +1,15 @@
+import DataTable from 'datatables.net-dt';
+import DataTable from 'datatables.net-dt';
+import 'datatables.net-responsive-dt';
+ 
+let table = new DataTable('#dataTable', {
+    responsive: true
+});
+
+$(document).ready( function () {
+    $('#dataTable').DataTable();
+} );
+
 $(document).ready(function() {
             $('.delete-link').click(function(e) {
                 e.preventDefault(); // Evitar que el enlace se siga
