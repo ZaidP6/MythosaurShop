@@ -41,12 +41,15 @@ public class OrderLineService extends BaseServiceImpl<OrderLine, Long, OrderLine
 	@Autowired
 	private ProductRepository productRepository;
 	
+	//forma de buscar el producto y la cantidad de una sola vez
 	private Map<Product, Integer> productoKey = new HashMap<>();
 
+	//listar las líneas del carrito
 	public List<OrderLine> listarLineasVenta() {
 		return Collections.unmodifiableList(olRepository.findAll());
 	}
 
+	//método para añadir una línea al carrito y por tanto, actualizar dicha compra
 	public OrderLine addOrderLine(Long orderId, Long productId, int quantity) {
 		// Obtenemos venta por ID
 		OrderPedido orderPedido = orderRepository.findById(orderId)
@@ -76,6 +79,7 @@ public class OrderLineService extends BaseServiceImpl<OrderLine, Long, OrderLine
         return orderLine;
 	}
 	
+	//método para borrar una linea del carrito
 	public void deleteOrderLine(Long orderLineId) {
         OrderLine orderLine = olRepository.findById(orderLineId)
                 .orElseThrow(() -> new IllegalArgumentException("Línea de venta no encontrada"));
@@ -101,27 +105,27 @@ public class OrderLineService extends BaseServiceImpl<OrderLine, Long, OrderLine
 	            orderLine.setOrderLineQuantity(quantity);
 	            orderLine.setOrderLinePrice(orderLine.getProduct().getProductPvP() * quantity);
 	        } else {
-	            // Si no existe el ID, creamos una nueva línea de pedido vacia
+	            // Si no existe el ID, creamos una nueva línea de pedido vacía
 	            orderLine = new OrderLine();
 	        }
 
 	        return olRepository.save(orderLine);
 	    }
 		
+		//método para calcular el total completo
 		public double calcularTotal() {
+			//Nuestro map con producto y cantidad
 			Map<Product, Integer> carrito = this.productoKey;
 		    double total = 0.0;
 
+		    //otro map para albergar cada linea completa
 		    for (Map.Entry<Product, Integer> entry : carrito.entrySet()) {
 		        Product producto = entry.getKey();
 		        int cantidad = entry.getValue();
 		        total += producto.getProductPvP() * cantidad;
 		    }
-
 		    return total;	
 		 }
-
-		
 
 		// Agregar producto al carrito
 		public void agregarProducto(Product producto, int cantidad) {

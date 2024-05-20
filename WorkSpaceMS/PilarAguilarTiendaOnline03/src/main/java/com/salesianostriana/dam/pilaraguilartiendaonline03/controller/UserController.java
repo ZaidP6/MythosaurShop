@@ -3,7 +3,7 @@ package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,8 +31,10 @@ public class UserController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	/*
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	 */
 
 	public void llamarCategorias(Model model) {
 		List<Category> categorias = categoryService.findAll();

@@ -53,7 +53,7 @@ public class SecurityConfig{
 
 		http.authorizeHttpRequests((authz) -> authz
 	        .requestMatchers("/css/**","/js/**","/webjars/**", "/images/**", "/h2-console/**", "/form/logIn/**", "form/signInSimple/**", 
-	        		"/quienesSomos", "/trabajaConNosotros", "/contenidoContacto", "/politicaPrivacidad", "/cookies","/").permitAll()
+	        		"/quienesSomos", "/trabajaConNosotros", "/contenidoContacto", "/politicaPrivacidad", "/cookies","/", "/{categoryId}").permitAll()
 						.requestMatchers("/admin/**").hasRole("ADMIN")
 						.requestMatchers("/user/**").hasRole("USER")
 						.anyRequest().authenticated())

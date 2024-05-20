@@ -8,18 +8,14 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.SuperBuilder;
 
-
-
-@NoArgsConstructor @Entity @Data
+@SuppressWarnings("serial")
+@NoArgsConstructor
+@Entity
+@Data
 @EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true) @SuperBuilder
+@ToString(callSuper = true)
+@SuperBuilder
 @DiscriminatorValue("ADMIN")
 public class Admin extends BasicUser {
 
-
-
-	
-	
-	
-	
 }

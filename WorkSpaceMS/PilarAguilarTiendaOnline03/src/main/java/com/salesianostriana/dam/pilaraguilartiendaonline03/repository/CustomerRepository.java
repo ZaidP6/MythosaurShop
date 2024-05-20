@@ -10,5 +10,4 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	
 	Customer findByBasicUserUName(String basicUserUName);
 
-	//List<Customer> findByUsernameContainingIgnoreCase(String basicUserName);
 }

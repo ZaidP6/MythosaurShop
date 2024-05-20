@@ -1,20 +1,20 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline03.controller;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+//import java.util.List;
 
-import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
-import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderPedido;
+//import com.salesianostriana.dam.pilaraguilartiendaonline03.service.OrderService;
+//import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
+//import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderPedido;
 import com.salesianostriana.dam.pilaraguilartiendaonline03.service.OrderLineService;
-import com.salesianostriana.dam.pilaraguilartiendaonline03.service.OrderService;
-
-import ch.qos.logback.core.model.Model;
 
 
 
@@ -28,8 +28,10 @@ public class OrderController {
  	@Autowired
     private OrderLineService orderLineService;
 
+ 	/*
  	@Autowired
     private OrderService orderService;
+ 	 */
     
     @GetMapping("/delete/{orderLineId}")
     public void deleteOrderLine(@PathVariable Long orderLineId) {
@@ -39,17 +41,15 @@ public class OrderController {
 
     @GetMapping("/user/comprar/{id}")
     public String addOrderLine(@RequestParam Long orderId, @RequestParam Long productId, @RequestParam int quantity, Model model) {
-        List<OrderLine> lineasDeVenta = orderLineService.listarLineasVenta();
+        orderLineService.listarLineasVenta();
     	orderLineService.addOrderLine(orderId, productId, quantity);
         return "redirect:/user/carrito";
         
     }
     
-   
-    
-    
- 
-	/*
+    //POSIBLE CÓDIGO PARA EL CARRITO ABAJO
+	
+    /*
 	 * 
 	
 	@GetMapping("/user/cart/{id}")
