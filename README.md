@@ -14,7 +14,7 @@
 - `Funcionalidad 1`: Usuario puede iniciar sesión. En caso de no tener cuenta se puede registrar e iniciar.
 - `Funcionalidad 2`: Administrador inicia sesión. No se pueden crear otros admin por el formulario.
 - `Funcionalidad 3`: Administrador puede gestionar productos, categorías y usuarios.
-- `Funcionalidad 4`: descripción de la funcionalidad 4
+- `Funcionalidad 4`: Navegas entre las diferentes categorías de los productos
 
 ## ✔️Tecnologías utilizadas
 - `JDK 17`
@@ -37,6 +37,12 @@
 <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white"/>
 
 ## Acceso al proyecto
+
+En el repositorio podemos encontrar una carpeta con el "WorkspaceMS", dentro de ella se accederá al proyecto "PilarAguilarTiendaOnline04" para su ejecución.
+La documentación se encuentra en una carpeta llamada "Final" donde en un mismo pdf se recoge toda la información.
+En caso de querer ver el proceso de dichos documentos se podrá acceder a la carpeta "Recursos-Ideas-Avances", donde estan todos los recursos y archivos creados.
+
+Las credenciales para acceder son:
 
 Administrador:
 - Nombre de usuario: admin
