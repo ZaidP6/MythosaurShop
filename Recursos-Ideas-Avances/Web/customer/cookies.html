@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<link rel="icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon">
+	<!-- Favicon -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<!-- Iconos -->
+
+	<link rel="stylesheet" th:href="@{../css/socialicons.css}">
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<title>Política de privacidad - Mythosaur Shop</title>
+
+</head>
+<body>
+	<header th:replace="~{fragments/headerNavbarCustomer :: navbarCustomer}"></header>
+	<div class="container mt-5">
+		<h1 class="text-center">Información sobre Cookies</h1>
+		<p class="text-muted text-center">Última actualización: 20 de mayo
+			de 2024</p>
+		<div class="mt-4">
+			<h2>1. ¿Qué son las Cookies?</h2>
+			<p>Las cookies son pequeños archivos de texto que se almacenan en
+				tu dispositivo cuando visitas nuestro sitio web. Se utilizan para
+				mejorar tu experiencia de usuario, recordando tus preferencias y
+				acciones en nuestro sitio.</p>
+
+			<h2>2. Tipos de Cookies que Utilizamos</h2>
+			<p>En Mythosaur Shop utilizamos diferentes tipos de cookies para
+				diversas finalidades:</p>
+			<ul>
+				<li><strong>Cookies esenciales:</strong> Estas cookies son
+					necesarias para el funcionamiento básico de nuestro sitio web y te
+					permiten navegar y utilizar sus características.</li>
+				<li><strong>Cookies de rendimiento:</strong> Recopilan
+					información sobre cómo utilizas nuestro sitio web, permitiéndonos
+					mejorar su funcionamiento.</li>
+				<li><strong>Cookies de funcionalidad:</strong> Permiten
+					recordar tus preferencias y proporcionar características
+					personalizadas.</li>
+				<li><strong>Cookies de publicidad:</strong> Se utilizan para
+					mostrar anuncios relevantes y medir la efectividad de nuestras
+					campañas publicitarias.</li>
+			</ul>
+			<h2>3. Gestión de las Cookies</h2>
+			<p>Puedes controlar y gestionar las cookies de varias maneras.
+				Ten en cuenta que eliminar o bloquear ciertas cookies puede afectar
+				tu experiencia en nuestro sitio web.</p>
+			<ul>
+				<li><strong>Configuración del navegador:</strong> La mayoría de
+					los navegadores te permiten gestionar las cookies a través de sus
+					configuraciones. Consulta la sección de ayuda de tu navegador para
+					obtener más información.</li>
+				<li><strong>Herramientas de terceros:</strong> Hay herramientas
+					y extensiones de terceros disponibles que te permiten bloquear o
+					gestionar cookies.</li>
+			</ul>
+			<h2>4. Cookies de Terceros</h2>
+			<p>Trabajamos con terceros que también pueden colocar cookies en
+				tu dispositivo cuando visitas nuestro sitio web. Estas cookies se
+				utilizan para proporcionar servicios adicionales y mejorar tu
+				experiencia.</p>
+
+			<h2>5. Consentimiento</h2>
+			<p>Al utilizar nuestro sitio web, aceptas el uso de cookies
+				conforme a esta política. Si no estás de acuerdo con el uso de
+				cookies, puedes ajustar la configuración de tu navegador o no
+				utilizar nuestro sitio web.</p>
+
+			<h2>6. Cambios en la Política de Cookies</h2>
+			<p>Podemos actualizar esta política de cookies en cualquier
+				momento. Te notificaremos sobre cualquier cambio publicando la nueva
+				política en nuestro sitio web.</p>
+
+			<h2>7. Contacto</h2>
+			<p>Si tienes alguna pregunta o inquietud sobre nuestra política
+				de cookies, no dudes en contactarnos:</p>
+			<p>
+				Email: <a href="mailto:mythosaurshop@gmail.com">mythosaurshop@gmail.com</a>
+			</p>
+		</div>
+	</div>
+	<footer th:replace="~{fragments/footerCustomer :: footerC}"></footer>
+</body>
+
+</html>

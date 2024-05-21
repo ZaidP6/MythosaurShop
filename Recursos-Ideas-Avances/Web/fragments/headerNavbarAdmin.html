@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon">
+	<!-- Favicon -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<!-- Iconos -->
+
+	<!-- Tema -->
+	<title>Mythosaur Shop</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<!--Para dejar Navbar fija arriba fixed-top navbar-shrink-->
+
+<header th:fragment="navbarAdmin">
+	<nav class="navbar navbar-collapse navbar-expand-lg bg-body-tertiaryp bg-black">
+		<div class="container-fluid">
+			<a class="navbar-brand w-25" href="../indexAdmin.html" th:href="@{/admin/}">
+				<img th:src="@{/images/Mythosaur Shop Lineal Black White.png}" width="100%" alt="Logo lineal">
+			</a>
+
+			<button class="navbar-toggler collapsed float-sm-end" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav mb-sm-2 fs-5">
+					<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
+						<ul class="dropdown-menu">
+							<li th:each="category : ${categorias}">
+								<a class="dropdown-item"
+									th:href="@{/admin/{categoryId}(categoryId=${category.categoryId})}"
+									th:text="${category.categoryName}">...</a>
+							</li>
+							<li>
+								<hr class="dropdown-divider" />
+							</li>
+							<li>
+								<a class="dropdown-item" th:href="@{/admin/}">Todos los productos</a>
+							</li>
+						</ul>
+					</li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" href="./quienesSomos.html"
+							th:href="@{/admin/quienesSomos}">Quiénes
+							Somos</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/trabajaConNosotros }"
+							href="./trabajaConNosotros.html">Trabaja con Nosotros</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page" th:href="@{/admin/contenidoContacto}"
+							href="./contenidoContacto.html">Contacto</a></li>
+				</ul>
+
+				<form class="d-flex mx-auto" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					<button class="btn bg-danger btn-outline-light" type="submit">Search</button>
+				</form>
+				<button class="btn fs-5" type="button"><span sec:authentication="name">Administrador</span>
+					<i class="bi bi-person"></i>
+				</button>
+			</div>
+
+
+		</div>
+
+
+	</nav>
+</header>
+
+
+
+
+</html>
