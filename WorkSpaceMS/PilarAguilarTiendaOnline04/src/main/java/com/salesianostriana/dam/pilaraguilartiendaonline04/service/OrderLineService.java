@@ -8,27 +8,15 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
+
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.CustomerRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.OrderLineRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.OrderRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.ProductRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.base.BaseServiceImpl;
 
-/*
- * import org.springframework.beans.factory.annotation.Autowired;
-
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.OrderLineRepository;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.ProductRepository;
-
- */
 @Service
 public class OrderLineService extends BaseServiceImpl<OrderLine, Long, OrderLineRepository>{
 

@@ -26,11 +26,11 @@ public class CustomerService extends BaseServiceImpl<Customer, Long, CustomerRep
 
 	// método para actualizar la fecha y hora del último inicio de sesión
 	public void updateLastLogin(String basicUserUName) {
-        Customer customer = customerRepository.findByBasicUserUName(basicUserUName);
-        if (customer != null) {
-            customer.setCustomerLastSession(LocalDateTime.now());
-            customerRepository.save(customer);
-        }
-    }
+		Customer customer = customerRepository.findByBasicUserUName(basicUserUName);
+		if (customer != null) {
+			customer.setCustomerLastSession(LocalDateTime.now());
+			customerRepository.save(customer);
+		}
+	}
 
 }

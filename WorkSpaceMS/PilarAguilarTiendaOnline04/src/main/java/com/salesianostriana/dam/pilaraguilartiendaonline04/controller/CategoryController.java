@@ -44,7 +44,8 @@ public class CategoryController {
 
 	@GetMapping("/editar/{id}")
 	public String mostrarFormCategoria(@PathVariable("id") long id, Model model) {
-		Category category = categoryService.findById(id).orElseThrow(() -> new IllegalArgumentException("Categoría con Id:" + id + " no válido"));
+		Category category = categoryService.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Categoría con Id:" + id + " no válido"));
 		if (category != null) {
 			model.addAttribute("category", category);
 			return "admin/nuevaCategoria";

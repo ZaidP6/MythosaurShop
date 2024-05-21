@@ -65,7 +65,8 @@ public class AdminController {
 
 	@GetMapping("/cliente/editar/{id}")
 	public String mostrarFormCliente(@PathVariable("id") long id, Model model) {
-		Customer customer = customerService.findById(id).orElseThrow(() -> new IllegalArgumentException("Cliente con Id:" + id + " no válido"));
+		Customer customer = customerService.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Cliente con Id:" + id + " no válido"));
 		if (customer != null) {
 			model.addAttribute("customer", customer);
 			return "admin/nuevoCliente";

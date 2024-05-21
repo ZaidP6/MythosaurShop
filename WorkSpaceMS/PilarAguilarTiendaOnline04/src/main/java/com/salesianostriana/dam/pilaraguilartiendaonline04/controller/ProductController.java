@@ -16,7 +16,6 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CategoryService;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.ProductService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProductController {

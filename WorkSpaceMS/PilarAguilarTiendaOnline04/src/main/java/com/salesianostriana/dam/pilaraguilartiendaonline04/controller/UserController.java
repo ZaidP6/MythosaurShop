@@ -24,23 +24,22 @@ public class UserController {
 
 	@Autowired
 	private CustomerService customerService;
-	
+
 	@Autowired
 	private ProductService productService;
 
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	/*
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+	 * @Autowired private PasswordEncoder passwordEncoder;
 	 */
 
 	public void llamarCategorias(Model model) {
 		List<Category> categorias = categoryService.findAll();
 		model.addAttribute("categorias", categorias);
 	}
-	
+
 	@GetMapping("/")
 	public String index(Model model) {
 		List<Product> productos = productService.findAll();
@@ -54,24 +53,21 @@ public class UserController {
 		model.addAttribute("customer", new Customer());
 		return "signInSimple";
 	}
-	
-		// Verifica si el nombre de usuario ya existe pero lo sigue admitiendo
-	 @PostMapping("/newCustomer/submit")
-	    public String verifyCustomer(@ModelAttribute("customer") Customer customer, Model model) {
-	        
-	        if (customerService.findByBasicUserUName(customer.getUsername()) != null) {
-	            model.addAttribute("error", "El nombre de usuario ya existe.");
-	            return "signInSimple";
-	        }
 
-	        // Guarda el nuevo usuario si el username no existe
-	        customerService.save(customer);
-	        return "redirect:/user/";
-	    }
+	// Verifica si el nombre de usuario ya existe pero lo sigue admitiendo
+	@PostMapping("/newCustomer/submit")
+	public String verifyCustomer(@ModelAttribute("customer") Customer customer, Model model) {
+
+		if (customerService.findByBasicUserUName(customer.getUsername()) != null) {
+			model.addAttribute("error", "El nombre de usuario ya existe.");
+			return "signInSimple";
+		}
+
+		// Guarda el nuevo usuario si el username no existe
+		customerService.save(customer);
+		return "redirect:/user/";
+	}
 
 	// ---------------- FUNCIONA ------------------------
-
-	
-	
 
 }

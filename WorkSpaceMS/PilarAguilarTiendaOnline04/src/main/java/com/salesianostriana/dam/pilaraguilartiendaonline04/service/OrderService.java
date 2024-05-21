@@ -1,9 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +11,7 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.OrderLineRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.OrderRepository;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.ProductRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.base.BaseServiceImpl;
 
 @Service

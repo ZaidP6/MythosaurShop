@@ -8,8 +8,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MvcConfig implements WebMvcConfigurer {
 
 	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/form/logIn");
+	public void addViewControllers(@SuppressWarnings("null") ViewControllerRegistry registry) {
 		registry.addViewController("/");
+		registry.addViewController("/form/logIn");
 	}
 }
