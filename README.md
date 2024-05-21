@@ -44,16 +44,21 @@ En caso de querer ver el proceso de dichos documentos se podrá acceder a la car
 
 Las credenciales para acceder son:
 
-Administrador:
-- Nombre de usuario: admin
-- Contraseña: admin
+#### Administrador:
+> - Nombre de usuario: admin
+> - Contraseña: admin
 
-Usuario:
-- Nombre de usuario: user
-- Contraseña: 1234
+#### Usuario:
+> - Nombre de usuario: user
+> - Contraseña: 1234
 
 ## Descripción del proyecto
+Se pretende crear una aplicaación web diseñada para la compra de productos ofrecidos en Mythosaur Shop, donde además se podrá gestionar por parte de un administrador.
+Podemos diferenciar entre 3 usuarios diferentes: el usuario base que ve la web sin registrarse, el susuario ya registrado y el administrador. Cada uno tendrá accesos a vistas dierentes. 
+
+[Documento del proyecto Mythosaur Shop](https://drive.google.com/file/d/1RG0Lhunvq3KneQRz-oYCNu0dLRPD9NrU/view?usp=sharing)
+
 
 ## Estado del proyecto
-
+En proceso...
 
