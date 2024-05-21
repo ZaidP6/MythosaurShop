@@ -1,6 +1,6 @@
 # <h1 align="center"> Mythosaur Shop </h1>
 
-![Mythosaur Shop Lineal Black](https://github.com/ZaidP6/MythosaurShop/assets/117078911/a8bac4b6-2437-401c-9513-53f332c80968)
+![Mythosaur Shop Lineal Black](https://github.com/ZaidP6/MythosaurShop/blob/main/WorkSpaceMS/PilarAguilarTiendaOnline04/src/main/resources/static/images/Mythosaur%20Shop%20Lineal%20Black%20White.png)
 
 <h3 align="center"> Desarrolladores del Proyecto </h3>
 <p align="center">Pilar Aguilar Díaz</p>
