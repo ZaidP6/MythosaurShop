@@ -32,7 +32,7 @@
 									Categoría</h5>
 								<!--<p th:text="${producto.productDescription}">Descripción del producto</p>-->
 								<p class="precioEntero" th:text="${producto.productPvP + '€'}">0.00€</p>
-								<form th:action="@{/comprar}" method="post">
+								<form th:action="@{/admin/}" method="get"> <!-- th:action="@{/admin/comprar}" method="post" -->
 									<input type="hidden" th:name="productId" th:value="${producto.productId}">
 									<button type="submit" class="btn btn-primary btn-comprar">Comprar</button>
 								</form>
