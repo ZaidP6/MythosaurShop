@@ -34,7 +34,7 @@
 						<ul class="dropdown-menu">
 							<li th:each="category : ${categorias}">
 								<a class="dropdown-item" th:href="@{/{categoryId}(categoryId=${category.categoryId})}"
-									th:text="${category.categoryName}">...</a> 
+									th:text="${category.categoryName}">...</a>
 							</li>
 							<li>
 								<hr class="dropdown-divider" />

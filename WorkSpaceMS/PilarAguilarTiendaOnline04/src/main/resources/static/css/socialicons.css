@@ -38,7 +38,7 @@
 .tiktok:hover,
 .tiktok:hover .tooltip,
 .tiktok:hover .tooltip::before {
-  background: radial-gradient(circle, rgba(0,0,0,1) 41%, rgba(255,0,80,1) 59%, rgba(0,242,234,1) 70%) !important;
+  background: radial-gradient(circle, rgba(0, 0, 0, 1) 41%, rgba(255, 0, 80, 1) 59%, rgba(0, 242, 234, 1) 70%) !important;
   color: #ffffff !important;
 }
 
@@ -46,7 +46,7 @@
 .instagram:hover .tooltip,
 .instagram:hover .tooltip::before {
   background: linear-gradient(to right,
-    #833ab4,#fd1d1d,#fcb045) !important;
+      #833ab4, #fd1d1d, #fcb045) !important;
   color: #ffffff !important;
 }
 

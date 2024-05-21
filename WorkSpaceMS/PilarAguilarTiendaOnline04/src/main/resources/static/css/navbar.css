@@ -2,12 +2,14 @@
     border-color: #00ff6a;
     box-shadow: 0 0 0 0.3rem rgba(61, 167, 40, 0.45);
 }
+
 .modalDesign {
     background-image: linear-gradient(0deg, rgba(121, 9, 9, 1) 18%, rgba(0, 212, 255, 1) 100%);
     background-size: 120%;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 /*No lo esta pillando, ni poniendo esto con css, ni poniendo w-lg-25. La idea es q en movil este en 75% y en el resto en 25%*/
 @media (min-width: 768px) {
     .navbar-brand {

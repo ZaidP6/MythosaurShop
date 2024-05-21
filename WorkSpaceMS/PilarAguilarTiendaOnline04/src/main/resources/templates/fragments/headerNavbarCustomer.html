@@ -35,14 +35,15 @@
 							data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
 						<ul class="dropdown-menu">
 							<li th:each="category : ${categorias}">
-								<a class="dropdown-item" th:href="@{/user/{categoryId}(categoryId=${category.categoryId})}"
-									th:text="${category.categoryName}">...</a> 
+								<a class="dropdown-item"
+									th:href="@{/user/{categoryId}(categoryId=${category.categoryId})}"
+									th:text="${category.categoryName}">...</a>
 							</li>
 							<li>
 								<hr class="dropdown-divider" />
 							</li>
 							<li>
-								<a class="dropdown-item"  th:href="@{/user/}">Todos los productos</a>
+								<a class="dropdown-item" th:href="@{/user/}">Todos los productos</a>
 							</li>
 						</ul>
 					</li>
