@@ -5,16 +5,16 @@ import java.util.Optional;
 
 public interface BaseService<T, ID> {
 
-    List<T> findAll();
+	List<T> findAll();
 
-    Optional<T> findById(ID id);
+	Optional<T> findById(ID id);
 
-    T save(T t);
+	T save(T t);
 
-    T edit(T t);
+	T edit(T t);
 
-    void delete(T t);
+	void delete(T t);
 
-    void deleteById(ID id);
+	void deleteById(ID id);
 
 }
