@@ -13,19 +13,21 @@ import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @SuppressWarnings("serial")
 @Data
 @NoArgsConstructor
-@MappedSuperclass
 @AllArgsConstructor
 @SuperBuilder
 @DiscriminatorColumn(name = "tipo", discriminatorType = DiscriminatorType.STRING)
-public class BasicUser implements UserDetails {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class BasicUser implements UserDetails {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

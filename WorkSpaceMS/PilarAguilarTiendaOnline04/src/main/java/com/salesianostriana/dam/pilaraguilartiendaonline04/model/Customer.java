@@ -21,8 +21,8 @@ import lombok.experimental.SuperBuilder;
 
 @SuppressWarnings("serial")
 @Entity @Data @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-@ToString(callSuper = true) @AllArgsConstructor
+@EqualsAndHashCode(callSuper = false)
+@ToString(callSuper = false) @AllArgsConstructor
 @SuperBuilder @DiscriminatorValue("USER")
 public class Customer extends BasicUser{
 
