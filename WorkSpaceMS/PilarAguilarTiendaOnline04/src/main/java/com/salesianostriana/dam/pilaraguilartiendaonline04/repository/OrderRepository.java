@@ -9,6 +9,7 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
 public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 
 	
+	
 	/*
 	 * @Query("""
 			SELECT o

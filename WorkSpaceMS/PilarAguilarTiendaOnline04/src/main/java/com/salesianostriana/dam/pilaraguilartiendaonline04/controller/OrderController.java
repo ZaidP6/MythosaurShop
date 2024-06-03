@@ -12,28 +12,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 //import com.salesianostriana.dam.pilaraguilartiendaonline03.service.OrderService;
 //import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderLine;
 //import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderPedido;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.service.OrderLineService;
+
+import com.salesianostriana.dam.pilaraguilartiendaonline04.service.OrderService;
 
 @Controller
 public class OrderController {
 
 	@Autowired
-	private OrderLineService orderLineService;
+	private OrderService orderService;
 
 	/*
 	 * @Autowired private OrderService orderService;
 	 */
 
 	@GetMapping("/delete/{orderLineId}")
-	public void deleteOrderLine(@PathVariable Long orderLineId) {
-		orderLineService.deleteOrderLine(orderLineId);
+	public void deleteOrderLine(@PathVariable Long orderLineId) {		
+		//orderService.deleteOrderLine(orderLineId);
 	}
 
 	@GetMapping("/user/comprar/{id}")
 	public String addOrderLine(@RequestParam Long orderId, @RequestParam Long productId, @RequestParam int quantity,
 			Model model) {
-		orderLineService.listarLineasVenta();
-		orderLineService.addOrderLine(orderId, productId, quantity);
+		orderService.findAll();
+		//orderService.addOrderLine(orderId, productId, quantity);
 		return "redirect:/user/carrito";
 
 	}

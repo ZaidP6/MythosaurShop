@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
@@ -17,19 +18,22 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@IdClass(OrderLinePK.class)
 public class OrderLine {
 	
-	@Id 
-	@GeneratedValue
+
+	@GeneratedValue @Id
 	private long orderLineId;
 	
 	//private Product orderLineProduct;
 	private int orderLineQuantity;
 	private double orderLinePrice;
 	
+	private OrderLinePK orderLinePK;
+	
 					//ORDER
 	
-	@ManyToOne
+	@ManyToOne @Id
 	@JoinColumn(foreignKey = @ForeignKey(name="fk_orderPedido_orderLine"))	
 	private OrderPedido orderPedido;
 	
