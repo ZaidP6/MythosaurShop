@@ -14,7 +14,7 @@ public class OrderLinePK implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	private OrderPedido order;
+	private OrderPedido orderPedido;
 	private Long orderLineId;
 	
 

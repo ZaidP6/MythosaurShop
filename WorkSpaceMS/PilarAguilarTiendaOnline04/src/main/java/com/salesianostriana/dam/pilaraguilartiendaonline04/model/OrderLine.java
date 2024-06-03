@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 public class OrderLine {
 	
 
-	@GeneratedValue @Id
+	@Id @GeneratedValue 
 	private long orderLineId;
 	
 	//private Product orderLineProduct;
