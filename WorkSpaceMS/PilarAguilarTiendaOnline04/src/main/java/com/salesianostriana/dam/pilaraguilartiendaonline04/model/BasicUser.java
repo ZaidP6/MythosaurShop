@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import lombok.AllArgsConstructor;
@@ -28,7 +27,7 @@ import lombok.NoArgsConstructor;
 public class BasicUser implements UserDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue
 	private Long basicUserId;
 
 	private String basicUserUName;

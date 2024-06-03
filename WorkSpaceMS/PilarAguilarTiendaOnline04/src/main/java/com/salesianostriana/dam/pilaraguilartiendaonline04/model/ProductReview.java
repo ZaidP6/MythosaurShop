@@ -3,7 +3,6 @@ package com.salesianostriana.dam.pilaraguilartiendaonline04.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -16,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Entity @Builder 
 public class ProductReview {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id @GeneratedValue
 	private Long productReviewId;
 	
 	private String productReviewTitle;
