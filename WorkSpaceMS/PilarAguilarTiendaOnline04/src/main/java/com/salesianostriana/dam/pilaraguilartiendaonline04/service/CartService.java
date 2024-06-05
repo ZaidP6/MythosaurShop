@@ -33,7 +33,7 @@ public class CartService{
 		return carrito;
 	}
 	
-					//CREAR Y AÑADIR LINEA A LA VENTA
+					//AÑADIR LINEA A LA VENTA EXISTENTE
 	
 	public void addOrderLine(Long orderId, Long productId, int quantity) {
         Optional<OrderPedido> optionalOrder = orderService.findById(orderId);
@@ -55,7 +55,7 @@ public class CartService{
         }
     }
 	
-					//OBTENER CARRITO
+					//OBTENER CARRITO ABIERTO
 	
 	public OrderPedido getCart(Customer c) {
 		
@@ -63,7 +63,7 @@ public class CartService{
 		
 	}
 	
-					//AÑADIR PRODUCTO AL CARRITO
+					//AÑADIR PRODUCTO AL CARRITO EXISTENTE O CREA SI NO HAY
 	
 	public void addToCart(Customer c, Product p, int cantidad) {
 		
