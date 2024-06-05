@@ -1,8 +1,13 @@
-insert into admin (basic_user_id,basic_useruname, basic_user_name, basic_user_last_name, basic_user_password, basic_user_dni) VALUES (NEXTVAL('basic_user_seq'),'admin', 'Pilar', 'Aguilar', '{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa', '12345678A');
-insert into customer (basic_user_id,basic_useruname, basic_user_name, basic_user_last_name, basic_user_password, basic_user_dni, customer_mail, customer_birth, customer_last_session, customer_phone, customer_address) VALUES (NEXTVAL('basic_user_seq'),'alber01', 'Alberto', 'González', '{bcrypt}$2a$10$lsHpqw5K/gL8ooHr/LdZfOzcNKpknmIETBEwJZBwegqfAP3PrEdFq', '87654321Z', 'correo@ejemplo.com', '1990-01-01', '2024-05-13', '123456789', 'Calle Ejemplo 123');
-insert into customer (basic_user_id,basic_useruname, basic_user_password) values (NEXTVAL('basic_user_seq'),'user', '{bcrypt}$2a$10$lsHpqw5K/gL8ooHr/LdZfOzcNKpknmIETBEwJZBwegqfAP3PrEdFq');
+ALTER SEQUENCE ADMIN_SEQ RESTART WITH 100 INCREMENT BY 1;
 
-ALTER CATEGORY_SEQ RESTART WITH 1 INCREMENT BY 1;
+insert into admin (basic_user_id,basic_useruname, basic_user_name, basic_user_last_name, basic_user_password, basic_user_dni) VALUES (NEXTVAL('admin_seq'),'admin', 'Pilar', 'Aguilar', '{bcrypt}$2a$10$RlcLSXIvm8VDjEBq19oB7OFEB3sJnxvJETStFrBeHwU1pYc0EGTTa', '12345678A');
+
+ALTER SEQUENCE CUSTOMER_SEQ RESTART WITH 100 INCREMENT BY 1;
+
+insert into customer (basic_user_id,basic_useruname, basic_user_name, basic_user_last_name, basic_user_password, basic_user_dni, customer_mail, customer_birth, customer_last_session, customer_phone, customer_address) VALUES (NEXTVAL('customer_seq'),'alber01', 'Alberto', 'González', '{bcrypt}$2a$10$lsHpqw5K/gL8ooHr/LdZfOzcNKpknmIETBEwJZBwegqfAP3PrEdFq', '87654321Z', 'correo@ejemplo.com', '1990-01-01', '2024-05-13', '123456789', 'Calle Ejemplo 123');
+insert into customer (basic_user_id,basic_useruname, basic_user_password) values (NEXTVAL('customer_seq'),'user', '{bcrypt}$2a$10$lsHpqw5K/gL8ooHr/LdZfOzcNKpknmIETBEwJZBwegqfAP3PrEdFq');
+
+ALTER SEQUENCE CATEGORY_SEQ RESTART WITH 1 INCREMENT BY 1;
 
 insert into category (category_id,category_name, category_description) VALUES (NEXTVAL('category_seq'),'Llaveros', 'Productos para llevar tus llaves con estilo');
 insert into category (category_id,category_name, category_description) VALUES (NEXTVAL('category_seq'),'Felpudos', 'Bienvenidas originales para tu hogar');
@@ -10,6 +15,7 @@ insert into category (category_id,category_name, category_description) VALUES (N
 insert into category (category_id,category_name, category_description) VALUES (NEXTVAL('category_seq'),'Gorras', 'Gorras únicas para que vayas con el mejor estilo');
 insert into category (category_id,category_name, category_description) VALUES (NEXTVAL('category_seq'),'Funkos', 'Figuras de colección para fans de películas, series y videojuegos');
 
+ALTER SEQUENCE THEME_SEQ RESTART WITH 100 INCREMENT BY 1;
 
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'Disney', 'Temas relacionados con Disney', 'foto_disney.jpg');
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'Deadpool', 'Temas relacionados con Deadpool', 'foto_deadpool.jpg');
@@ -21,6 +27,7 @@ INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'Juego de Tronos', 'Temas relacionados con Juego de Tronos', 'foto_juego_tronos.jpg');
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'Pokémon', 'Temas relacionados con Pokémon', 'foto_pokemon.jpg');
 
+ALTER SEQUENCE PRODUCT_SEQ RESTART WITH 100 INCREMENT BY 1;
 
 INSERT INTO product (product_id,product_name,product_description,product_pvp,product_stock_quantity,product_image,product_image_alternative_text,product_date,category_category_id) VALUES (NEXTVAL('product_seq'),'LLAVERO PLAYSTATION: DUALSHOCK','Compra el llavero de Dualshock. El mando de tu consola favorita irá contigo allá donde vayas.',3.99,36,'https://media.game.es/COVERV2/3D_L/207/207412.png','Llavero Dualshock','2024-03-05',1);
 INSERT INTO product (product_id,product_name,product_description,product_pvp,product_stock_quantity,product_image,product_image_alternative_text,product_date,category_category_id) VALUES (NEXTVAL('product_seq'),'LLAVERO THE LAST OF US: LOGO','Compra el llavero del premiado videojuego The Last Of Us. ',3.99,23,'https://media.game.es/COVERV2/3D_L/207/207420.png','Llavero Last of Us','2024-03-05',1);
@@ -68,5 +75,8 @@ INSERT INTO product (product_id,product_name,product_description,product_pvp,pro
 INSERT INTO product (product_id,product_name,product_description,product_pvp, product_stock_quantity,product_image,product_image_alternative_text,product_date,category_category_id) VALUES (NEXTVAL('product_seq'),'FIGURA POP MARVEL PORTADA: THE AMAZING SPIDER-MAN', 'Las nuevas figuras POP! de Marvel ya están aquí. Una cuidada selección de figuras que, como siempre, vienen avaladas por la calidad y el mimo que Funko pone en todos su productos oficiales.', 29.99, 20, 'https://media.game.es/COVERV2/3D_L/221/221396.png', 'Funko Spidey', '2024-04-15', 5);
 
 
-ALTER SEQUENCE RESTART WITH 100 INCREMENT BY 1;
-ALTER CATEGORY_SEQ RESTART WITH 100 INCREMENT BY 1;
+ALTER SEQUENCE CUSTOMER_SEQ RESTART WITH 100 INCREMENT BY 1;
+ALTER SEQUENCE PRODUCT_SEQ RESTART WITH 100 INCREMENT BY 1;
+ALTER SEQUENCE CATEGORY_SEQ RESTART WITH 100 INCREMENT BY 1;
+ALTER SEQUENCE THEME_SEQ RESTART WITH 100 INCREMENT BY 1;
+ALTER SEQUENCE ADMIN_SEQ RESTART WITH 100 INCREMENT BY 1;
