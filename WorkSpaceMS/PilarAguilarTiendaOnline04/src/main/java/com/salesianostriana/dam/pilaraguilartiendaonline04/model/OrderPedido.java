@@ -4,6 +4,9 @@ package com.salesianostriana.dam.pilaraguilartiendaonline04.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.ArrayList;
 
 import jakarta.persistence.CascadeType;
@@ -34,6 +37,7 @@ public class OrderPedido {
 	@GeneratedValue
 	private long orderId;
 	
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private LocalDateTime orderDate;
 	
 	private double orderTotalAmount;
@@ -45,15 +49,15 @@ public class OrderPedido {
 	private Customer customer;
 	
 	/*
-	 * MÉTODOS HELPER PARA LA ASOCIACIÓN CON CURSO
+	 * MÉTODOS HELPER PARA LA ASOCIACIÓN CON CUSTOMER
 	 */
 	
-	public void addToCurso(Customer customer) {
+	public void addToCustomer(Customer customer) {
 		this.customer = customer;
 		customer.getOrders().add(this);
 	}
 	
-	public void removeFromCurso(Customer customer) {
+	public void removeFromCustomer(Customer customer) {
 		customer.getOrders().remove(this);
 		this.customer = null;	
 	}
