@@ -22,13 +22,15 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 	private ProductService productService;
 	
 	
-	public boolean orderNotFinished(Customer c, OrderPedido order) {
-		if(order.isOrderFinished()) {
+	public boolean orderNotFinished(Customer c) {
+		if() {
 			return false;
 		}
 		
 		return true;
 	}
+	
+	
 	
 	/*
 	 * //listar las líneas del carrito

@@ -1,6 +1,5 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
@@ -18,9 +17,10 @@ public class CartService{
 		return carrito;
 	}
 	
-	public OrderPedido getCart() {
+	
+	public OrderPedido getCart(Customer c) {
 		
-		return null;
+		return orderService.orderNotFinished(c);
 		
 	}
 	
