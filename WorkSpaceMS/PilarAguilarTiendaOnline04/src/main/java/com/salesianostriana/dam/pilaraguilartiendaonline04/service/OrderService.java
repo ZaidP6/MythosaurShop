@@ -21,50 +21,15 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 	@Autowired
 	private ProductService productService;
 	
-
-	//forma de buscar el producto y la cantidad de una sola vez
-	private Map<Product, Integer> productoKey = new HashMap<>();
 	
-	public OrderPedido crearPedidoConLineas(OrderPedido pedido) {
-		return pedido;
-		
-	}
-	
-
-	public void comprobarCarrito(Customer cliente) {
-		if (productoKey.isEmpty()) {
-			// No hay productos en el carrito, no se realiza ninguna acción
-			return;
-		} else {
-
-			// Crear una nueva venta
-			OrderPedido venta = new OrderPedido();
-			for (Product p : productoKey.keySet()) {
-				int v = productoKey.get(p);
-
-				// Agregar una línea de venta a la venta actual
-				venta.addOrderLine(OrderLine.builder().product(p).orderLineQuantity(v).orderLinePrice(p.getProductPvP())
-						.orderLinePrice(p.getProductPvP() * v).build());
-
-				// Restar el stock del producto
-				productService.restarStock(p.getProductId(), v);
-
-			}
-			// Establecer el cliente de la venta
-			venta.setCustomer(cliente);
-
-			// Calcular el total de la venta
-
-			// Establecer la fecha y guardar la venta
-			venta.setOrderDate(LocalDateTime.now());
-			save(venta);
-
-			// Limpiar el carrito
-			productoKey.clear();
+	public boolean orderNotFinished(Customer c, OrderPedido order) {
+		if(order.isOrderFinished()) {
+			return false;
 		}
+		
+		return true;
 	}
 	
-
 	/*
 	 * //listar las líneas del carrito
 	public List<OrderLine> listarLineasVenta() {
@@ -142,49 +107,39 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 		 */
 		
 		//método para calcular el total completo
-		public double calcularTotal() {
-			//Nuestro map con producto y cantidad
-			Map<Product, Integer> carrito = this.productoKey;
-		    double total = 0.0;
-
-		    //otro map para albergar cada linea completa
-		    for (Map.Entry<Product, Integer> entry : carrito.entrySet()) {
-		        Product producto = entry.getKey();
-		        int cantidad = entry.getValue();
-		        total += producto.getProductPvP() * cantidad;
-		    }
-		    return total;	
-		 }
+		/*
+		 * public double calcularTotal() { //Nuestro map con producto y cantidad
+		 * Map<Product, Integer> carrito = this.productoKey; double total = 0.0;
+		 * 
+		 * //otro map para albergar cada linea completa for (Map.Entry<Product, Integer>
+		 * entry : carrito.entrySet()) { Product producto = entry.getKey(); int cantidad
+		 * = entry.getValue(); total += producto.getProductPvP() * cantidad; } return
+		 * total; }
+		 */
 
 		// Agregar producto al carrito
-		public void agregarProducto(Product producto, int cantidad) {
+		/*
+		 * public void agregarProducto(Product producto, int cantidad) {
+		 * 
+		 * if (productoKey.containsKey(producto)) { if
+		 * (productoKey.containsKey(producto)) { if (productoKey.get(producto) > 1)
+		 * productoKey.replace(producto, productoKey.get(producto) - 1); else if
+		 * (productoKey.get(producto) == 1) { productoKey.remove(producto); } } }
+		 * 
+		 * }
+		 */
 
-			if (productoKey.containsKey(producto)) {
-				if (productoKey.containsKey(producto)) {
-					if (productoKey.get(producto) > 1)
-						productoKey.replace(producto, productoKey.get(producto) - 1);
-					else if (productoKey.get(producto) == 1) {
-						productoKey.remove(producto);
-					}
-				}
-			}
-
-		}
-
-		// Eliminar producto del carrito
-		public void eliminarProducto(Product producto) {
-			this.productoKey.remove(producto);
-		}
-
-		// Obtener la cantidad de un producto específico
-		public int obtenerCantidad(Product producto) {
-			return this.productoKey.getOrDefault(producto, 0);
-		}
-
-		// Ver todos los productos en el carrito
-		public Map<Product, Integer> verProductosCarrito() {
-			return Collections.unmodifiableMap(this.productoKey);
-		}
-		
+		/*
+		 * // Eliminar producto del carrito public void eliminarProducto(Product
+		 * producto) { this.productoKey.remove(producto); }
+		 * 
+		 * // Obtener la cantidad de un producto específico public int
+		 * obtenerCantidad(Product producto) { return
+		 * this.productoKey.getOrDefault(producto, 0); }
+		 * 
+		 * // Ver todos los productos en el carrito public Map<Product, Integer>
+		 * verProductosCarrito() { return Collections.unmodifiableMap(this.productoKey);
+		 * }
+		 */
 
 }

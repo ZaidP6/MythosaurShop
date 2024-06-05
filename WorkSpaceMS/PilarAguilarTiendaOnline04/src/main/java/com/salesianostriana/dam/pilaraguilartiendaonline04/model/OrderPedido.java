@@ -41,6 +41,7 @@ public class OrderPedido {
 	private LocalDateTime orderDate;
 	
 	private double orderTotalAmount;
+	private boolean orderFinished;
 	
 					//CUSTOMER
 	
