@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,9 +71,9 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 
 	// COMPROBAR SI HAY LINEAS EN CARRITO
 
-	public boolean comprobarSiHayProductos(Customer c, Long productId) {
-		Optional<Product> optionalProduct = productRepository.findById(productId);
-		if (optionalProduct.isPresent()) {
+	public boolean comprobarSiHayProductos(Customer c) {
+		List<Product> optionalProduct = productRepository.findAll();
+		if (!optionalProduct.isEmpty()) {
 			return true;
 		}
 		return false;

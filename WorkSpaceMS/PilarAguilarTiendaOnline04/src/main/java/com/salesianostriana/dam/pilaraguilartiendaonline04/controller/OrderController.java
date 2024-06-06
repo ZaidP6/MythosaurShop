@@ -43,11 +43,6 @@ public class OrderController {
 	 * @Autowired private OrderService orderService;
 	 */
 
-	@GetMapping("/delete/{orderLineId}")
-	public void deleteOrderLine(@PathVariable Long orderLineId) {
-		// orderService.deleteOrderLine(orderLineId);
-	}
-
 	@GetMapping("/user/comprar/{id}")
 	public String addOrderLine(@RequestParam Long orderId, @RequestParam Long productId, @RequestParam int quantity,
 			Model model) {
@@ -68,11 +63,25 @@ public class OrderController {
 			cartService.addProductToCart(cliente, productoNuevo, quantity);
 			return "customer/carrito";
 		}
-		
-		
-			return "customer/carrito";
+			return "/user/";
 	}
-				
+			
+	
+	@GetMapping("/delete/{orderLineId}")
+	public void deleteOrderLine(@PathVariable Long orderLineId) {
+		// orderService.deleteOrderLine(orderLineId);
+	}
+	
+	@GetMapping("/user/carrito")
+	public String showCart(@AuthenticationPrincipal Customer c, Model model) {
+		
+		model.addAttribute("orderLines",cartService.getCart(c));
+		return "customer/carrito";
+	
+	}
+}
+	
+	
 					// POSIBLE CÓDIGO PARA EL CARRITO ABAJO
 	/*
 	 * @GetMapping("/user/carrito") public String showOrderLines(Model model) {
@@ -87,4 +96,3 @@ public class OrderController {
 	 * orderLineService.listarLineasVenta(); return "customer/carrito"; }
 	 */
 
-}

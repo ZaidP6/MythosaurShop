@@ -13,12 +13,11 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 @Repository
 public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 
-	@Query
-	public boolean productInCart(Customer c, Product p);
+	
 	
 	public boolean existsByOrderFinishedAndCustomer(boolean orderFinished, Customer c);
 	
-	public Optional<OrderPedido> findFirstByFinishedAndUser(boolean orderFinished, Customer c);
+	public Optional<OrderPedido> findFirstByOrderFinishedAndCustomer(boolean orderFinished, Customer c);
 	
 	/*
 	 * @Query("""

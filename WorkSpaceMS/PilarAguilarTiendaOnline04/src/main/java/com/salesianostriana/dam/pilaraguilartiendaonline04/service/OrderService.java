@@ -29,7 +29,7 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 
 	public Optional<OrderPedido> findByOpenOrder(Customer c) {
 
-		return this.repository.findFirstByFinishedAndUser(false, c);
+		return this.repository.findFirstByOrderFinishedAndCustomer(false, c);
 	}
 	
 	
