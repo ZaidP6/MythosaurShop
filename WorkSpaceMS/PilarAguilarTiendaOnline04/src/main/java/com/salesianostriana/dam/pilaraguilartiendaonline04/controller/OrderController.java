@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CartService;
 
 //import java.util.List;
 
@@ -22,12 +25,19 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
 //import com.salesianostriana.dam.pilaraguilartiendaonline03.model.OrderPedido;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.OrderService;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.service.ProductService;
 
 @Controller
 public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private CartService cartService;
+	
+	@Autowired
+	private ProductService productService;
 
 	/*
 	 * @Autowired private OrderService orderService;
@@ -47,17 +57,24 @@ public class OrderController {
 
 	}
 
-	// POSIBLE CÓDIGO PARA EL CARRITO ABAJO
+	
 
+	@GetMapping("/user/comprar/{productId}")
+	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente, 
+			@PathVariable("productId") Long productId, int quantity) {
+		Optional<Product> optionalProduct = productService.findById(productId);
+		if(optionalProduct.isPresent()) {
+			Product productoNuevo = optionalProduct.get();
+			cartService.addProductToCart(cliente, productoNuevo, quantity);
+			return "customer/carrito";
+		}
+		
+		
+			return "customer/carrito";
+	}
+				
+					// POSIBLE CÓDIGO PARA EL CARRITO ABAJO
 	/*
-	 * @GetMapping("/user/cart/{id}") public String
-	 * detalleVenta(@AuthenticationPrincipal Customer cliente, @PathVariable("id")
-	 * long id, Model model) { if (orderService.findById(id).isPresent()) {
-	 * List<OrderLine> LineaVentaEncontrada =
-	 * orderService.findById(id).get().getOrderLines(); model.addAttribute("venta",
-	 * LineaVentaEncontrada); model.addAttribute("cliente", cliente); return
-	 * "customer/carrito"; } else return "redirect:/user/cart"; }
-	 * 
 	 * @GetMapping("/user/carrito") public String showOrderLines(Model model) {
 	 * OrderPedido carrito = orderService.findByOpen(); if (carrito != null) {
 	 * model.addAttribute("ventaCompleta", carrito); if (model.addAttribute("venta",
