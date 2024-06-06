@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +31,7 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 	// NUEVO CARRITO
 
 	public OrderPedido newCart(Customer c) {
-		OrderPedido carrito = OrderPedido.builder().customer(c).orderFinished(false).build();
+		OrderPedido carrito = OrderPedido.builder().customer(c).orderOpen(true).orderDate(LocalDateTime.now()).build();
 		orderRepository.save(carrito);
 		return carrito;
 	}
@@ -38,7 +40,7 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 
 	public void addProductToCart(Customer c, Product p, int cantidad) {
 
-		Optional<OrderPedido> optionalCart = orderService.findByOpenOrder(c);
+		Optional<OrderPedido> optionalCart = orderService.findByOrderOpen(c);
 		OrderPedido cart = optionalCart.orElseGet(() -> newCart(c));
 		addOrderLine(cart.getOrderId(), p.getProductId(), cantidad);
 	}
@@ -49,6 +51,8 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 		Optional<OrderPedido> optionalOrder = orderService.findById(orderId);
 		Optional<Product> optionalProduct = productRepository.findById(productId);
 
+		//Optional<OrderLine> optionalOrderLine = optionalOrder.get();
+		
 		if (optionalOrder.isPresent() && optionalProduct.isPresent()) {
 			OrderPedido order = optionalOrder.get();
 			Product product = optionalProduct.get();
@@ -64,8 +68,10 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 	// OBTENER CARRITO ABIERTO
 
 	public OrderPedido getCart(Customer c) {
+		
+		 List <OrderPedido> ordersOpen = orderService.findByOrderOpen(c).get();
 
-		return orderService.findByOpenOrder(c).get(); // .orElseGet(() -> newCart());
+		return  ordersOpen.stream().findFirst().orElseGet(() -> newCart(c));
 
 	}
 

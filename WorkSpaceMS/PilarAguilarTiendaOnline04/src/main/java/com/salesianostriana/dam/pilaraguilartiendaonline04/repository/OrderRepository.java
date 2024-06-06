@@ -15,20 +15,16 @@ public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 
 	
 	
-	public boolean existsByOrderFinishedAndCustomer(boolean orderFinished, Customer c);
 	
-	public Optional<OrderPedido> findFirstByOrderFinishedAndCustomer(boolean orderFinished, Customer c);
 	
-	/*
-	 * @Query("""
-			SELECT o
-			FROM Order o LEFT JOIN o.OrderLine ol
-			WHERE ol.product = ?1
+	@Query("""
+			SELECT o 
+			FROM OrderPedido o 
+			WHERE o.customer = :customer AND o.orderFinished = false
 			""")
-	List<OrderLine> ventasConProducto(Product p);
-	 */
+	public Optional<OrderPedido> findFirstByOrderOpenAndCustomer(Customer c);
 	
-	//boolean existByFinishedAndCustomer(boolean finished);
+	
 	
 	
 	
