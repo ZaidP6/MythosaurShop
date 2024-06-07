@@ -1,6 +1,5 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -69,9 +68,9 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 
 	public OrderPedido getCart(Customer c) {
 		
-		 List <OrderPedido> ordersOpen = orderService.findByOrderOpen(c).get();
+		 Optional<OrderPedido> optionalOrderOpen = orderService.findByOrderOpen(c);
 
-		return  ordersOpen.stream().findFirst().orElseGet(() -> newCart(c));
+		 return optionalOrderOpen.orElseGet(() -> newCart(c));
 
 	}
 
