@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
@@ -54,7 +55,7 @@ public class OrderController {
 
 	
 
-	@GetMapping("/user/comprar/{productId}")
+	@PostMapping("/user/comprar/{productId}")
 	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente, 
 	        @PathVariable("productId") Long productId, @RequestParam int quantity, Model model) {
 	    Optional<Product> optionalProduct = productService.findById(productId);
@@ -80,20 +81,12 @@ public class OrderController {
 	
 	@GetMapping("/user/carrito")
 	public String showCart(@AuthenticationPrincipal Customer customer, Model model) {
-		
-		if (customer != null) {
-	        OrderPedido cart = cartService.getCart(customer);
-	        
-	        if (cart != null) {
-	            model.addAttribute("cart", cart);
-	            model.addAttribute("orderLines", cart.getOrderLines());
-	        } else {
-	            model.addAttribute("cart", new OrderPedido()); // O una instancia vacía como prefieras manejarlo
-	            model.addAttribute("orderLines", Collections.emptyList());  
-	        }
-		}
-		return "customer/carrito";
-		
+		OrderPedido cart = cartService.getCart(customer);
+		if(!cart.getOrderLines().isEmpty()) {
+			model.addAttribute("orderLines", cart.getOrderLines());
+			return "customer/carrito";
+		}else
+			return "customer/carritoVacio";
 	}
 	
 }

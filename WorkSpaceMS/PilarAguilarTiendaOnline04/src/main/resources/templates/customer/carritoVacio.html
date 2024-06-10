@@ -55,19 +55,8 @@
 														</tr>
 													</thead>
 													<tbody>
-														<tr th:each="orderLine : ${order.orderLines}">
-															<td><img th:src="@{orderLine.product.imageUrl}"
-																alt="Producto" width="50"></td>
-															<td th:text="${orderLine.product.productName}"></td>
-															<td th:text="${orderLine.product.category}"></td>
-															<td th:text="${orderLine.product.productPvP}"></td>
-															<td th:text="${orderLine.orderLineQuantity}"></td>
-															<td th:text="${orderLine.orderLinePrice}"></td>
-															<td><a
-																th:href="@{/delete/cart/{id}(id=${orderLine.product.productId})}"
-																class="btn btn-outline-danger delete-link"> <i
-																	class="bi bi-x-lg"></i>
-															</a></td>
+														<tr>
+															<td colspan="7">Tu carrito está vacío.</td>
 														</tr>
 													</tbody>
 												</table>
@@ -77,9 +66,8 @@
 											<h2 class="card-title">TOTAL</h2>
 											<ul class="list-group">
 												<li class="list-group-item">
-													<h5 th:text="${order.total}"></h5>
+													<h5>0.00€</h5>
 												</li>
-												<a th:href="@{/order}" class="btn btn-dark">Finalizar compra</a>
 											</ul>
 										</div>
 									</div>
