@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +31,12 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 	// NUEVO CARRITO
 
 	public OrderPedido newCart(Customer c) {
-		OrderPedido carrito = OrderPedido.builder().customer(c).orderOpen(true).orderDate(LocalDateTime.now()).build();
+		OrderPedido carrito = OrderPedido.builder()
+				.customer(c)
+				.orderOpen(true)
+				.orderDate(LocalDateTime.now())
+				.orderLines(new ArrayList<>())
+				.build();
 		orderRepository.save(carrito);
 		return carrito;
 	}

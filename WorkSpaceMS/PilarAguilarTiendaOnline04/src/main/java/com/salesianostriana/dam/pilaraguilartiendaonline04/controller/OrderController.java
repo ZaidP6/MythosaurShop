@@ -56,15 +56,21 @@ public class OrderController {
 
 	@GetMapping("/user/comprar/{productId}")
 	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente, 
-			@PathVariable("productId") Long productId, int quantity) {
-		Optional<Product> optionalProduct = productService.findById(productId);
-		if(optionalProduct.isPresent()) {
-			Product productoNuevo = optionalProduct.get();
-			cartService.addProductToCart(cliente, productoNuevo, quantity);
-			return "customer/carrito";
-		}
-			return "/user/";
+	        @PathVariable("productId") Long productId, @RequestParam int quantity, Model model) {
+	    Optional<Product> optionalProduct = productService.findById(productId);
+	    if (optionalProduct.isPresent()) {
+	        Product productoNuevo = optionalProduct.get();
+	        cartService.addProductToCart(cliente, productoNuevo, quantity);
+	        OrderPedido cart = cartService.getCart(cliente);
+	        
+	        model.addAttribute("cart", cart);
+	        model.addAttribute("orderLines", cart.getOrderLines());
+	        
+	        return "customer/carrito";
+	    }
+	    return "redirect:/user/";
 	}
+
 			
 	
 	@GetMapping("/delete/{orderLineId}")
@@ -83,10 +89,11 @@ public class OrderController {
 	            model.addAttribute("orderLines", cart.getOrderLines());
 	        } else {
 	            model.addAttribute("cart", new OrderPedido()); // O una instancia vacía como prefieras manejarlo
-	            model.addAttribute("orderLines", Collections.emptyList());
+	            model.addAttribute("orderLines", Collections.emptyList());  
 	        }
 		}
 		return "customer/carrito";
+		
 	}
 	
 }

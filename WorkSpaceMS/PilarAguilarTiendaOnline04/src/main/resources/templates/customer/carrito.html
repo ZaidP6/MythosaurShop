@@ -55,6 +55,9 @@
 														</tr>
 													</thead>
 													<tbody>
+														<tr th:if="${#lists.isEmpty(orderLines)}">
+															<td colspan="7">Tu carrito está vacío.</td>
+														</tr>
 														<tr th:each="orderLine : ${order.orderLines}">
 															<td><img th:src="@{orderLine.product.imageUrl}"
 																alt="Producto" width="50"></td>
