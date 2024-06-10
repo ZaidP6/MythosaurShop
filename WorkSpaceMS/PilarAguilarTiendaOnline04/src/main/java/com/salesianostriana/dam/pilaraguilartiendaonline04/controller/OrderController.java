@@ -1,15 +1,15 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.controller;
 
-import java.util.List;
+import java.util.Collections;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
@@ -56,15 +56,21 @@ public class OrderController {
 
 	@GetMapping("/user/comprar/{productId}")
 	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente, 
-			@PathVariable("productId") Long productId, int quantity) {
-		Optional<Product> optionalProduct = productService.findById(productId);
-		if(optionalProduct.isPresent()) {
-			Product productoNuevo = optionalProduct.get();
-			cartService.addProductToCart(cliente, productoNuevo, quantity);
-			return "customer/carrito";
-		}
-			return "/user/";
+	        @PathVariable("productId") Long productId, @RequestParam int quantity, Model model) {
+	    Optional<Product> optionalProduct = productService.findById(productId);
+	    if (optionalProduct.isPresent()) {
+	        Product productoNuevo = optionalProduct.get();
+	        cartService.addProductToCart(cliente, productoNuevo, quantity);
+	        OrderPedido cart = cartService.getCart(cliente);
+	        
+	        model.addAttribute("cart", cart);
+	        model.addAttribute("orderLines", cart.getOrderLines());
+	        
+	        return "customer/carrito";
+	    }
+	    return "redirect:/user/";
 	}
+
 			
 	
 	@GetMapping("/delete/{orderLineId}")
@@ -73,15 +79,24 @@ public class OrderController {
 	}
 	
 	@GetMapping("/user/carrito")
-	public String showCart(@AuthenticationPrincipal Customer c, Model model) {
+	public String showCart(@AuthenticationPrincipal Customer customer, Model model) {
 		
-		model.addAttribute("orderLines",cartService.getCart(c));
+		if (customer != null) {
+	        OrderPedido cart = cartService.getCart(customer);
+	        
+	        if (cart != null) {
+	            model.addAttribute("cart", cart);
+	            model.addAttribute("orderLines", cart.getOrderLines());
+	        } else {
+	            model.addAttribute("cart", new OrderPedido()); // O una instancia vacía como prefieras manejarlo
+	            model.addAttribute("orderLines", Collections.emptyList());  
+	        }
+		}
 		return "customer/carrito";
-	
+		
 	}
+	
 }
-	
-	
 					// POSIBLE CÓDIGO PARA EL CARRITO ABAJO
 	/*
 	 * @GetMapping("/user/carrito") public String showOrderLines(Model model) {

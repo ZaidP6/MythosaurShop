@@ -3,21 +3,15 @@ package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.OrderRepository;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.ProductRepository;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.base.BaseServiceImpl;
 
 @Service
 public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderRepository> {
 
-	@Autowired
-	private ProductRepository productRepository;
 	
 	public Optional<OrderPedido> findById(Long id) {
 		return this.repository.findById(id);

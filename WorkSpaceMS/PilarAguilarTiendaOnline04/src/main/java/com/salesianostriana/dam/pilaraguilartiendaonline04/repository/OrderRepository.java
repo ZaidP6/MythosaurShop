@@ -8,21 +8,17 @@ import org.springframework.stereotype.Repository;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 
 @Repository
 public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 
-	
-	
-	
-	
+
 	@Query("""
 			SELECT o 
 			FROM OrderPedido o 
-			WHERE o.customer = :customer AND o.orderFinished = false
+			WHERE o.customer = :customer AND o.orderOpen = true
 			""")
-	public Optional<OrderPedido> findFirstByOrderOpenAndCustomer(Customer c);
+	public Optional<OrderPedido> findFirstByOrderOpenAndCustomer(Customer customer);
 	
 	
 	
