@@ -57,17 +57,12 @@ public class OrderController {
 
 	@PostMapping("/user/comprar/{productId}")
 	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente, 
-	        @PathVariable("productId") Long productId, @RequestParam int quantity, Model model) {
+	        @PathVariable("productId") Long productId, Model model) {
 	    Optional<Product> optionalProduct = productService.findById(productId);
 	    if (optionalProduct.isPresent()) {
 	        Product productoNuevo = optionalProduct.get();
-	        cartService.addProductToCart(cliente, productoNuevo, quantity);
-	        OrderPedido cart = cartService.getCart(cliente);
-	        
-	        model.addAttribute("cart", cart);
-	        model.addAttribute("orderLines", cart.getOrderLines());
-	        
-	        return "customer/carrito";
+	        cartService.addProductToCart(cliente, productoNuevo, 1);
+	        return "redirect:/user/carrito";
 	    }
 	    return "redirect:/user/";
 	}
