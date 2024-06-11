@@ -1,7 +1,5 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.controller;
 
-import java.util.Collections;
-import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
