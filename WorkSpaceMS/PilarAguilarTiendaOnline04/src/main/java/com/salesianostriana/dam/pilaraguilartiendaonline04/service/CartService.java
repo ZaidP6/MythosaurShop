@@ -43,12 +43,35 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 
 	// AÑADIR PRODUCTO AL CARRITO EXISTENTE O CREA SI NO HAY
 
-	public void addProductToCart(Customer c, Product p, int cantidad) {
-
+	public void addProductToCart(Customer c, Long productId, int quantity) {
+		Optional<Product> optionalProduct = productRepository.findById(productId);
+		
+		if(!optionalProduct.isPresent()) {
+			throw new IllegalArgumentException("Producto no encontrado");
+		}
+		
+		Product product = optionalProduct.get();
 		Optional<OrderPedido> optionalCart = orderService.findByOrderOpen(c);
 		OrderPedido cart = optionalCart.orElseGet(() -> newCart(c));
-		addOrderLine(cart.getOrderId(), p.getProductId(), 1);
-		cart.setOrderTotalAmount(calcularTotalPedido(cart));
+		
+		Optional<OrderLine> optionalOrderLine = cart.getOrderLines()
+				.stream()
+				.filter(line -> line.getProduct()
+						.getProductId()
+						.equals(productId))
+						.findFirst();
+		
+		if(!optionalOrderLine.isPresent()) {
+			addOrderLine(cart.getOrderId(), product.getProductId(), quantity);
+		}else {
+			OrderLine orderLine = optionalOrderLine.get();
+			orderLine.setOrderLineQuantity(orderLine.getOrderLineQuantity()+quantity);
+			cart.setOrderTotalAmount(calcularTotalPedido(cart));
+	        orderService.actualizarVenta(cart);
+		}
+		
+		
+		
 	}
 
 	// AÑADIR LINEA A LA VENTA EXISTENTE
@@ -56,8 +79,6 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 	public void addOrderLine(Long orderId, Long productId, int quantity) {
 		Optional<OrderPedido> optionalOrder = orderService.findById(orderId);
 		Optional<Product> optionalProduct = productRepository.findById(productId);
-
-		//Optional<OrderLine> optionalOrderLine = optionalOrder.get();
 		
 		if (optionalOrder.isPresent() && optionalProduct.isPresent()) {
 			OrderPedido order = optionalOrder.get();
@@ -66,11 +87,11 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 			OrderLine orderLine = OrderLine.builder()
 					.orderPedido(order)
 					.product(product)
-					.orderLineQuantity(1)
-					.orderLinePrice(product.getProductPvP() * 1)
+					.orderLineQuantity(quantity)
 					.build();
-
+			
 			order.addOrderLine(orderLine);
+			order.setOrderTotalAmount(calcularTotalPedido(order));
 			orderService.actualizarVenta(order);
 		}else
 			throw new IllegalArgumentException("Pedido o producto no encontrado");

@@ -32,7 +32,7 @@ import lombok.ToString;
 public class Product {
 
 	@Id @GeneratedValue
-	private long productId;
+	private Long productId;
 	
 	private String productName;
 	
