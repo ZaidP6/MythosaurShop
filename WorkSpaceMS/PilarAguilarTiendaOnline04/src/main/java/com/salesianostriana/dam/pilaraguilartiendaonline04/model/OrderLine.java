@@ -29,7 +29,6 @@ public class OrderLine {
 	private int orderLineQuantity;
 	private double orderLinePrice;
 	
-	private OrderLinePK orderLinePK;
 	
 					//ORDER
 	

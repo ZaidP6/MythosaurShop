@@ -47,7 +47,7 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 
 		Optional<OrderPedido> optionalCart = orderService.findByOrderOpen(c);
 		OrderPedido cart = optionalCart.orElseGet(() -> newCart(c));
-		addOrderLine(cart.getOrderId(), p.getProductId(), cantidad);
+		addOrderLine(cart.getOrderId(), p.getProductId(), 1);
 	}
 
 	// AÑADIR LINEA A LA VENTA EXISTENTE
@@ -62,12 +62,17 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 			OrderPedido order = optionalOrder.get();
 			Product product = optionalProduct.get();
 
-			OrderLine orderLine = OrderLine.builder().orderPedido(order).product(product).orderLineQuantity(quantity)
-					.orderLinePrice(product.getProductPvP() * quantity).build();
+			OrderLine orderLine = OrderLine.builder()
+					.orderPedido(order)
+					.product(product)
+					.orderLineQuantity(1)
+					.orderLinePrice(product.getProductPvP() * 1)
+					.build();
 
 			order.addOrderLine(orderLine);
 			orderService.actualizarVenta(order);
-		}
+		}else
+			throw new IllegalArgumentException("Pedido o producto no encontrado");
 	}
 
 	// OBTENER CARRITO ABIERTO

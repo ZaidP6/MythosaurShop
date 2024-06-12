@@ -1,5 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.controller;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CartService;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CustomerService;
 
 //import java.util.List;
 
@@ -25,93 +29,92 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CartService;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.OrderService;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.ProductService;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @Controller
 public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
-	
+
 	@Autowired
 	private CartService cartService;
-	
+
 	@Autowired
 	private ProductService productService;
-	
+
 	@Autowired
 	private CustomerService customerService;
-	
-	
 
 	/*
 	 * @Autowired private OrderService orderService;
 	 */
 
 	@GetMapping("/user/comprar/{id}")
-	public String addOrderLine(@RequestParam Long orderId, @RequestParam Long productId, @RequestParam int quantity,
-			Model model) {
+	public String addOrderLine(@RequestParam Long orderId, @RequestParam Long productId) {
 		orderService.findAll();
-		// orderService.addOrderLine(orderId, productId, quantity);
+		cartService.addOrderLine(orderId, productId, 1);
 		return "redirect:/user/carrito";
 
 	}
 
-	
-
 	@PostMapping("/user/comprar/{productId}")
-	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente, 
-	        @PathVariable("productId") Long productId, Model model) {
-	    Optional<Product> optionalProduct = productService.findById(productId);
-	    if (optionalProduct.isPresent()) {
-	        Product productoNuevo = optionalProduct.get();
-	        cartService.addProductToCart(cliente, productoNuevo, 1);
-	        return "redirect:/user/carrito";
-	    }
-	    return "redirect:/user/";
+	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente,
+			@PathVariable("productId") Long productId, Model model) {
+		Optional<Product> optionalProduct = productService.findById(productId);
+		if (optionalProduct.isPresent()) {
+			Product productoNuevo = optionalProduct.get();
+			cartService.addProductToCart(cliente, productoNuevo, 1);
+			return "redirect:/user/carrito";
+		}
+		return "redirect:/user/";
 	}
 
-			
-	
 	@GetMapping("/delete/{orderLineId}")
 	public void deleteOrderLine(@PathVariable Long orderLineId) {
 		// orderService.deleteOrderLine(orderLineId);
 	}
-	
+
 	@GetMapping("/user/carrito")
 	public String showCart(@AuthenticationPrincipal Customer customer, Model model) {
-		OrderPedido cart = cartService.getCart(customer);
-		if(!cart.getOrderLines().isEmpty()) {
-			model.addAttribute("orderLines", cart.getOrderLines());
-			return "customer/carrito";
-		}else
-			return "customer/carritoVacio";
+		if (customer != null) {
+			OrderPedido cart = cartService.getCart(customer);
+			if (cart != null && cart.getOrderLines() != null && !cart.getOrderLines().isEmpty()) {
+				Map<Product, OrderLine> mapOrderLines = new LinkedHashMap<>();
+				for (OrderLine orderLine : cart.getOrderLines()) {
+					mapOrderLines.put(orderLine.getProduct(), orderLine);
+				}
+				model.addAttribute("order", cart);
+				model.addAttribute("mapOrderLines", mapOrderLines);
+				return "customer/carrito";
+			} else {
+				return "customer/carritoVacio";
+			}
+		}else {
+			model.addAttribute("error", "No se podido encontrar el cliente autenticado.");
+			return "redirect:/form/logIn";
+		}
 	}
-	
+
 	@PostMapping("/user/carrito/submit")
 	public String volverAlIndex(@ModelAttribute("customer") Customer c) {
-		//TODO: process POST request
-		
-			customerService.save(c);
-			return "redirect:/admin/cliente/list";
-		}
+		// TODO: process POST request
 
+		customerService.save(c);
+		return "redirect:/admin/cliente/list";
 	}
-	
-	
-}
-					// POSIBLE CÓDIGO PARA EL CARRITO ABAJO
-	/*
-	 * @GetMapping("/user/carrito") public String showOrderLines(Model model) {
-	 * OrderPedido carrito = orderService.findByOpen(); if (carrito != null) {
-	 * model.addAttribute("ventaCompleta", carrito); if (model.addAttribute("venta",
-	 * carrito.getOrderLines()) == null) { return "redirect:/user/"; } return
-	 * "customer/carrito"; } return "redirect:/user/"; }
-	 * 
-	 * @PostMapping("/user/carrito") public String viewCart(@AuthenticationPrincipal
-	 * Customer cliente, @PathVariable("id") Long id, Model model) {
-	 * model.addAttribute("lista", orderLineService.listarLineasVenta());
-	 * orderLineService.listarLineasVenta(); return "customer/carrito"; }
-	 */
 
+}
+
+// POSIBLE CÓDIGO PARA EL CARRITO ABAJO
+/*
+ * @GetMapping("/user/carrito") public String showOrderLines(Model model) {
+ * OrderPedido carrito = orderService.findByOpen(); if (carrito != null) {
+ * model.addAttribute("ventaCompleta", carrito); if (model.addAttribute("venta",
+ * carrito.getOrderLines()) == null) { return "redirect:/user/"; } return
+ * "customer/carrito"; } return "redirect:/user/"; }
+ * 
+ * @PostMapping("/user/carrito") public String viewCart(@AuthenticationPrincipal
+ * Customer cliente, @PathVariable("id") Long id, Model model) {
+ * model.addAttribute("lista", orderLineService.listarLineasVenta());
+ * orderLineService.listarLineasVenta(); return "customer/carrito"; }
+ */
