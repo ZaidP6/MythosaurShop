@@ -90,10 +90,5 @@ public class OrderPedido {
 		
 	}
 	
-					//PREGUNTAR SI ESTO VA AQUI O EN SERVICE
-	
-	 public double calcularTotal() {
-	        return orderLines.stream().mapToDouble(OrderLine::obtenerPrecioOrderLine).sum();
-	    }
 
 }

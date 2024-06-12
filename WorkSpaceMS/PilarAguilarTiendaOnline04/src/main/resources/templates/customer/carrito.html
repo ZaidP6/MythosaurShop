@@ -61,7 +61,7 @@
 																	id="orderLineQuantity" class="form-control">
 															</td>
 															<td
-																th:text="${#numbers.formatDecimal(orderLine.value.getOrderLinePrice(), 0, 2)} + '€'">
+																th:text="${#numbers.formatDecimal(orderLine.value.getOrderLinePrice, 0, 2)} + '€'">
 															</td>
 															<td><a th:href="@{/delete/cart/{id}(id=${orderLine.key.productId})}"
 																	class="btn btn-outline-danger delete-link"> <i

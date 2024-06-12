@@ -48,6 +48,7 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 		Optional<OrderPedido> optionalCart = orderService.findByOrderOpen(c);
 		OrderPedido cart = optionalCart.orElseGet(() -> newCart(c));
 		addOrderLine(cart.getOrderId(), p.getProductId(), 1);
+		cart.setOrderTotalAmount(calcularTotalPedido(cart));
 	}
 
 	// AÑADIR LINEA A LA VENTA EXISTENTE
@@ -84,6 +85,15 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 		 return optionalOrderOpen.orElseGet(() -> newCart(c));
 
 	}
+	
+	//CALCULAR PRECIO TOTAL DEL PEDIDO EN EL CARRITO
+	
+	private double calcularTotalPedido(OrderPedido order) {
+        return order.getOrderLines()
+                .stream()
+                .mapToDouble(OrderLine::obtenerPrecioOrderLine)
+                .sum();
+    }
 
 	// COMPROBAR SI HAY LINEAS EN CARRITO
 
