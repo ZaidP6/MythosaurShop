@@ -93,7 +93,33 @@ public class OrderController {
 			return "redirect:/form/logIn";
 		}
 	}
+	
+	@GetMapping("/user/delete/cart/{id}")
+	public String deleteProductCart(@AuthenticationPrincipal Customer customer, @PathVariable Long productId) {
+	    if (customer != null) {
+	        OrderPedido cart = cartService.getCart(customer);
+	        Optional<Product> optionalProduct = productService.findById(productId);
+	        if (optionalProduct.isPresent()) {
+	            Optional<OrderLine> optionalOrderLine = cart.getOrderLines().stream()
+	                    .filter(ol -> ol.getProduct().getProductId().equals(productId))
+	                    .findFirst();
+	            if (optionalOrderLine.isPresent()) {
+	                OrderLine orderLine = optionalOrderLine.get();
+	                if (orderLine.getOrderLineQuantity() > 1) {
+	                    cart.removeOrderLine(orderLine);
+	                } else {
+	                    cart.getOrderLines().remove(orderLine);
+	                }
+	                cartService.save(cart);
+	            }
+	            return "redirect:/user/carrito";
+	        }
+	        return "redirect:/user/";
+	    }
+	    return "redirect:/form/logIn";
+	}
 
+	
 	@PostMapping("/user/carrito/submit")
 	public String volverAlIndex(@ModelAttribute("customer") Customer c) {
 		// TODO: process POST request
@@ -103,17 +129,3 @@ public class OrderController {
 	}
 
 }
-
-// POSIBLE CÓDIGO PARA EL CARRITO ABAJO
-/*
- * @GetMapping("/user/carrito") public String showOrderLines(Model model) {
- * OrderPedido carrito = orderService.findByOpen(); if (carrito != null) {
- * model.addAttribute("ventaCompleta", carrito); if (model.addAttribute("venta",
- * carrito.getOrderLines()) == null) { return "redirect:/user/"; } return
- * "customer/carrito"; } return "redirect:/user/"; }
- * 
- * @PostMapping("/user/carrito") public String viewCart(@AuthenticationPrincipal
- * Customer cliente, @PathVariable("id") Long id, Model model) {
- * model.addAttribute("lista", orderLineService.listarLineasVenta());
- * orderLineService.listarLineasVenta(); return "customer/carrito"; }
- */
