@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
@@ -150,5 +151,14 @@ public class ProductController {
         model.addAttribute("product", product);
         return "customer/detallesProducto";
     }
+	
+	//debe devolver nuevo html
+	
+	@GetMapping("/user/search")
+	public String searchProducts(@RequestParam("keyWord") String keyWord, Model model) {
+	    List<Product> products = productService.searchByKeyword(keyWord);
+	    model.addAttribute("products", products);
+	    return "redirect:/user/";
+	}
 
 }

@@ -31,48 +31,7 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 		return this.repository.save(order);
 	}
 	
-	
-
-	/*
-	 * //listar las líneas del carrito public List<OrderLine> listarLineasVenta() {
-	 * return Collections.unmodifiableList(olRepository.findAll()); }
-	 */
-
-	// método para añadir una línea al carrito y por tanto, actualizar dicha compra
-	/*
-	 * public OrderLine addOrderLine(Long orderId, Long productId, int quantity) {
-	 * // Obtenemos venta por ID OrderPedido orderPedido =
-	 * orderRepository.findById(orderId) .orElseThrow(() -> new
-	 * IllegalArgumentException("Venta no encontrada"));
-	 * 
-	 * // Obtenemos producto por ID Product product =
-	 * productRepository.findById(productId) .orElseThrow(() -> new
-	 * IllegalArgumentException("Producto no encontrado"));
-	 * 
-	 * // Se crea nueva linea OrderLine orderLine = OrderLine.builder()
-	 * .orderPedido(orderPedido) .product(product) .orderLineQuantity(quantity)
-	 * .orderLinePrice(product.getProductPvP() * quantity) .build();
-	 * 
-	 * // se añade linea a venta orderPedido.addOrderLine(orderLine);
-	 * 
-	 * // se guarda orderRepository.save(orderLine);
-	 * 
-	 * // Actualiza y guarda la venta orderRepository.save(orderPedido);
-	 * 
-	 * return orderLine; }
-	 */
-
-	// método para borrar una linea del carrito
-	/*
-	 * public void deleteOrderLine(Long orderLineId) { OrderLine orderLine =
-	 * olRepository.findById(orderLineId) .orElseThrow(() -> new
-	 * IllegalArgumentException("Línea de venta no encontrada"));
-	 * 
-	 * OrderPedido orderPedido = orderLine.getOrderPedido();
-	 * orderPedido.removeOrderLine(orderLine);
-	 * 
-	 * olRepository.delete(orderLine); orderRepository.save(orderPedido); }
-	 */
+	 
 
 	// Avtualizar cantidad de un producto
 
