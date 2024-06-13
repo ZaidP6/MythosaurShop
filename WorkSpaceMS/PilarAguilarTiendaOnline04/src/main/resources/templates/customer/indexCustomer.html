@@ -31,9 +31,9 @@
 								<h5 th:if="${producto.category} != null" th:text="${producto.category.categoryName}">
 									Categoría</h5>
 								<p class="precioEntero" th:text="${producto.productPvP + '€'}">0.00€</p>
-								<form th:action="@{/user/}" method="get">
-									<!-- th:action="@{/user/comprar/{productId}}" method="post" -->
+								<form th:action="@{/user/comprar/{productId}(productId=${producto.productId})}" method="POST">
 									<input type="hidden" th:name="productId" th:value="${producto.productId}">
+									<input type="hidden" name="quantity" value="1">
 									<button type="submit" class="btn btn-primary btn-comprar">Comprar</button>
 								</form>
 							</div>

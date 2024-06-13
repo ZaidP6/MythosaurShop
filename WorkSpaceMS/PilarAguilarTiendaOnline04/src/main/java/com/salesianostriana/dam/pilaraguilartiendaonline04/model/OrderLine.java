@@ -27,9 +27,7 @@ public class OrderLine {
 	
 	//private Product orderLineProduct;
 	private int orderLineQuantity;
-	private double orderLinePrice;
 	
-	private OrderLinePK orderLinePK;
 	
 					//ORDER
 	
@@ -43,8 +41,7 @@ public class OrderLine {
 	
 	
 	public double obtenerPrecioOrderLine() {
-		orderLinePrice = product.getProductPvP() * orderLineQuantity;
-		return orderLinePrice;
+		return product.getProductPvP() * orderLineQuantity;
 	}
 	
 }

@@ -25,22 +25,20 @@
 			<section class="col-12 col-md-9 col-lg-10 vh-100">
 				<div class="container h-100">
 					<div class="row d-flex justify-content-center align-items-center h-100">
-						<div class="col-12">
+						<div class="col-12  col-lg-9">
 							<p>
 								<span class="h2">Carrito de compra</span>
-								<span class="h4"> (1 item in your cart)</span>
 							</p>
 							<div class="card mb-4">
 								<div class="card-body">
 									<div class="row">
-										<div class="col-12 col-lg-9">
+										<div class="col-12">
 											<div class="table-responsive">
 												<table class="table">
 													<thead>
-														<tr th:each="orderLine : ${order.orderLines}">
+														<tr>
 															<th scope="col">Imagen</th>
-															<th scope="col">Nombre
-															</th>
+															<th scope="col">Nombre</th>
 															<th scope="col">Categoría</th>
 															<th scope="col">Precio</th>
 															<th scope="col">Cantidad</th>
@@ -49,16 +47,26 @@
 														</tr>
 													</thead>
 													<tbody>
-														<tr th:each="dorden:${cart}">
-															<td th:text="${dorden.nombre}"></td>
-															<td th:text="${orderLine.product.productName}"></td>
-															<td th:text="${dorden.nombre}"></td>
-															<td th:text="${orderLine.orderLinePrice}"></td>
-															<td th:text="${orderLine.orderLineQuantity}"></td>
-															<td th:text="${dorden.total}"></td>
-															<td><a th:href="@{/delete/cart/{id}(id=${dorden.producto.id})}"
-																	class="btn btn-outline-danger delete-link"><i
-																		class="bi bi-x-lg"></i></a></td>
+														<tr th:each="orderLine : ${mapOrderLines.entrySet()}">
+															<td><img th:src="${#strings.isEmpty(orderLine.key.productImage)} ? @{orderLine.key.productImageAlternativeText} : ${orderLine.key.productImage}"
+																	 width="50%"></td>
+															<td th:text="${orderLine.key.productName}"></td>
+															<td th:text="${orderLine.key.Category.categoryName}"></td>
+															<td
+																th:text="${#numbers.formatDecimal(orderLine.value.product.productPvP, 0, 2)} + '€'">
+															</td>
+															<td>
+																<input th:value="${orderLine.value.orderLineQuantity}"
+																	min="1" max="20" type="number"
+																	id="orderLineQuantity" class="form-control">
+															</td>
+															<td
+																th:text="${#numbers.formatDecimal(orderLine.value.obtenerPrecioOrderLine(), 0, 2)} + '€'">
+															</td>
+															<td><a th:href="@{/delete/cart/{id}(id=${orderLine.key.productId})}"
+																	class="btn btn-outline-danger delete-link"> <i
+																		class="bi bi-x-lg"></i>
+																</a></td>
 														</tr>
 													</tbody>
 												</table>
@@ -68,19 +76,17 @@
 											<h2 class="card-title">TOTAL</h2>
 											<ul class="list-group">
 												<li class="list-group-item">
-													<h5 th:text="${orden.total}"></h5>
+													  <h5 th:text="${#numbers.formatDecimal(cart.orderTotalAmount, 0, 2)} + '€'"></h5>
 												</li>
-												<a th:href="@{/order}" class="btn btn-dark">Ver Orden</a>
+												<a th:href="@{/user/order}" class="btn btn-primary">Finalizar compra</a>
 											</ul>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="d-flex justify-content-end">
-								<button type="button" data-mdb-button-init data-mdb-ripple-init
-									class="btn btn-light btn-lg me-2">Continue shopping</button>
-								<button type="button" data-mdb-button-init data-mdb-ripple-init
-									class="btn btn-primary btn-lg">Add to cart</button>
+								<button type="button" th:href="@{/user/}"
+									class="btn btn-light btn-lg me-2">Continuar comprando</button>
 							</div>
 						</div>
 					</div>
