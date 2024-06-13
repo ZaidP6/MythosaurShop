@@ -109,7 +109,7 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 	
 	//CALCULAR PRECIO TOTAL DEL PEDIDO EN EL CARRITO
 	
-	private double calcularTotalPedido(OrderPedido order) {
+	public double calcularTotalPedido(OrderPedido order) {
         return order.getOrderLines()
                 .stream()
                 .mapToDouble(OrderLine::obtenerPrecioOrderLine)

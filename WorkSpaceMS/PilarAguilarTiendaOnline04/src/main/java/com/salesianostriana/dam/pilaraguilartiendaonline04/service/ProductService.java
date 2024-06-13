@@ -27,4 +27,8 @@ public class ProductService extends BaseServiceImpl<Product, Long, ProductReposi
 		return repository.productPerCategory(category);
 	}
 
+	public List<Product> searchByKeyword(String keyWord) {
+		return repository.findByProductNameContainingIgnoreCase(keyWord);
+	}
+
 }

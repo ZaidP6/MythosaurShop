@@ -56,8 +56,8 @@
 							href="./contenidoContacto.html">Contacto</a></li>
 				</ul>
 
-				<form class="d-flex mx-auto" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				<form class="d-flex mx-auto" role="keyWord"  th:action="@{/user/search}" method="get">
+					<input class="form-control me-2" name="keyWord" type="search" placeholder="Buscar" aria-label="Search">
 					<button class="btn bg-danger btn-outline-light" type="submit">Search</button>
 				</form>
 				<button class="btn fs-5" type="button"><span sec:authentication="name">User</span>

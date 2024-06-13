@@ -68,11 +68,6 @@ public class OrderController {
 		return "redirect:/user/";
 	}
 
-	@GetMapping("/delete/{orderLineId}")
-	public void deleteOrderLine(@PathVariable Long orderLineId) {
-		// orderService.deleteOrderLine(orderLineId);
-	}
-
 	@GetMapping("/user/carrito")
 	public String showCart(@AuthenticationPrincipal Customer customer, Model model) {
 		if (customer != null) {
@@ -94,7 +89,7 @@ public class OrderController {
 		}
 	}
 	
-	@GetMapping("/user/delete/cart/{id}")
+	@GetMapping("/user/delete/cart/{productId}")
 	public String deleteProductCart(@AuthenticationPrincipal Customer customer, @PathVariable Long productId) {
 	    if (customer != null) {
 	        OrderPedido cart = cartService.getCart(customer);
@@ -105,16 +100,19 @@ public class OrderController {
 	                    .findFirst();
 	            if (optionalOrderLine.isPresent()) {
 	                OrderLine orderLine = optionalOrderLine.get();
-	                if (orderLine.getOrderLineQuantity() > 1) {
-	                    cart.removeOrderLine(orderLine);
-	                } else {
-	                    cart.getOrderLines().remove(orderLine);
-	                }
+	                if (orderLine.getOrderLineQuantity() <= 1) {
+	                	cart.getOrderLines().remove(orderLine);
+	                    
+	                } else 
+	                    orderLine.setOrderLineQuantity(orderLine.getOrderLineQuantity() - 1);
+	                	
+	                cart.setOrderTotalAmount(cartService.calcularTotalPedido(cart));
 	                cartService.save(cart);
+	    	        orderService.actualizarVenta(cart); 
 	            }
 	            return "redirect:/user/carrito";
 	        }
-	        return "redirect:/user/";
+	        return "redirect:/user/carrito";
 	    }
 	    return "redirect:/form/logIn";
 	}

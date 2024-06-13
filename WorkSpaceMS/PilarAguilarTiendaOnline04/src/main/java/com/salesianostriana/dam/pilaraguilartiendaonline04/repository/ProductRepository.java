@@ -21,6 +21,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			""")
 	public List<Product> productPerCategory(@Param("category") String category);
 
+	public List<Product> findByProductNameContainingIgnoreCase(String search);
+
 	/*
 	 * NO SON VÁLIDOS, SON PRUEBAS
 	 * 

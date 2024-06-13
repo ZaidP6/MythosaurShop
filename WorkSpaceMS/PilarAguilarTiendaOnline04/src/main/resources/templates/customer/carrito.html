@@ -48,7 +48,7 @@
 															<th scope="col">Precio</th>
 															<th scope="col">Cantidad</th>
 															<th scope="col">Subtotal</th>
-															<th scope="col">Acción</th>
+															<th scope="col"></th>
 														</tr>
 													</thead>
 													<tbody>
@@ -68,11 +68,9 @@
 																class="form-control"></td>
 															<td
 																th:text="${#numbers.formatDecimal(orderLine.value.obtenerPrecioOrderLine(), 0, 2)} + '€'"></td>
-															<td><a
-																th:href="@{/user/delete/cart/{productId}(productId=${orderLine.key.productId})}"
-																class="btn btn-outline-danger delete-link"> <i
-																	class="bi bi-x-lg"></i></a>
-															
+															<td><a th:href="@{/user/delete/cart/{productId}(productId=${orderLine.key.productId})}" 
+																class="btn btn-outline-danger delete-link">
+																    <i class="bi bi-x-lg"></i></a>
 															</td>
 														</tr>
 													</tbody>
@@ -86,7 +84,7 @@
 													<h5
 														th:text="${#numbers.formatDecimal(cart.orderTotalAmount, 0, 2)} + '€'"></h5>
 												</li>
-												<li><a th:href="@{/user/order}" class="btn btn-primary">Finalizar
+												<li class="list-group-item"><a th:href="@{/user/order}" class="btn btn-primary">Finalizar
 														compra</a></li>
 											</ul>
 										</div>
