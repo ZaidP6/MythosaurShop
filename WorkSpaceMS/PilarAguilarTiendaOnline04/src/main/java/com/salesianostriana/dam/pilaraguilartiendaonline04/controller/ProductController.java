@@ -142,5 +142,13 @@ public class ProductController {
 		}
 		return "redirect:/";
 	}
+	
+	@GetMapping("/user/product/details/{id}")
+    public String showProductDetails(@PathVariable("id") Long id, Model model) {
+        Product product = productService.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("Producto con Id:" + id + " no válido"));
+        model.addAttribute("product", product);
+        return "customer/detallesProducto";
+    }
 
 }
