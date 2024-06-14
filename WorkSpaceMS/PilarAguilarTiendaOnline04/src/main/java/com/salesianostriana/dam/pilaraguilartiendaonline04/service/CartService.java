@@ -116,6 +116,15 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
                 .sum();
     }
 	
+	public void finalizarCompra(Customer c, OrderPedido order) {
+		
+		OrderPedido carrito = this.getCart(c);
+		carrito.setOrderOpen(false);
+		carrito.setOrderDate(LocalDateTime.now());
+		carrito.getOrderTotalAmount();
+		orderService.actualizarVenta(order);	
+	}
+	
 	// COMPROBAR SI HAY LINEAS EN CARRITO
 
 	public boolean comprobarSiHayProductos(Customer c) {

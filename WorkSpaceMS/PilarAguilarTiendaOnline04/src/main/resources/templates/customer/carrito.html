@@ -84,7 +84,7 @@
 													<h5
 														th:text="${#numbers.formatDecimal(cart.orderTotalAmount, 0, 2)} + '€'"></h5>
 												</li>
-												<li class="list-group-item"><a th:href="@{/user/order}" class="btn btn-primary">Finalizar
+												<li class="list-group-item"><a th:href="@{/user/order/finished/{orderId}(orderId=${cart.orderId})}" class="btn btn-primary">Finalizar
 														compra</a></li>
 											</ul>
 										</div>
