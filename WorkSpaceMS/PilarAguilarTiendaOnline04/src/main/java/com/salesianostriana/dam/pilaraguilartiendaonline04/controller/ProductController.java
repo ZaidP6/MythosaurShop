@@ -28,10 +28,7 @@ public class ProductController {
 	private CategoryService categoryService;
 	private OrderLine orderLine;
 
-	public void llamarCategorias(Model model) {
-		List<Category> categorias = categoryService.findAll();
-		model.addAttribute("categorias", categorias);
-	}
+	
 
 	/**
 	 * Método gestiona listado de productos "/list"que mostrará la lista completa de
@@ -40,7 +37,7 @@ public class ProductController {
 	@GetMapping({ "/list" })
 	public String listarTodos(Model model) {
 		model.addAttribute("lista", productService.findAll());
-		llamarCategorias(model);
+		categoryService.llamarCategorias(model);
 		return "/";
 	}
 
@@ -116,7 +113,7 @@ public class ProductController {
 		Optional<Category> categoria = categoryService.findById(id);
 		if (categoria.isPresent()) {
 			model.addAttribute("products", productService.listarProductosCategoria(categoria.get().getCategoryName()));
-			llamarCategorias(model);
+			categoryService.llamarCategorias(model);
 			return "customer/indexCustomer";
 		}
 		return "redirect:/";
@@ -127,7 +124,7 @@ public class ProductController {
 		Optional<Category> categoria = categoryService.findById(id);
 		if (categoria.isPresent()) {
 			model.addAttribute("products", productService.listarProductosCategoria(categoria.get().getCategoryName()));
-			llamarCategorias(model);
+			categoryService.llamarCategorias(model);
 			return "admin/indexAdmin";
 		}
 		return "redirect:/";
@@ -138,7 +135,7 @@ public class ProductController {
 		Optional<Category> categoria = categoryService.findById(id);
 		if (categoria.isPresent()) {
 			model.addAttribute("products", productService.listarProductosCategoria(categoria.get().getCategoryName()));
-			llamarCategorias(model);
+			categoryService.llamarCategorias(model);
 			return "index";
 		}
 		return "redirect:/";
@@ -149,6 +146,7 @@ public class ProductController {
         Product product = productService.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Producto con Id:" + id + " no válido"));
         model.addAttribute("product", product);
+        categoryService.llamarCategorias(model);
         return "customer/detallesProducto";
     }
 	
@@ -158,6 +156,7 @@ public class ProductController {
 	public String searchProducts(@RequestParam("keyWord") String keyWord, Model model) {
 	    List<Product> products = productService.searchByKeyword(keyWord);
 	    model.addAttribute("products", products);
+	    categoryService.llamarCategorias(model);
 	    return "redirect:/user/";
 	}
 

@@ -15,6 +15,7 @@ insert into category (category_id,category_name, category_description) VALUES (N
 insert into category (category_id,category_name, category_description) VALUES (NEXTVAL('category_seq'),'Gorras', 'Gorras únicas para que vayas con el mejor estilo');
 insert into category (category_id,category_name, category_description) VALUES (NEXTVAL('category_seq'),'Funkos', 'Figuras de colección para fans de películas, series y videojuegos');
 
+/*
 ALTER SEQUENCE THEME_SEQ RESTART WITH 100 INCREMENT BY 1;
 
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'Disney', 'Temas relacionados con Disney', 'foto_disney.jpg');
@@ -26,6 +27,7 @@ INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'El Señor de los Anillos', 'Temas relacionados con El Señor de los Anillos', 'foto_señor_anillos.jpg');
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'Juego de Tronos', 'Temas relacionados con Juego de Tronos', 'foto_juego_tronos.jpg');
 INSERT INTO theme (theme_id,theme_name, theme_description, theme_photo) VALUES (NEXTVAL('theme_seq'),'Pokémon', 'Temas relacionados con Pokémon', 'foto_pokemon.jpg');
+*/
 
 ALTER SEQUENCE PRODUCT_SEQ RESTART WITH 100 INCREMENT BY 1;
 
@@ -78,5 +80,6 @@ INSERT INTO product (product_id,product_name,product_description,product_pvp, pr
 ALTER SEQUENCE CUSTOMER_SEQ RESTART WITH 100 INCREMENT BY 1;
 ALTER SEQUENCE PRODUCT_SEQ RESTART WITH 100 INCREMENT BY 1;
 ALTER SEQUENCE CATEGORY_SEQ RESTART WITH 100 INCREMENT BY 1;
-ALTER SEQUENCE THEME_SEQ RESTART WITH 100 INCREMENT BY 1;
 ALTER SEQUENCE ADMIN_SEQ RESTART WITH 100 INCREMENT BY 1;
+
+/*ALTER SEQUENCE THEME_SEQ RESTART WITH 100 INCREMENT BY 1;*/

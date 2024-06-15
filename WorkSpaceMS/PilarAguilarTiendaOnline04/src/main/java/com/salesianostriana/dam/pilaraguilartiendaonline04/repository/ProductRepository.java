@@ -22,6 +22,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	public List<Product> productPerCategory(@Param("category") String category);
 
 	public List<Product> findByProductNameContainingIgnoreCase(String search);
+	
+
 
 	/*
 	 * NO SON VÁLIDOS, SON PRUEBAS
@@ -29,9 +31,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	 * @Query(""" SELECT p FROM Product p WHERE p.productPvP < :precio """) public
 	 * List<Product> buscarPrecioMenor10(double precio);
 	 * 
-	 * 
-
-	 * public List<Product> findByNameContainsIgnoreCase (String search){
 	 * 
 	 * SELECT * FROM product WHERE search ILIKE '%search%';
 	 * 

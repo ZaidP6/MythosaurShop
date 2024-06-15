@@ -1,6 +1,6 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.service;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -34,7 +34,7 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
 		OrderPedido carrito = OrderPedido.builder()
 				.customer(c)
 				.orderOpen(true)
-				.orderDate(LocalDateTime.now())
+				.orderDate(LocalDate.now())
 				.orderLines(new ArrayList<>())
 				.build();
 		orderRepository.save(carrito);
@@ -115,6 +115,15 @@ public class CartService extends BaseServiceImpl<OrderPedido, Long, OrderReposit
                 .mapToDouble(OrderLine::obtenerPrecioOrderLine)
                 .sum();
     }
+	
+	public void finalizarCompra(Customer c, OrderPedido order) {
+		
+		OrderPedido carrito = this.getCart(c);
+		carrito.setOrderOpen(false);
+		carrito.setOrderDate(LocalDate.now());
+		carrito.getOrderTotalAmount();
+		orderService.actualizarVenta(order);	
+	}
 	
 	// COMPROBAR SI HAY LINEAS EN CARRITO
 

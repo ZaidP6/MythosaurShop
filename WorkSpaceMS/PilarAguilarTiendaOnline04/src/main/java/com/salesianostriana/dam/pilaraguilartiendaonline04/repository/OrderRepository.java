@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.repository;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -21,7 +22,19 @@ public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 	public Optional<OrderPedido> findFirstByOrderOpenAndCustomer(Customer customer);
 	
 	
+	@Query("""
+			SELECT o 
+			FROM OrderPedido o 
+			WHERE o.customer = :customer and o.orderOpen = false
+			""")
+    List<OrderPedido> findByOrderFinishedAndCustomer(Customer customer);
 	
 	
+	@Query("""
+			SELECT op
+			FROM OrderPedido op
+			WHERE op.orderOpen = false
+			""")
+	List<OrderPedido> findByOrderFinished();
 	
 }

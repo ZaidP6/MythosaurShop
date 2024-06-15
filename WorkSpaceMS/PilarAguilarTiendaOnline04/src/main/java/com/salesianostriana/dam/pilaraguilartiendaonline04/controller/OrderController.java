@@ -9,7 +9,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,7 +18,7 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CartService;
-import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CustomerService;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CategoryService;
 
 //import java.util.List;
 
@@ -41,21 +40,14 @@ public class OrderController {
 
 	@Autowired
 	private ProductService productService;
-
+	
 	@Autowired
-	private CustomerService customerService;
+	private CategoryService categoryService;
+
 
 	/*
 	 * @Autowired private OrderService orderService;
 	 */
-
-	@GetMapping("/user/comprar/{id}")
-	public String addOrderLine(@RequestParam Long orderId, @RequestParam Long productId) {
-		orderService.findAll();
-		cartService.addOrderLine(orderId, productId, 1);
-		return "redirect:/user/carrito";
-
-	}
 
 	@PostMapping("/user/comprar/{productId}")
 	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente,
@@ -70,6 +62,7 @@ public class OrderController {
 
 	@GetMapping("/user/carrito")
 	public String showCart(@AuthenticationPrincipal Customer customer, Model model) {
+		categoryService.llamarCategorias(model);
 		if (customer != null) {
 			OrderPedido cart = cartService.getCart(customer);
 			if (cart != null && cart.getOrderLines() != null && !cart.getOrderLines().isEmpty()) {
@@ -109,6 +102,7 @@ public class OrderController {
 	                cart.setOrderTotalAmount(cartService.calcularTotalPedido(cart));
 	                cartService.save(cart);
 	    	        orderService.actualizarVenta(cart); 
+	    	        
 	            }
 	            return "redirect:/user/carrito";
 	        }
@@ -118,12 +112,39 @@ public class OrderController {
 	}
 
 	
-	@PostMapping("/user/carrito/submit")
-	public String volverAlIndex(@ModelAttribute("customer") Customer c) {
-		// TODO: process POST request
-
-		customerService.save(c);
-		return "redirect:/admin/cliente/list";
+	@GetMapping("/user/order/finished/{orderId}")
+	public String finalizarCompra(@AuthenticationPrincipal Customer customer, @PathVariable Long orderId) {
+		
+		if(customer != null) {
+			OrderPedido cart = cartService.getCart(customer);
+			Optional<OrderPedido> optionalOrder = cartService.findById(orderId);
+			if(optionalOrder.isPresent()) {
+				cartService.finalizarCompra(customer, cart);
+				return "redirect:/user/orders"; 
+			}else
+				return "redirect:/user/carrito";
+		}
+		return "redirect:/form/logIn";
 	}
+	
+	
+	@GetMapping({"/user/orders"})
+	public String listarPedidos(@AuthenticationPrincipal Customer customer,Model model) {
+		
+		model.addAttribute("listaPedidos", orderService.listaPedidosRealizados(customer));
+		categoryService.llamarCategorias(model);
+		return "customer/listaPedidosUser";
+		
+	}
+	
+	@GetMapping("/user/order/{orderId}")
+	public String verDetallesPedido(@AuthenticationPrincipal Customer customer,@PathVariable Long orderId, Model model) {
+		OrderPedido order = orderService.findById(orderId).get();
+		model.addAttribute("order", order);
+	    categoryService.llamarCategorias(model);
+	    return "customer/detallePedido";
+	}
+	
+
 
 }
