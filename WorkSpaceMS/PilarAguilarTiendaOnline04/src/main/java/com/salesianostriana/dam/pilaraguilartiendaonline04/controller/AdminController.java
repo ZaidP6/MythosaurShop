@@ -10,12 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CategoryService;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CustomerService;
+import com.salesianostriana.dam.pilaraguilartiendaonline04.service.OrderService;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.ProductService;
 
 @Controller
@@ -30,6 +31,9 @@ public class AdminController {
 
 	@Autowired
 	private CustomerService customerService;
+
+	@Autowired
+	private OrderService orderService;
 
 	public void llamarCategorias(Model model) {
 		List<Category> categorias = categoryService.findAll();
@@ -90,5 +94,23 @@ public class AdminController {
 	}
 
 	// ---------------- FUNCIONA --------------------------
+
+	@GetMapping("/orders")
+	public String listarPedidosAdmin(Model model) {
+		categoryService.llamarCategorias(model);
+		List<OrderPedido> totalOrders = orderService.findAll();
+		List<OrderPedido> orders = totalOrders;
+		orders = orderService.listaPedidosAdmin();
+		model.addAttribute("orders", orders);
+		return "admin/listaPedidosAdmin";
+	}
+
+	@GetMapping("/orders/{orderId}")
+	public String verDetallesPedidosAdmin(@PathVariable Long orderId, Model model) {
+		OrderPedido order = orderService.findById(orderId).get();
+		model.addAttribute("orderAdmin", order);
+		categoryService.llamarCategorias(model);
+		return "admin/detallePedidoAdmin";
+	}
 
 }

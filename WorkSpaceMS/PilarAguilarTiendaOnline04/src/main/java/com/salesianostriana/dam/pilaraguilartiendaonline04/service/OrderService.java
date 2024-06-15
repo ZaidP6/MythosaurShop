@@ -13,25 +13,29 @@ import com.salesianostriana.dam.pilaraguilartiendaonline04.service.base.BaseServ
 public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderRepository> {
 		
 	public Optional<OrderPedido> findById(Long id) {
-		return this.repository.findById(id);
+		return repository.findById(id);
 	}
 
 	public List<OrderPedido> findAll() {
-		return this.repository.findAll();
+		return repository.findAll();
 	}
 
 	public Optional<OrderPedido> findByOrderOpen(Customer c) {
 
-		return this.repository.findFirstByOrderOpenAndCustomer(c);
+		return repository.findFirstByOrderOpenAndCustomer(c);
 	}
 	
 	
 	public OrderPedido actualizarVenta(OrderPedido order) {
-		return this.repository.save(order);
+		return repository.save(order);
 	}
 	
 	public List<OrderPedido> listaPedidosRealizados(Customer c){
-		return repository.findByOrderFinishAndCustomer(c);
+		return repository.findByOrderFinishedAndCustomer(c);
+	}
+	
+	public List<OrderPedido> listaPedidosAdmin(){
+		return repository.findByOrderFinished();
 	}
 	
 	

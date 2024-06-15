@@ -27,8 +27,14 @@ public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 			FROM OrderPedido o 
 			WHERE o.customer = :customer and o.orderOpen = false
 			""")
-    List<OrderPedido> findByOrderFinishAndCustomer(Customer customer);
+    List<OrderPedido> findByOrderFinishedAndCustomer(Customer customer);
 	
 	
+	@Query("""
+			SELECT op
+			FROM OrderPedido op
+			WHERE op.orderOpen = false
+			""")
+	List<OrderPedido> findByOrderFinished();
 	
 }

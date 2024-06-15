@@ -49,14 +49,6 @@ public class OrderController {
 	 * @Autowired private OrderService orderService;
 	 */
 
-	@GetMapping("/user/comprar/{id}")
-	public String addOrderLine(@RequestParam Long orderId, @RequestParam Long productId) {
-		orderService.findAll();
-		cartService.addOrderLine(orderId, productId, 1);
-		return "redirect:/user/carrito";
-
-	}
-
 	@PostMapping("/user/comprar/{productId}")
 	public String comprarUnProducto(@AuthenticationPrincipal Customer cliente,
 			@PathVariable("productId") Long productId, int quantity, Model model) {
@@ -70,6 +62,7 @@ public class OrderController {
 
 	@GetMapping("/user/carrito")
 	public String showCart(@AuthenticationPrincipal Customer customer, Model model) {
+		categoryService.llamarCategorias(model);
 		if (customer != null) {
 			OrderPedido cart = cartService.getCart(customer);
 			if (cart != null && cart.getOrderLines() != null && !cart.getOrderLines().isEmpty()) {
@@ -127,7 +120,7 @@ public class OrderController {
 			Optional<OrderPedido> optionalOrder = cartService.findById(orderId);
 			if(optionalOrder.isPresent()) {
 				cartService.finalizarCompra(customer, cart);
-				return "redirect:/user/"; //cambiar a ruta de todos los pedidos
+				return "redirect:/user/orders"; 
 			}else
 				return "redirect:/user/carrito";
 		}
@@ -135,7 +128,7 @@ public class OrderController {
 	}
 	
 	
-	@GetMapping({ "/user/orders"})
+	@GetMapping({"/user/orders"})
 	public String listarPedidos(@AuthenticationPrincipal Customer customer,Model model) {
 		
 		model.addAttribute("listaPedidos", orderService.listaPedidosRealizados(customer));
@@ -151,5 +144,7 @@ public class OrderController {
 	    categoryService.llamarCategorias(model);
 	    return "customer/detallePedido";
 	}
+	
+
 
 }
