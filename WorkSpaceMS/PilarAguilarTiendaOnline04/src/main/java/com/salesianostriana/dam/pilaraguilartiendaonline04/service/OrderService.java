@@ -30,5 +30,9 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 		return this.repository.save(order);
 	}
 	
+	public List<OrderPedido> listaPedidosRealizados(Customer c){
+		return repository.findByOrderFinishAndCustomer(c);
+	}
+	
 	
 }

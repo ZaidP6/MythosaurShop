@@ -2,7 +2,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.model;
 
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,10 +35,10 @@ public class OrderPedido {
 
 	@Id
 	@GeneratedValue
-	private long orderId;
+	private Long orderId;
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime orderDate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private LocalDate orderDate;
 	
 	private double orderTotalAmount;
 	private boolean orderOpen;

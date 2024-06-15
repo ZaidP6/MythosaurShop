@@ -109,6 +109,7 @@ public class OrderController {
 	                cart.setOrderTotalAmount(cartService.calcularTotalPedido(cart));
 	                cartService.save(cart);
 	    	        orderService.actualizarVenta(cart); 
+	    	        
 	            }
 	            return "redirect:/user/carrito";
 	        }
@@ -126,7 +127,7 @@ public class OrderController {
 			Optional<OrderPedido> optionalOrder = cartService.findById(orderId);
 			if(optionalOrder.isPresent()) {
 				cartService.finalizarCompra(customer, cart);
-				return "redirect:/user/";
+				return "redirect:/user/"; //cambiar a ruta de todos los pedidos
 			}else
 				return "redirect:/user/carrito";
 		}
@@ -134,11 +135,21 @@ public class OrderController {
 	}
 	
 	
-	@GetMapping({ "/user/orders" })
-	public String listarPedidos(Model model) {
-		model.addAttribute("listaPedidos", orderService.findAll());
+	@GetMapping({ "/user/orders"})
+	public String listarPedidos(@AuthenticationPrincipal Customer customer,Model model) {
+		
+		model.addAttribute("listaPedidos", orderService.listaPedidosRealizados(customer));
 		categoryService.llamarCategorias(model);
-		return "/";
+		return "customer/listaPedidosUser";
+		
+	}
+	
+	@GetMapping("/user/order/{orderId}")
+	public String verDetallesPedido(@AuthenticationPrincipal Customer customer,@PathVariable Long orderId, Model model) {
+		OrderPedido order = orderService.findById(orderId).get();
+		model.addAttribute("order", order);
+	    categoryService.llamarCategorias(model);
+	    return "customer/detallePedido";
 	}
 
 }
