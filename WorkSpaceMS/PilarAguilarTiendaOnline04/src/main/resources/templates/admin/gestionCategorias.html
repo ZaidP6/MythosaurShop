@@ -57,10 +57,11 @@
 							<h5 class="modal-title" id="deleteModalLabel">Eliminar Categoría</h5>
 						</div>
 						<div class="modal-body">
-							<p class="fs-4">Vaya...no se puede borrar la categoría...</p>
+							<p class="fs-4">¿Está seguro que desea eliminarla?</p>
+							<a href="#" th:href="@{/admin/categoria/borrar/{id}(id=${category.categoryId})}">Borrar</a>			
 						</div>
 						<div class="modal-footer">
-							<p class="fs-8">Haz click fuera del modal para cerrarla</p>
+							<p class="fs-8">Haz click fuera del modal para NO BORRAR y cerrar</p>
 						</div>
 					</div>
 				</div>
