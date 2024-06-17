@@ -3,6 +3,11 @@ package com.salesianostriana.dam.pilaraguilartiendaonline04.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,9 +36,9 @@ public class UserController {
 	@Autowired
 	private CategoryService categoryService;
 
-	/*
-	 * @Autowired private PasswordEncoder passwordEncoder;
-	 */
+	@Autowired 
+	private PasswordEncoder passwordEncoder;
+	 
 
 	public void llamarCategorias(Model model) {
 		List<Category> categorias = categoryService.findAll();
@@ -66,6 +71,22 @@ public class UserController {
 		// Guarda el nuevo usuario si el username no existe
 		customerService.save(customer);
 		return "redirect:/user/";
+	}
+	
+	@GetMapping("/profile")
+	public String showProfile(@AuthenticationPrincipal Customer customer, Model model) {
+		model.addAttribute("customer", customer);
+		return "customer/userProfile";
+	}
+	
+	@PostMapping("/profile/edit/submit")
+	public String showEditProfile(@ModelAttribute("customer") Customer customer) {
+	customer.setBasicUserPassword(passwordEncoder.encode(customer.getBasicUserPassword()));
+	Customer editCustomer = customerService.edit(customer);
+	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	authentication = new UsernamePasswordAuthenticationToken(editCustomer, authentication.getCredentials(), authentication.getAuthorities());
+	SecurityContextHolder.getContext().setAuthentication(authentication);
+	return "redirect:/user/profile";
 	}
 
 	// ---------------- FUNCIONA ------------------------

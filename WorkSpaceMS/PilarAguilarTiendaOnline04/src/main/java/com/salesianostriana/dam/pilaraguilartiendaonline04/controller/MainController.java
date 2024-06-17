@@ -48,11 +48,19 @@ public class MainController {
 	}
 
 	@PostMapping("/form/signInSimple/submit")
-	public String submitSignIn(@ModelAttribute("customerForm") Customer customer) {
-		String encodedPassword = passwordEncoder.encode(customer.getBasicUserPassword());
-		customer.setBasicUserPassword(encodedPassword);
-		customerService.save(customer);
-		return "redirect:/";
+	public String submitSignIn(@ModelAttribute("customerForm") Customer customer, Model model) {
+		if(customerService.existsBasicUserUName(customer.getBasicUserUName())) {
+			model.addAttribute("errorBasicUserUName", "El usuario ya existe");
+			return "signInSimple";
+		}
+		if(customerService.existsCustomerMail(customer.getCustomerMail())) {
+			model.addAttribute("errorCustomerMail", "El email ya existe");
+			return "signInSimple";
+		}else {
+			customer.setBasicUserPassword(passwordEncoder.encode(customer.getBasicUserPassword()));
+			customerService.save(customer);
+			return "redirect:/";
+		}
 	}
 
 	@GetMapping("/form/logIn")

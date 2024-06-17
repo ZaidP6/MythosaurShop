@@ -41,34 +41,43 @@
 							<td class="d-flex justify-content-around">
 								<a href="#" th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}"><i
 										class="bi bi-pencil-square"></i> Editar</a>
-								<a href="#" th:attr="data-bs-toggle='modal', data-bs-target='#deleteModal'">
+								<button href="#" th:attr="data-bs-toggle='modal', data-bs-target='#deleteModal'"
+									class="btn btn-danger" th:data-id="${category.categoryId}">
 									<i class="bi bi-x-circle"></i> Borrar
-								</a>
+								</button>
+								<div class="modal fade" id="deleteModal" tabindex="-1"
+									aria-labelledby="deleteModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h3 class="modal-title" id="deleteModalLabel">¿Está seguro que desea
+													eliminarla?</h3>
+											</div>
+											<div class="modal-body">
+												<form th:action="@{/admin/categoria/borrar/{id}(id=${category.categoryId})}" method="post">
+													<input type="hidden" name="_method" value="POST">
+													<button href="#" type="submit" class="btn btn-danger">Borrar</button>
+													
+												</form>
+											</div>
+											<div class="modal-footer">
+												<p class="fs-8">Haz click fuera del modal para NO BORRAR y cerrar</p>
+											</div>
+										</div>
+									</div>
+								</div>
 							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
-				aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="deleteModalLabel">Eliminar Categoría</h5>
-						</div>
-						<div class="modal-body">
-							<p class="fs-4">¿Está seguro que desea eliminarla?</p>
-							<a href="#" th:href="@{/admin/categoria/borrar/{id}(id=${category.categoryId})}">Borrar</a>			
-						</div>
-						<div class="modal-footer">
-							<p class="fs-8">Haz click fuera del modal para NO BORRAR y cerrar</p>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 	<footer th:replace="~{fragments/footerAdmin :: footerA}"></footer>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

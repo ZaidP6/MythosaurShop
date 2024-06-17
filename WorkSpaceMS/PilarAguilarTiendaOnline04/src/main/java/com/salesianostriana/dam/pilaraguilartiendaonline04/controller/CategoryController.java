@@ -31,7 +31,7 @@ public class CategoryController {
 
 	// BORRAR CATEGORIA POR ID
 
-	@GetMapping("/borrar/{categoryId}")
+	@PostMapping("/borrar/{categoryId}")
 	public String borrar(@PathVariable("categoryId") long id) {
 		 if(categoryService.countProductsPerCategory(id) == 0) {
 			 categoryService.deleteById(id);

@@ -21,7 +21,7 @@
 			<div class="col-md-6">
 				<div class="card cardLogInDesign">
 					<div class="card-body p-4 text-center">
-						<form method="POST" th:action="@{/form/signInSimple/submit}" th:object="${customerForm}">
+						<form method="POST" th:action="@{/form/signInSimple/submit}" id="registroForm" th:object="${customerForm}">
 							<h2 class="fw-bold mb-4 text-uppercase">Registro</h2>
 							<div class="form-outline form-white input-group mb-4" data-validate="Nombre necesario!">
 								<input type="text" id="inputName" th:field="*{basicUserName}"
@@ -33,24 +33,27 @@
 							</div>
 							<div class="form-outline form-white input-group mb-4"
 								data-validate="Nombre de usuario necesario!">
-								<input type="text" id="inputUserUName" th:field="*{basicUserUName}"
+								<input type="text" id="inputUserUName" th:field="*{basicUserUName}" 
 									class="form-control form-control-lg" placeholder="Nombre de usuario" required />
+									<div th:if="${errorBasicUserUName}" class="text-danger" th:text="${errorBasicUserUName}"></div>
 							</div>
 							<div class="form-outline form-white input-group mb-4"
 								data-validate="Correo electrónico necesario!">
 								<input type="email" id="email" class="form-control form-control-lg"
 									th:field="*{customerMail}" placeholder="Correo electrónico" required />
 								<i class="bi bi-envelope-fill input-icon input-group-text"></i>
+								<div th:if="${errorCustomerMail}" class="text-danger" th:text="${errorCustomerMail}"></div>
 							</div>
 							<div class="form-outline form-white input-group mb-4">
-								<input type="password" id="inputPassword" class="form-control form-control-lg"
-									th:field="*{basicUserPassword}" placeholder="Contraseña" required>
+								<input type="password" id="password" class="form-control form-control-lg"
+									th:field="*{basicUserPassword}" name="password" placeholder="Contraseña" required>
 								<i class="bi bi-lock-fill input-icon input-group-text"></i>
 							</div>
 							<div class="form-outline form-white input-group mb-4">
-								<input type="password" id="" class="form-control form-control-lg"
+								<input type="password" id="passwordConf" name="passwordConf" class="form-control form-control-lg"
 									placeholder="Repite la contraseña" required>
 								<i class="bi bi-lock-fill input-icon input-group-text"></i>
+								<div th:id="passwordError" id="passwordError" class="text-danger"></div>
 							</div>
 							<div class="form-outline form-white input-group mb-4">
 								<input type="date" id="inputBirthDay" class="form-control form-control-lg"
@@ -68,7 +71,7 @@
 							<button class="btn btn-outline-light btn-lg px-5" type="submit">Entrar</button>
 						</form>
 						<p class="mb-0 fs-5 mt-4">
-							¿Ya tienes cuenta? <a href="./signInSimple.html" th:href="@{/form/logIn}">
+							¿Ya tienes cuenta? <a href="./logIn.html" th:href="@{/form/logIn}">
 								<button type="button" class="btn text-white-50 fw-bold fs-5 pb-2">¡Inicia
 									Sesión!</button>
 							</a>
@@ -78,6 +81,7 @@
 			</div>
 		</div>
 	</div>
+	<script src="../static/js/validacionSignIn.js" th:src="@{/js/validacionSignIn.js}"></script>
 </body>
 
 </html>

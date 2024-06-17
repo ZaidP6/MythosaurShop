@@ -9,5 +9,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 	Optional<Customer> findFirstByBasicUserUName(String basicUserUName);
 	
 	Customer findByBasicUserUName(String basicUserUName);
+	
+	boolean existsByBasicUserUName(String basicUserUName);
+	
+	boolean existsByCustomerMail(String customerMail);
 
 }

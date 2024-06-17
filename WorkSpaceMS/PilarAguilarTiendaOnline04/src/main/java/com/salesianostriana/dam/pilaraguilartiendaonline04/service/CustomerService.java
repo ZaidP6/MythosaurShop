@@ -32,5 +32,13 @@ public class CustomerService extends BaseServiceImpl<Customer, Long, CustomerRep
 			customerRepository.save(customer);
 		}
 	}
+	
+	public boolean existsBasicUserUName(String basicUserUName) {
+		return repository.existsByBasicUserUName(basicUserUName);
+	}
+	
+	public boolean existsCustomerMail(String customerMail) {
+		return repository.existsByCustomerMail(customerMail);
+	}
 
 }
