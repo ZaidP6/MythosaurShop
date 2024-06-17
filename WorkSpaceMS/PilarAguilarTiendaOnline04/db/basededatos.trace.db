@@ -26,3 +26,11 @@ Syntax error in SQL statement "[*]*/"; SQL statement:
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]*/"
 Syntax error in SQL statement "[*]*/"; SQL statement:
 */ [42000-224]
+2024-06-17 09:10:40.482227+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]*/"
+Syntax error in SQL statement "[*]*/"; SQL statement:
+*/ [42000-224]
+2024-06-17 09:18:20.898560+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]*/"
+Syntax error in SQL statement "[*]*/"; SQL statement:
+*/ [42000-224]
