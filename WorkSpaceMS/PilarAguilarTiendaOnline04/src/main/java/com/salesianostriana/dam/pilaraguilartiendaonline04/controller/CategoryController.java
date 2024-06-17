@@ -33,8 +33,13 @@ public class CategoryController {
 
 	@GetMapping("/borrar/{categoryId}")
 	public String borrar(@PathVariable("categoryId") long id) {
-		categoryService.deleteById(id);
-		return "redirect:/admin/categoria/list";
+		 if(categoryService.countProductsPerCategory(id) == 0) {
+			 categoryService.deleteById(id);
+			 return "redirect:/admin/categoria/list";
+			 
+		 }else {
+			 return "redirect:/admin/categoria/list";
+		 }
 	}
 
 	// EDITAR CATEGORIA Y GUARDAR

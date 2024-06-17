@@ -19,14 +19,9 @@ public class CategoryService extends BaseServiceImpl<Category, Long, CategoryRep
 	}
 
 	
-	 public void countProductsPerCategory(@PathVariable("category") Category cat) {
+	 public int countProductsPerCategory(@PathVariable("catId") Long catId) {
 		 
-		 if(repository.countProductsPerCategory(this.findById(cat.getCategoryId())) == 0) {
-			 repository.delete(cat);
-			 
-		 }else if(repository.countProductsPerCategory(this.findById(cat.getCategoryId())) > 0) {
-			 System.out.println("redirect:/admin/categoria/list");
-		 }
+		return repository.countProducts(catId);
 		 
 	 }
 }
