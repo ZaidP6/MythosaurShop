@@ -1,7 +1,5 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,8 +20,7 @@ public class CategoryController {
 	private CategoryService categoryService;
 
 	public void llamarCategorias(Model model) {
-		List<Category> categorias = categoryService.findAll();
-		model.addAttribute("categorias", categorias);
+		categoryService.llamarCategorias(model);
 	}
 
 	@GetMapping("/list")
@@ -36,8 +33,13 @@ public class CategoryController {
 
 	@GetMapping("/borrar/{categoryId}")
 	public String borrar(@PathVariable("categoryId") long id) {
-		categoryService.deleteById(id);
-		return "redirect:/admin/categoria/list";
+		 if(categoryService.countProductsPerCategory(id) == 0) {
+			 categoryService.deleteById(id);
+			 return "redirect:/admin/categoria/list";
+			 
+		 }else {
+			 return "redirect:/admin/categoria/list";
+		 }
 	}
 
 	// EDITAR CATEGORIA Y GUARDAR
