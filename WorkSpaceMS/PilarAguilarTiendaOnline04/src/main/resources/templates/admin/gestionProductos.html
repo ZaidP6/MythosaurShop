@@ -24,6 +24,9 @@
 		<div class="row">
 			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
 			<div class="col-md-9 col-lg-10 py-3 w-75">
+				<div th:if="${param.error}" class='alert alert-danger' role="alert">
+					<span>No se puede borrar porque tiene ventas asociadas</span>
+				</div>
 				<table border=1 class="table table-bordered" id="dataTable">
 					<thead>
 						<tr>
@@ -57,34 +60,10 @@
 							<td class="d-flex justify-content-between"><a href="#"
 									th:href="@{/admin/producto/editar/{id}(id=${product.productId})}"><i
 										class="bi bi-pencil-square"></i></a>
-								<button href="#" th:attr="data-bs-toggle='modal', data-bs-target='#deleteModal'"
-									class="btn btn-danger" th:data-id="${product.productId}">
+								<button class="btn btn-danger"
+									th:attr="data-bs-toggle='modal', data-bs-target='#deleteModal', data-product-id=${product.productId}">
 									<i class="bi bi-x-circle"></i> Borrar
 								</button>
-								<div class="modal fade" id="deleteModal" tabindex="-1"
-									aria-labelledby="deleteModalLabel" aria-hidden="true">
-									<div class="modal-dialog" role="document">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h3 class="modal-title" id="deleteModalLabel">¿Está seguro que desea
-													eliminarla?</h3>
-											</div>
-											<div class="modal-body">
-												<form
-													th:action="@{/admin/producto/borrar/{id}(id=${product.productId})}"
-													method="post">
-													<input type="hidden" name="_method" value="POST">
-													<button href="#" type="submit"
-														class="btn btn-danger">Borrar</button>
-
-												</form>
-											</div>
-											<div class="modal-footer">
-												<p class="fs-8">Haz click fuera del modal para NO BORRAR y cerrar</p>
-											</div>
-										</div>
-									</div>
-								</div>
 							</td>
 						</tr>
 					</tbody>
@@ -92,7 +71,44 @@
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="deleteModalLabel">¿Está seguro que
+						desea eliminarlo?</h3>
+				</div>
+				<div class="modal-body">
+					<form id="deleteForm" method="post">
+						<input type="hidden" name="_method" value="POST">
+						<button type="submit" class="btn btn-danger">Borrar</button>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<p class="fs-8">Haz click fuera del modal para NO BORRAR y
+						cerrar</p>
+				</div>
+			</div>
+		</div>
+	</div>
 	<footer th:replace="~{fragments/footerAdmin :: footerA}"></footer>
+	<script>
+			// Cuando el modal se muestra
+			let deleteModal = document.getElementById('deleteModal');
+			deleteModal.addEventListener('show.bs.modal', function (event) {
+
+				let button = event.relatedTarget;
+				let productId = button.getAttribute('data-product-id');
+				let form = document.getElementById('deleteForm');
+
+				if (button.classList.contains('btn-danger')) {
+					form.setAttribute('action',
+						`/admin/producto/borrar/${productId}`);
+				} else {
+					form.setAttribute('action', '');
+				}
+			});
+		</script>
 </body>
 
 </html>

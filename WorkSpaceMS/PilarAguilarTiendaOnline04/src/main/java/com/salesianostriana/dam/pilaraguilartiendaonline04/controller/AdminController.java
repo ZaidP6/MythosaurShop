@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderPedido;
@@ -87,10 +89,17 @@ public class AdminController {
 
 	// BORRAR CLIENTE POR ID
 
-	@GetMapping("/cliente/borrar/{customerId}")
-	public String borrar(@PathVariable("customerId") long id) {
-		customerService.deleteById(id);
-		return "redirect:/admin/cliente/list";
+	@PostMapping("/cliente/borrar/{userId}")
+	public String borrarCliente(@PathVariable("userId") Long userId, RedirectAttributes redirectAttributes) {
+		if(customerService.countOrdersPerCustomer(userId) == 0) {
+			customerService.deleteById(userId);
+			redirectAttributes.addFlashAttribute("mensaje", "Categoría borrada satisfactoriamente");
+	        redirectAttributes.addFlashAttribute("mensajeColor", "success");
+			return "redirect:/admin/cliente/list";
+		}else
+			return "redirect:/admin/cliente/list?error";
+		
+		
 	}
 
 	// ---------------- FUNCIONA --------------------------

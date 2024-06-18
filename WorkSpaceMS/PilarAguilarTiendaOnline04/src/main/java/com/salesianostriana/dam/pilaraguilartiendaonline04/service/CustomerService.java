@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Customer;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.CustomerRepository;
@@ -39,6 +40,11 @@ public class CustomerService extends BaseServiceImpl<Customer, Long, CustomerRep
 	
 	public boolean existsCustomerMail(String customerMail) {
 		return repository.existsByCustomerMail(customerMail);
+	}
+	
+	public int countOrdersPerCustomer(@PathVariable("userId") Long userId) {
+		
+		return repository.countOrders(userId);
 	}
 
 }

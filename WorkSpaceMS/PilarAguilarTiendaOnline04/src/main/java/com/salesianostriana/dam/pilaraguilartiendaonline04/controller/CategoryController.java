@@ -33,15 +33,13 @@ public class CategoryController {
 	// BORRAR CATEGORIA POR ID
 
 	@PostMapping("/borrar/{categoryId}")
-	public String borrar(@PathVariable("categoryId") long id, RedirectAttributes redirectAttributes) {
+	public String borrarCategoria(@PathVariable("categoryId") long id, RedirectAttributes redirectAttributes) {
 	    if (categoryService.countProductsPerCategory(id) == 0) {
 	        categoryService.deleteById(id);
 	        redirectAttributes.addFlashAttribute("mensaje", "Categoría borrada satisfactoriamente");
 	        redirectAttributes.addFlashAttribute("mensajeColor", "success");
 	        return "redirect:/admin/categoria/list";
 	    } else {
-	        //redirectAttributes.addFlashAttribute("mensaje", "No se puede borrar porque tiene productos asociados");
-	        //redirectAttributes.addFlashAttribute("mensajeColor", "error");
 	        return "redirect:/admin/categoria/list?error";
 	    }
 	}

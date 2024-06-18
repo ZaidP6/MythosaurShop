@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 //import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
+
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 
 //import java.util.List;
@@ -18,23 +20,17 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			SELECT p
 			FROM Product p
 			WHERE p.category.categoryName = :category
-			""")
+			""") 
 	public List<Product> productPerCategory(@Param("category") String category);
 
 	public List<Product> findByProductNameContainingIgnoreCase(String search);
 	
 
-
-	/*
-	 * NO SON VÁLIDOS, SON PRUEBAS
-	 * 
-	 * @Query(""" SELECT p FROM Product p WHERE p.productPvP < :precio """) public
-	 * List<Product> buscarPrecioMenor10(double precio);
-	 * 
-	 * 
-	 * SELECT * FROM product WHERE search ILIKE '%search%';
-	 * 
-	 * return productRepository.findByName(search, productName); }
-	 */
+	 @Query("""
+	 		SELECT COUNT(order) 
+	 		FROM OrderPedido order JOIN order.orderLines ol 
+	 		WHERE ol.product.productId = :productId 
+	 		""") //AND op.orderOpen = false
+	 public int countOrders(@PathVariable("productId") Long productId);
 
 }
