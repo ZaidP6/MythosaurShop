@@ -35,5 +35,9 @@ public class ProductService extends BaseServiceImpl<Product, Long, ProductReposi
 	public int countOrdersPerProduct(@PathVariable("productId") Long productId) {
 		return repository.countOrders(productId);
 	}
+	
+	public Product getMostPupularProduct() {
+		return repository.findMostPopularProduct();
+	}
 
 }

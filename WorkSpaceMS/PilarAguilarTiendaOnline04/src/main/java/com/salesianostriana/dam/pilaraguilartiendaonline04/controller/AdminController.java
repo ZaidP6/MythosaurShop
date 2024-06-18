@@ -102,8 +102,6 @@ public class AdminController {
 		
 	}
 
-	// ---------------- FUNCIONA --------------------------
-
 	@GetMapping("/orders")
 	public String listarPedidosAdmin(Model model) {
 		categoryService.llamarCategorias(model);
@@ -121,5 +119,19 @@ public class AdminController {
 		categoryService.llamarCategorias(model);
 		return "admin/detallePedidoAdmin";
 	}
+	
+	 @GetMapping("/dashboard")
+	    public String dashboard(Model model) {
+	        Long totalOrders = orderService.getFinishedOrderCount();
+	        model.addAttribute("totalOrders", totalOrders);
+	        
+	        Product popularProduct = productService.getMostPupularProduct();
+	        model.addAttribute("popularP", popularProduct);
+	        
+	        double total = orderService.getTotalAmountToOrder();
+	        model.addAttribute("total", total);
+
+	        return "admin/dashboard"; // Nombre de la vista Thymeleaf
+	    }
 
 }

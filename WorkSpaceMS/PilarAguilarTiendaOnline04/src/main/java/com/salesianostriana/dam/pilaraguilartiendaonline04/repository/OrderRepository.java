@@ -27,7 +27,7 @@ public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 			FROM OrderPedido o 
 			WHERE o.customer = :customer and o.orderOpen = false
 			""")
-    List<OrderPedido> findByOrderFinishedAndCustomer(Customer customer);
+    public List<OrderPedido> findByOrderFinishedAndCustomer(Customer customer);
 	
 	
 	@Query("""
@@ -35,6 +35,20 @@ public interface OrderRepository  extends JpaRepository<OrderPedido, Long>{
 			FROM OrderPedido op
 			WHERE op.orderOpen = false
 			""")
-	List<OrderPedido> findByOrderFinished();
+	public List<OrderPedido> findByOrderFinished();
+	
+	 @Query("""		
+	 		SELECT COUNT(order) 
+	 		FROM OrderPedido order 
+	 		WHERE order.orderOpen = false
+	 		""")
+	 public Long finishedOrderCount();
+	 
+	 @Query("""
+	 		SELECT SUM(order.orderTotalAmount) 
+	 		FROM OrderPedido order 
+	 		WHERE order.orderOpen = false
+	 		""")
+	 public double findTotalAmount();
 	
 }

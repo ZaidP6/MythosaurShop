@@ -32,5 +32,14 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	 		WHERE ol.product.productId = :productId 
 	 		""") //AND op.orderOpen = false
 	 public int countOrders(@PathVariable("productId") Long productId);
+	 
+	 @Query("""
+	 		SELECT p 
+	 		FROM Product p JOIN p.orderLines ol JOIN ol.orderPedido order
+            WHERE order.orderOpen = false 
+            GROUP BY p 
+            ORDER BY COUNT(ol) DESC
+            """)
+	  public Product findMostPopularProduct();
 
 }
