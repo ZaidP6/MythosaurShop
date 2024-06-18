@@ -59,34 +59,43 @@ public class UserController {
 		return "signInSimple";
 	}
 
-	// Verifica si el nombre de usuario ya existe pero lo sigue admitiendo
 	@PostMapping("/newCustomer/submit")
 	public String verifyCustomer(@ModelAttribute("customer") Customer customer, Model model) {
 
-		if (customerService.findByBasicUserUName(customer.getUsername()) != null) {
+		if (customerService.existsBasicUserUName(customer.getBasicUserUName())) {
 			model.addAttribute("error", "El nombre de usuario ya existe.");
-			return "signInSimple";
 		}
-
-		// Guarda el nuevo usuario si el username no existe
-		customerService.save(customer);
-		return "redirect:/user/";
+		if(customerService.existsCustomerMail(customer.getCustomerMail())) {
+			model.addAttribute("errorCustomerMail", "El email ya existe");
+		}else {
+			customer.setBasicUserPassword(passwordEncoder.encode(customer.getBasicUserPassword()));
+			customerService.save(customer);		
+		}
+		return "redirect:/";	
 	}
 	
 	@GetMapping("/profile")
 	public String showProfile(@AuthenticationPrincipal Customer customer, Model model) {
+		categoryService.llamarCategorias(model);
 		model.addAttribute("customer", customer);
 		return "customer/userProfile";
 	}
 	
 	@PostMapping("/profile/edit/submit")
-	public String showEditProfile(@ModelAttribute("customer") Customer customer) {
-	customer.setBasicUserPassword(passwordEncoder.encode(customer.getBasicUserPassword()));
-	Customer editCustomer = customerService.edit(customer);
-	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-	authentication = new UsernamePasswordAuthenticationToken(editCustomer, authentication.getCredentials(), authentication.getAuthorities());
-	SecurityContextHolder.getContext().setAuthentication(authentication);
-	return "redirect:/user/profile";
+	public String showEditProfile(@ModelAttribute("customer") Customer customer, Model model) {
+		if (customerService.existsBasicUserUName(customer.getBasicUserUName())) {
+			model.addAttribute("error", "El nombre de usuario ya existe.");
+		}
+		if(customerService.existsCustomerMail(customer.getCustomerMail())) {
+			model.addAttribute("errorCustomerMail", "El email ya existe");
+		}else {
+			customer.setBasicUserPassword(passwordEncoder.encode(customer.getBasicUserPassword()));
+			Customer editCustomer = customerService.edit(customer);
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			authentication = new UsernamePasswordAuthenticationToken(editCustomer, authentication.getCredentials(), authentication.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+		}
+		return "redirect:/user/profile";
 	}
 
 	// ---------------- FUNCIONA ------------------------
