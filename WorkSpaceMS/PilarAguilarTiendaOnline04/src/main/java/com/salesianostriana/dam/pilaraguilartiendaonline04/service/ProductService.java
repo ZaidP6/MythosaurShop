@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Product;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.repository.ProductRepository;
@@ -29,6 +30,10 @@ public class ProductService extends BaseServiceImpl<Product, Long, ProductReposi
 
 	public List<Product> searchByKeyword(String keyWord) {
 		return repository.findByProductNameContainingIgnoreCase(keyWord);
+	}
+	
+	public int countOrdersPerProduct(@PathVariable("productId") Long productId) {
+		return repository.countOrders(productId);
 	}
 
 }

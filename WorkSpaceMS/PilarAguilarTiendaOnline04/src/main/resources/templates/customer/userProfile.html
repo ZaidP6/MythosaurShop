@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" type="image/x-icon">
+	<!-- Favicon -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+	<!-- Iconos -->
+	<link rel="stylesheet" th:href="@{../css/socialicons.css}">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<title>Editar Perfil</title>
+</head>
+
+<body>
+	<header th:replace="~{fragments/headerNavbarCustomer :: navbarCustomer}"></header>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-2" th:replace="~{fragments/sidebarCustomer :: sidebarCustomer}"></div>
+			<section class="col-md-9">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-10">
+							<div class="card">
+								<div class="card-header text-center">
+									<h1>Mi Perfil</h1>
+								</div>
+								<div class="card-body">
+									<form th:action="@{/user/profile/edit/submit}" th:object="${customer}"
+										method="post">
+										<input type="hidden" th:field="*{basicUserId}">
+										<div class="row mb-3">
+											<div class="col-md-4 col-sm-12">
+												<label for="username" class="form-label">Nombre de Usuario</label>
+												<input type="text" class="form-control" id="username"
+													th:field="*{basicUserUName}" disabled required>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<label for="pwd" class="form-label">Contraseña</label>
+												<input type="password" class="form-control" id="pwd"
+													th:field="*{basicUserPassword}" disabled required>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<label for="dni" class="form-label">DNI</label>
+												<input type="text" class="form-control" id="dni"
+													th:field="*{basicUserDni}" disabled required>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-6 col-sm-12">
+												<label for="name" class="form-label">Nombre</label>
+												<input type="text" class="form-control" id="name"
+													th:field="*{basicUserName}" disabled required>
+											</div>
+											<div class="col-md-6 col-sm-12">
+												<label for="lastName" class="form-label">Apellidos</label>
+												<input type="text" class="form-control" id="lastName"
+													th:field="*{basicUserLastName}" disabled required>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-4 col-sm-12">
+												<label for="email" class="form-label">Correo Electrónico</label>
+												<input type="email" class="form-control" id="email"
+													th:field="*{customerMail}" disabled required>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<label for="birth" class="form-label">Fecha de Nacimiento</label>
+												<input type="date" class="form-control" id="birth"
+													th:field="*{customerBirth}" disabled required>
+											</div>
+											<div class="col-md-4 col-sm-12">
+												<label for="phone" class="form-label">Teléfono</label>
+												<input type="text" class="form-control" id="phone"
+													th:field="*{customerPhone}" disabled>
+											</div>
+										</div>
+										<div class="row mb-3">
+											<div class="col-md-12">
+												<label for="address" class="form-label">Dirección</label>
+												<input type="text" class="form-control" id="address"
+													th:field="*{customerAddress}" disabled required>
+											</div>
+										</div>
+										<div class="d-flex justify-content-end">
+											<button type="button" class="btn btn-secondary me-2" id="editButton"
+												onclick="habilitarEdit()">Editar</button>
+											<button type="submit" class="btn btn-primary" id="saveButton"
+												style="display: none;">Guardar Cambios</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="d-flex justify-content-end mt-4">
+								<a th:href="@{/user/}" class="btn btn-primary">Volver</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<footer class="footer" th:replace="~{fragments/footerCustomer :: footerC}"></footer>
+	<script type="text/javascript">
+	
+	<!--Buscar boton y añadir addeventListener, quitar el onclick del boton-->
+			function habilitarEdit() {
+				let inputs = document.querySelectorAll('input[disabled]');
+				inputs.forEach(input => input.removeAttribute('disabled'));
+
+				document.getElementById('editButton').style.display = 'none';
+				document.getElementById('saveButton').style.display = 'block';
+			}
+		</script>
+	<!--<script src="../../static/js/edicionUser.js" th:src="/js/edicionUser.js" defer></script>-->
+</body>
+
+</html>

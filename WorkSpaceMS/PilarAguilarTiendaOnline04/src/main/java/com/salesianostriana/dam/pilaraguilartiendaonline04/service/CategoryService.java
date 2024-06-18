@@ -19,9 +19,9 @@ public class CategoryService extends BaseServiceImpl<Category, Long, CategoryRep
 	}
 
 	
-	 public int countProductsPerCategory(@PathVariable("catId") Long catId) {
+	 public int countProductsPerCategory(@PathVariable("categoryId") Long categoryId) {
 		 
-		return repository.countProducts(catId);
+		return repository.countProducts(categoryId);
 		 
 	 }
 }

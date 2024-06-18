@@ -13,6 +13,7 @@ import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,9 @@ import lombok.NoArgsConstructor;
 public class BasicUser implements UserDetails {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator="basic_user_seq")
+	@SequenceGenerator(name="basic_user_seq",sequenceName="basic_user_seq", allocationSize=1, initialValue = 1)
+	
 	private Long basicUserId;
 
 	private String basicUserUName;

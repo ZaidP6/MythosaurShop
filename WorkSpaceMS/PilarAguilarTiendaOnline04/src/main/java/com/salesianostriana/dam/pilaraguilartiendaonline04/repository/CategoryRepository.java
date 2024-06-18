@@ -13,10 +13,10 @@ public interface CategoryRepository extends JpaRepository<Category, Long>{
 	
 	
 	 @Query("""
-	            SELECT COUNT(p)
-	            FROM Product p
-	            WHERE p.category.categoryId = :catId
-	            """)
-	    public int countProducts(@PathVariable("catId") Long catId);
+		        SELECT COUNT(p)
+		        FROM Product p
+		        WHERE p.category.categoryId = :categoryId
+		        """)
+	 public int countProducts(@PathVariable("categoryId") Long categoryId);
 	 
 	}

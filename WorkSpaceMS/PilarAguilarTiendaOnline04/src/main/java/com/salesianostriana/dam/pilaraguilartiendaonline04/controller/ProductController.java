@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.OrderLine;
@@ -79,10 +80,17 @@ public class ProductController {
 
 	// BORRAR PRODUCTO POR ID
 
-	@GetMapping("/admin/producto/borrar/{productId}")
-	public String borrar(@PathVariable("productId") long id) {
-		productService.deleteById(id);
-		return "redirect:/admin/producto/list";
+	@PostMapping("/admin/producto/borrar/{productId}")
+	public String borrarProducto(@PathVariable("productId") long id, RedirectAttributes redirectAttributes) {
+		if(productService.countOrdersPerProduct(id) <= 0) {
+			productService.deleteById(id);
+			redirectAttributes.addFlashAttribute("mensaje", "Producto borrado satisfactoriamente");
+			redirectAttributes.addFlashAttribute("mensajeColor", "success");
+			return "redirect:/admin/producto/list";
+		}else
+			return "redirect:/admin/producto/list?error";
+		
+		
 	}
 
 	@GetMapping({ "/admin/producto/list" })
