@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.salesianostriana.dam.pilaraguilartiendaonline04.model.Category;
 import com.salesianostriana.dam.pilaraguilartiendaonline04.service.CategoryService;
@@ -31,16 +32,20 @@ public class CategoryController {
 
 	// BORRAR CATEGORIA POR ID
 
-	@PostMapping("/borrar/{categoryId}")
-	public String borrar(@PathVariable("categoryId") long id) {
-		 if(categoryService.countProductsPerCategory(id) == 0) {
-			 categoryService.deleteById(id);
-			 return "redirect:/admin/categoria/list";
-			 
-		 }else {
-			 return "redirect:/admin/categoria/list";
-		 }
+	@GetMapping("/borrar/{categoryId}")
+	public String borrar(@PathVariable("categoryId") long id, RedirectAttributes redirectAttributes) {
+	    if (categoryService.countProductsPerCategory(id) == 0) {
+	        categoryService.deleteById(id);
+	        redirectAttributes.addFlashAttribute("mensaje", "Categoría borrada satisfactoriamente");
+	        redirectAttributes.addFlashAttribute("mensajeColor", "success");
+	        return "redirect:/admin/categoria/list/success";
+	    } else {
+	        redirectAttributes.addFlashAttribute("mensaje", "No se puede borrar porque tiene productos asociados");
+	        redirectAttributes.addFlashAttribute("mensajeColor", "error");
+	        return "redirect:/admin/categoria/list/error";
+	    }
 	}
+
 
 	// EDITAR CATEGORIA Y GUARDAR
 

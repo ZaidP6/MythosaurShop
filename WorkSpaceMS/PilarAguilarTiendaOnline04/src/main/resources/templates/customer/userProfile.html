@@ -104,6 +104,8 @@
 	</div>
 	<footer class="footer" th:replace="~{fragments/footerCustomer :: footerC}"></footer>
 	<script type="text/javascript">
+	
+	<!--Buscar boton y añadir addeventListener, quitar el onclick del boton-->
 			function habilitarEdit() {
 				let inputs = document.querySelectorAll('input[disabled]');
 				inputs.forEach(input => input.removeAttribute('disabled'));
