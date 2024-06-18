@@ -31,11 +31,14 @@
 		<div class="row">
 			<div th:replace="~{fragments/sidebarAdmin :: sidebarAdmin}"></div>
 			<div class="col-md-9 col-lg-10 py-3 w-75">
-				<div th:if="${mensaje}" class="alert"
-					th:classappend="${mensajeColor == 'success'} ? 'alert-success' : 'alert-danger'"
-					role="alert">
-					<span th:text="${mensaje}"></span>
+				<div th:if="${param.error}" class='alert alert-success' role="alert">
+					<!-- th:classappend="${param.mensajeColor == 'success'} ? 'alert-success' : 'alert-danger'"-->
+					
+					<!--  <span th:text="${param.mensaje}"></span>-->
+					<span>"No se puede borrar porque tiene productos asociados</span>
 				</div>
+
+
 				<table border=1 class="table table-bordered" id="dataTable">
 					<thead>
 						<tr>
@@ -52,11 +55,11 @@
 							<td th:text="${category.categoryDescription}">Descripción de
 								la categoría</td>
 							<td class="d-flex justify-content-around"><a href="#"
-								th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}"><i
-									class="bi bi-pencil-square"></i> Editar</a>
+								th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}">
+									<i class="bi bi-pencil-square"></i> Editar
+							</a>
 								<button class="btn btn-danger"
-									th:attr="data-bs-toggle='modal', data-bs-target='#deleteModal'"
-									th:data-id="${category.categoryId}">
+									th:attr="data-bs-toggle='modal', data-bs-target='#deleteModal', data-category-id=${category.categoryId}">
 									<i class="bi bi-x-circle"></i> Borrar
 								</button></td>
 						</tr>
@@ -92,14 +95,21 @@
 	<footer th:replace="~{fragments/footerAdmin :: footerA}"></footer>
 
 	<script>
+		// Cuando el modal se muestra
 		let deleteModal = document.getElementById('deleteModal');
 		deleteModal.addEventListener('show.bs.modal', function(event) {
+
 			let button = event.relatedTarget;
-			let categoryId = button.getAttribute('data-id');
+			let categoryId = button.getAttribute('data-category-id');
 			let form = document.getElementById('deleteForm');
-			form.setAttribute('action',`/admin/categoria/borrar/${categoryId}`);
+
+			if (button.classList.contains('btn-danger')) {
+				form.setAttribute('action',
+						`/admin/categoria/borrar/${categoryId}`);
+			} else {
+				form.setAttribute('action', '');
+			}
 		});
 	</script>
 </body>
-
 </html>

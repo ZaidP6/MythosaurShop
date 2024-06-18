@@ -9,7 +9,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +25,8 @@ import lombok.ToString;
 public class Category {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator="category_seq")
+	@SequenceGenerator(name="category_seq",sequenceName="category_seq", allocationSize=1, initialValue = 1)
 	private Long categoryId;
 	private String categoryName;
 	private String categoryDescription;

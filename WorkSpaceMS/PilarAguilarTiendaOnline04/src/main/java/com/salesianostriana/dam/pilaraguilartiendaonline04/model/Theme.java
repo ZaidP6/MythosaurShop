@@ -8,6 +8,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -22,7 +23,9 @@ import lombok.ToString;
 @Builder
 public class Theme {
 
-	@Id @GeneratedValue
+	@Id @GeneratedValue(generator="theme_seq")
+	@SequenceGenerator(name="theme_seq",sequenceName="theme_seq", allocationSize=1, initialValue = 1)
+	
 	private Long themeId;
 	
 	private String themeName;
