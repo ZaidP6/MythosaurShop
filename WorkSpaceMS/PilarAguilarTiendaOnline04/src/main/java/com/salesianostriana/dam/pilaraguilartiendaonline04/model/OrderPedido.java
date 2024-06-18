@@ -37,7 +37,7 @@ public class OrderPedido {
 	@GeneratedValue
 	private Long orderId;
 	
-	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern="dd-MM-yyyy")
 	private LocalDate orderDate;
 	
 	private double orderTotalAmount;
