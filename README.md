@@ -56,7 +56,8 @@ Las credenciales para acceder son:
 Se pretende crear una aplicaación web diseñada para la compra de productos ofrecidos en Mythosaur Shop, donde además se podrá gestionar por parte de un administrador.
 Podemos diferenciar entre 3 usuarios diferentes: el usuario base que ve la web sin registrarse, el susuario ya registrado y el administrador. Cada uno tendrá accesos a vistas dierentes. 
 
-[Documento del proyecto Mythosaur Shop](https://drive.google.com/file/d/1RG0Lhunvq3KneQRz-oYCNu0dLRPD9NrU/view?usp=sharing)
+[Documento del proyecto Mythosaur Shop]([https://drive.google.com/file/d/1RG0Lhunvq3KneQRz-oYCNu0dLRPD9NrU/view?usp=sharing](https://drive.google.com/file/d/1Mil0Q0uLVJi0nUoFv1nt7mGeVD6raTNB/view?usp=sharing))
+[Plan de pruebas](https://docs.google.com/spreadsheets/d/1Qtai2Mau0zOB6AA2TrV11mabnL8bUPk2/edit?usp=sharing&ouid=103977287289189902822&rtpof=true&sd=true)
 
 
 ## Estado del proyecto
