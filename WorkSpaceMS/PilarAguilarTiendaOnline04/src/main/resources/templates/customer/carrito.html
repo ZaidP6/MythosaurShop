@@ -100,5 +100,16 @@
 		</div>
 	</div>
 	<footer th:replace="~{fragments/footerCustomer :: footerC}"></footer>
+	<script type="text/javascript">
+		$(document.ready(function(){
+			$('.change-input').on('change', function(event){
+				let element = event.target;
+				let idProduct = $(element).data('productId');
+				let cantidad = element.value;
+				
+				location.href = `user/carrito/${productId}/cantidad/${orderLineQuantity}`;
+			});
+		}));
+	</script>
 </body>
 </html>
