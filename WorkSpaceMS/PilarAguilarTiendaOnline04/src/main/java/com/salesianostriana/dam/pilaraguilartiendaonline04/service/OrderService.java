@@ -38,5 +38,19 @@ public class OrderService extends BaseServiceImpl<OrderPedido, Long, OrderReposi
 		return repository.findByOrderFinished();
 	}
 	
+	public long getFinishedOrderCount() {
+		return repository.finishedOrderCount();
+	}
 	
+	public double getTotalAmountToOrder() {
+		return repository.findTotalAmount();
+	}
+	
+	public double getAVGProductsPerOrder() {
+		return repository.findAVGProductsPerOrder();
+	}
+	
+	public double getAVGPricePerOrder() {
+		return repository.findAVGPricePerOrder();
+	}
 }

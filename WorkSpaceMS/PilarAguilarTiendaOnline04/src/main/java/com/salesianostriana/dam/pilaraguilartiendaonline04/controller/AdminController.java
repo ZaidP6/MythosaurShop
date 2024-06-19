@@ -102,8 +102,6 @@ public class AdminController {
 		
 	}
 
-	// ---------------- FUNCIONA --------------------------
-
 	@GetMapping("/orders")
 	public String listarPedidosAdmin(Model model) {
 		categoryService.llamarCategorias(model);
@@ -121,5 +119,33 @@ public class AdminController {
 		categoryService.llamarCategorias(model);
 		return "admin/detallePedidoAdmin";
 	}
+	
+	 @GetMapping("/dashboard")
+	    public String dashboard(Model model) {
+		 List<OrderPedido> orderList = orderService.findAll();
+		 if(!orderList.isEmpty()) {
+			Long totalOrders = orderService.getFinishedOrderCount();
+	        model.addAttribute("totalOrders", totalOrders);
+	        
+	        Product popularProduct = productService.getMostPopularProduct();
+	        model.addAttribute("popularP", popularProduct);
+	        
+	        double total = orderService.getTotalAmountToOrder();
+	        model.addAttribute("total", total);
+	        
+	        double avgProductsPerOrder = orderService.getAVGProductsPerOrder();
+	        model.addAttribute("AVGProducts", avgProductsPerOrder);
+
+	        double avgAmountPerOrder = orderService.getAVGPricePerOrder();
+	        model.addAttribute("AVGAmount", avgAmountPerOrder); 
+	        
+	        return "admin/dashboard";
+		 }else
+			 return "admin/dashboardVacio";
+	        
+
+
+	        
+	    }
 
 }

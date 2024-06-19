@@ -46,11 +46,11 @@
 							</div>
 							<div class="mb-3 form-group">
 								<label for="priceProduct" class="form-label">Precio</label>
-								<input type="text" class="form-control" id="priceProduct" th:field="*{productPvP}" required>
+								<input type="number" class="form-control" min="0" id="priceProduct" th:field="*{productPvP}" required>
 							</div>
 							<div class="mb-3 form-group">
 								<label for="stockProduct" class="form-label">Cantidad</label>
-								<input type="number" class="form-control" min="0" max="20000" id="stockProduct"
+								<input type="number" class="form-control" min="1" max="20000" id="stockProduct"
 									th:field="*{productStockQuantity}">
 							</div>
 							<div class="mb-3 form-group">
