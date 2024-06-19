@@ -130,8 +130,15 @@ public class AdminController {
 	        
 	        double total = orderService.getTotalAmountToOrder();
 	        model.addAttribute("total", total);
+	        
+	        double avgProductsPerOrder = orderService.getAVGProductsPerOrder();
+	        model.addAttribute("AVGProducts", avgProductsPerOrder);
 
-	        return "admin/dashboard"; // Nombre de la vista Thymeleaf
+	        double avgAmountPerOrder = orderService.getAVGPricePerOrder();
+	        model.addAttribute("AVGAmount", avgAmountPerOrder);
+
+
+	        return "admin/dashboard";
 	    }
 
 }

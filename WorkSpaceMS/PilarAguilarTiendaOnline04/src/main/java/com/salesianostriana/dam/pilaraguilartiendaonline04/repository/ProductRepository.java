@@ -35,10 +35,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	 
 	 @Query("""
 	 		SELECT p 
-	 		FROM Product p JOIN p.orderLines ol JOIN ol.orderPedido order
+	 		FROM OrderPedido order JOIN order.orderLines ol JOIN Product p ON (ol.product.productId = p.productId)
             WHERE order.orderOpen = false 
             GROUP BY p 
-            ORDER BY COUNT(ol) DESC
+            ORDER BY SUM(ol.orderLineQuantity) DESC
+            LIMIT 1
             """)
 	  public Product findMostPopularProduct();
 
