@@ -11,7 +11,8 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 	<!-- Iconos -->
 
-	<link rel="stylesheet" th:href="@{../css/socialicons.css}">
+	<link rel="stylesheet" th:href="@{../../css/socialicons.css}">
+	<script th:src="@{../js/gestionCategorias.js}" defer></script>
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script th:src="@{../../../js/general.js}" defer></script>
@@ -44,7 +45,8 @@
 							<td th:text="${category.categoryDescription}">Descripción de
 								la categoría</td>
 							<td class="d-flex justify-content-around"><a href="#"
-									th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}">
+									th:href="@{/admin/categoria/editar/{id}(id=${category.categoryId})}"
+									class="btn btn-primary">
 									<i class="bi bi-pencil-square"></i> Editar
 								</a>
 								<button class="btn btn-danger"
@@ -81,7 +83,7 @@
 
 	<footer th:replace="~{fragments/footerAdmin :: footerA}"></footer>
 
-	<script>
+	<script type="text/javascript">
 		let deleteModal = document.getElementById('deleteModal');
 		deleteModal.addEventListener('show.bs.modal', function (event) {
 

@@ -30,7 +30,8 @@
 								<div class="card-body">
 									<p><strong>ID del Pedido:</strong> <span th:text="${orderAdmin.orderId}"></span></p>
 									<p><strong>Fecha:</strong> <span th:text="${orderAdmin.orderDate}"></span></p>
-									<p><strong>Cliente:</strong> <span th:text="${orderAdmin.customer.basicUserUName}"></span></p>
+									<p><strong>Cliente:</strong> <span
+											th:text="${orderAdmin.customer.basicUserUName}"></span></p>
 									<p><strong>Precio Total:</strong> <span
 											th:text="${#numbers.formatDecimal(orderAdmin.orderTotalAmount, 0, 2)} + '€'"></span>
 									</p>
