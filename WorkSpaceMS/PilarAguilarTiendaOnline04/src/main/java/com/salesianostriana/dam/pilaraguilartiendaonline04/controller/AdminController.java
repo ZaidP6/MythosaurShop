@@ -125,7 +125,7 @@ public class AdminController {
 	        Long totalOrders = orderService.getFinishedOrderCount();
 	        model.addAttribute("totalOrders", totalOrders);
 	        
-	        Product popularProduct = productService.getMostPupularProduct();
+	        Product popularProduct = productService.getMostPopularProduct();
 	        model.addAttribute("popularP", popularProduct);
 	        
 	        double total = orderService.getTotalAmountToOrder();

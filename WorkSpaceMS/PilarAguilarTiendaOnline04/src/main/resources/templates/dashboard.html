@@ -48,12 +48,12 @@
 												<div class="card-body">
 													<h5 class="card-title">Producto más vendido</h5>
 													<div class="img-fluid">
-														<div th:if="${popularP.productImage != null}">
+														<div th:if="${popularP.productImage}">
 															<img th:src="${popularP.productImage}"
 																th:alt="${popularP.productImageAlternativeText}"
 																alt="Imagen del producto">
 														</div>
-														<div th:unless="${popularP.productImage != null}">
+														<div th:unless="${popularP.productImage}">
 															<p th:text="${popularP.productImageAlternativeText}">Texto
 																alternativo de la imagen</p>
 														</div>

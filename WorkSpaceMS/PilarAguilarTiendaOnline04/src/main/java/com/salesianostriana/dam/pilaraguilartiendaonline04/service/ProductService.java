@@ -36,8 +36,14 @@ public class ProductService extends BaseServiceImpl<Product, Long, ProductReposi
 		return repository.countOrders(productId);
 	}
 	
-	public Product getMostPupularProduct() {
-		return repository.findMostPopularProduct();
-	}
-
+	public Product getMostPopularProduct() {
+		Product p1 = new Product();
+        Optional<Product> popularProductOpt = repository.findMostPopularProduct();
+        if (popularProductOpt.isPresent()) {
+            Product popularProduct = popularProductOpt.get();     
+            return popularProduct;
+        } else {
+            return p1;
+        }
+    }
 }

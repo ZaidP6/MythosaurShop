@@ -1,6 +1,7 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -34,13 +35,13 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	 public int countOrders(@PathVariable("productId") Long productId);
 	 
 	 @Query("""
-	 		SELECT p 
-	 		FROM OrderPedido order JOIN order.orderLines ol JOIN Product p ON (ol.product.productId = p.productId)
-            WHERE order.orderOpen = false 
-            GROUP BY p 
-            ORDER BY SUM(ol.orderLineQuantity) DESC
-            LIMIT 1
-            """)
-	  public Product findMostPopularProduct();
+			    SELECT p 
+			    FROM OrderPedido o JOIN o.orderLines ol JOIN ol.product p 
+			    WHERE o.orderOpen = false 
+			    GROUP BY p 
+			    ORDER BY SUM(ol.orderLineQuantity) DESC
+			    LIMIT 1
+			    """)
+	public Optional<Product> findMostPopularProduct();
 
 }
