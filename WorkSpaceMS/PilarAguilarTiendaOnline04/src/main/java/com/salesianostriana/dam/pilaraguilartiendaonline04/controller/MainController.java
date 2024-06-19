@@ -1,5 +1,6 @@
 package com.salesianostriana.dam.pilaraguilartiendaonline04.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,24 @@ public class MainController {
 			customerService.save(customer);
 			return "redirect:/";
 		}
+	}
+	
+	@GetMapping("/search")
+	public String buscarProductoKeyword(String keyword, Model model) {
+		 categoryService.llamarCategorias(model);
+		 List<Product> buscados = productService.searchByKeyword(keyword);
+
+	        if(!buscados.isEmpty()) {
+	            model.addAttribute("products", buscados);
+
+	            return "/indexSearch";
+
+	        }else {
+	            model.addAttribute("products", new ArrayList<>());
+	            model.addAttribute("mensaje", "No se ha encontrado ningún producto");
+
+	            return "/indexSearch";
+	        }
 	}
 
 	@GetMapping("/form/logIn")
