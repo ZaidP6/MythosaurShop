@@ -18,6 +18,7 @@
 	<title>Nuevo / Editar producto</title>
 
 </head>
+
 <body>
 	<header th:replace="~{fragments/headerNavbarAdmin :: navbarAdmin}"></header>
 	<div class="container-fluid">
@@ -37,7 +38,8 @@
 								id="productId" />
 							<div class="mb-3 form-group">
 								<label for="nameProduct" class="form-label">Nombre del producto</label>
-								<input type="text" class="form-control" id="nameProduct" th:field="*{productName}" required>
+								<input type="text" class="form-control" id="nameProduct" th:field="*{productName}"
+									required>
 							</div>
 							<div class="mb-3 form-group">
 								<label for="descriptionProduct" class="form-label">Descripción del producto</label>
@@ -46,7 +48,8 @@
 							</div>
 							<div class="mb-3 form-group">
 								<label for="priceProduct" class="form-label">Precio</label>
-								<input type="number" class="form-control" min="0" id="priceProduct" th:field="*{productPvP}" required>
+								<input type="number" class="form-control" min="0" id="priceProduct"
+									th:field="*{productPvP}" required>
 							</div>
 							<div class="mb-3 form-group">
 								<label for="stockProduct" class="form-label">Cantidad</label>
@@ -55,7 +58,8 @@
 							</div>
 							<div class="mb-3 form-group">
 								<label for="imageProduct" class="form-label">Imagen</label>
-								<input type="text" class="form-control" id="imageProduct" th:field="*{productImage}" required>
+								<input type="text" class="form-control" id="imageProduct" th:field="*{productImage}"
+									required>
 							</div>
 							<div class="mb-3 form-group">
 								<label for="altImageProduct" class="form-label">Texto alternativo</label>
@@ -83,4 +87,5 @@
 	</div>
 	<footer th:replace="~{fragments/footerAdmin :: footerA}"></footer>
 </body>
+
 </html>
