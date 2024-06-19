@@ -30,13 +30,7 @@
 								<h2 th:text="${producto.productName}">Producto</h2>
 								<h5 th:if="${producto.category} != null" th:text="${producto.category.categoryName}">
 									Categoría</h5>
-								<!--<p th:text="${producto.productDescription}">Descripción del producto</p>-->
 								<p class="precioEntero" th:text="${#numbers.formatDecimal(producto.productPvP, 0, 2)} + '€'">0.00€</p>
-								<form th:action="@{/admin/}" method="get">
-									<!-- th:action="@{/admin/comprar}" method="post" -->
-									<input type="hidden" th:name="productId" th:value="${producto.productId}">
-									<button type="submit" class="btn btn-primary btn-comprar">Comprar</button>
-								</form>
 							</div>
 						</div>
 					</div>

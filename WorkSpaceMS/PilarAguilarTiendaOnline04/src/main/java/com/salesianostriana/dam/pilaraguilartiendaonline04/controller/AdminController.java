@@ -122,7 +122,9 @@ public class AdminController {
 	
 	 @GetMapping("/dashboard")
 	    public String dashboard(Model model) {
-	        Long totalOrders = orderService.getFinishedOrderCount();
+		 List<OrderPedido> orderList = orderService.findAll();
+		 if(!orderList.isEmpty()) {
+			Long totalOrders = orderService.getFinishedOrderCount();
 	        model.addAttribute("totalOrders", totalOrders);
 	        
 	        Product popularProduct = productService.getMostPopularProduct();
@@ -135,10 +137,15 @@ public class AdminController {
 	        model.addAttribute("AVGProducts", avgProductsPerOrder);
 
 	        double avgAmountPerOrder = orderService.getAVGPricePerOrder();
-	        model.addAttribute("AVGAmount", avgAmountPerOrder);
-
-
+	        model.addAttribute("AVGAmount", avgAmountPerOrder); 
+	        
 	        return "admin/dashboard";
+		 }else
+			 return "admin/dashboardVacio";
+	        
+
+
+	        
 	    }
 
 }

@@ -96,6 +96,7 @@ public class ProductController {
 	@GetMapping({ "/admin/producto/list" })
 	public String listarTodosTabla(Model model) {
 		model.addAttribute("products", productService.findAll());
+		categoryService.llamarCategorias(model);
 		return "admin/gestionProductos";
 	}
 
